@@ -129,22 +129,25 @@ class SSSpeechManager : NSObject, AVSpeechSynthesizerDelegate {
         
     }
     
+    /*
+        AVSpeechSynthesizerDelegate methods
+    */
     
     func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didStartSpeechUtterance utterance: AVSpeechUtterance!) {
         
-        println("speechSynthesizer: didStartSpeechUtterance:")
-        
-        AppDelegate.appDelegate().mainViewController!.speakButton!.enabled = false
-        AppDelegate.appDelegate().mainViewController!.speakButton!.alpha = 0.25
+        println("SSSpeechManager speechSynthesizer: didStartSpeechUtterance:")
         
     }
     
     func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didFinishSpeechUtterance utterance: AVSpeechUtterance!) {
         
-        println("speechSynthesizer: didFinishSpeechUtterance:")
+        println("SSSpeechManager speechSynthesizer: didFinishSpeechUtterance:")
         
-        AppDelegate.appDelegate().mainViewController!.speakButton!.enabled = true
-        AppDelegate.appDelegate().mainViewController!.speakButton!.alpha = 1.0
+    }
+    
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didCancelSpeechUtterance utterance: AVSpeechUtterance!) {
+        
+        println("SSSpeechManager speechSynthesizer: didCancelSpeechUtterance:")
         
     }
     

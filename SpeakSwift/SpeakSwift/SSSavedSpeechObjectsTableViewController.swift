@@ -95,6 +95,9 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
         
     }
     
+    /*
+        AVSpeechSynthesizerDelegate methods
+    */
     
     func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didStartSpeechUtterance utterance: AVSpeechUtterance!) {
         
