@@ -22,15 +22,15 @@ class SSSpeechObject {
     
     /// Returns a SSSpeechObject with data from input parameters
     
-    class func speechObjectWith(#speechString: String?, language: String?, rate: CFloat?, pitch: CFloat?, volume: CFloat?) -> SSSpeechObject {
+    class func speechObjectWith(#speechString: String, language: String, rate: CFloat, pitch: CFloat, volume: CFloat) -> SSSpeechObject {
         
         var speechObject = SSSpeechObject()
         
-        speechObject.speechString = speechString!
-        speechObject.language = language!
-        speechObject.rate = rate!
-        speechObject.pitch = pitch!
-        speechObject.volume = volume!
+        speechObject.speechString = speechString
+        speechObject.language = language
+        speechObject.rate = rate
+        speechObject.pitch = pitch
+        speechObject.volume = volume
         
         return speechObject
     }
