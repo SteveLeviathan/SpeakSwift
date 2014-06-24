@@ -20,6 +20,7 @@ class SSSpeechObject {
         println("SSSpeechObject init()")
     }
     
+    /// Returns a SSSpeechObject with data from input parameters
     
     class func speechObjectWith(#speechString: String?, language: String?, rate: CFloat?, pitch: CFloat?, volume: CFloat?) -> SSSpeechObject {
         
@@ -34,6 +35,7 @@ class SSSpeechObject {
         return speechObject
     }
     
+    /// Returns a SSSpeechObject from a Dictionary
     
     class func speechObjectFromDictionary(#dictionary: Dictionary<String, String>?) -> SSSpeechObject {
         
