@@ -89,11 +89,6 @@ class SSSpeechManager : NSObject, AVSpeechSynthesizerDelegate {
                 
                 for voice: AnyObject in speechVcs {
                     
-                    let v = voice as AVSpeechSynthesisVoice
-                    
-                    //println("v.language = \((voice as AVSpeechSynthesisVoice).language)")
-                    //println("v.language = \(v.language)")
-                    
                     languageCodes.append((voice as AVSpeechSynthesisVoice).language)
                     
                     let currentLocale: NSLocale = NSLocale.autoupdatingCurrentLocale()
