@@ -33,7 +33,7 @@ import UIKit
 
 
 // Where you typically used the #define directive to define a primitive constant in C and Objective-C, in Swift you use a global constant instead.
-let iOSVersion = UIDevice.currentDevice().systemVersion.bridgeToObjectiveC().floatValue
+let iOSVersion = (UIDevice.currentDevice().systemVersion as NSString).floatValue
 
 // Color constants
 let honeydewColor: UIColor = UIColor(red: 204.0/255.0, green: 255.0/255.0, blue: 102.0/255.0, alpha: 1.0) // honeydew
@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().tintColor = contrastingColor
         UINavigationBar.appearance().barTintColor = UIColor(white: 0.05, alpha: 1.0)
-        UINavigationBar.appearance().titleTextAttributes = [UITextAttributeTextColor: contrastingColor]
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: contrastingColor]
         UIPickerView.appearance().tintColor = contrastingColor
         
         
