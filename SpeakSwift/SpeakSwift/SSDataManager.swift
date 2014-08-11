@@ -18,7 +18,7 @@ let SpeakSwiftSpeechObjectsKey = "SpeakSwift.SpeechObjects"
 
 class SSDataManager : NSObject {
     
-    var speechObjects: SSSpeechObject[] = Array()
+    var speechObjects: [SSSpeechObject] = Array()
     
     /// The shared instance of the SSDataManager class
     
@@ -31,7 +31,7 @@ class SSDataManager : NSObject {
         return Static.sharedInstance
     }
     
-    init() {
+    override init() {
         println("SSDataManager init()")
     }
     
@@ -54,7 +54,7 @@ class SSDataManager : NSObject {
         
         if let speechObj = speechObject? {
             
-            var savedObjects : Dictionary<String, String>[] = speechObjectDictionariesArray()
+            var savedObjects : [Dictionary<String, String>] = speechObjectDictionariesArray()
             
             // Add Speech Object Dictionary to the top of the list
             savedObjects.insert(speechObj.dictionaryRepresentation(), atIndex: 0)
@@ -79,19 +79,19 @@ class SSDataManager : NSObject {
     /* 
         Load Speech Object Dictionaries from NSUserDefaults.standardUserDefaults()
     */
-    func speechObjectDictionariesArray() -> Dictionary<String, String>[] {
+    func speechObjectDictionariesArray() -> [Dictionary<String, String>] {
         
         // Return an array of speech object dictionaries if there are any.
         
-        if var arrayOfSpeechObjectDictionaries: AnyObject[] = NSUserDefaults.standardUserDefaults().arrayForKey(SpeakSwiftSpeechObjectsKey) {
+        if var arrayOfSpeechObjectDictionaries: [AnyObject] = NSUserDefaults.standardUserDefaults().arrayForKey(SpeakSwiftSpeechObjectsKey) {
             
-            return arrayOfSpeechObjectDictionaries as Dictionary<String, String>[]
+            return arrayOfSpeechObjectDictionaries as [Dictionary<String, String>]
             
         }
         
         // If there are no Speech Object Dictionaries, return an empty array
         
-        return Dictionary<String, String>[]()
+        return [Dictionary<String, String>]()
         
     }
     
@@ -99,11 +99,11 @@ class SSDataManager : NSObject {
     /* 
         Returns saved Speech Object Dictionaries as an Array of SSSpeechObjects
     */
-    func savedSpeechObjects() -> SSSpeechObject[] {
+    func savedSpeechObjects() -> [SSSpeechObject] {
         
-        var speechObjectsArray: SSSpeechObject[] = Array()
+        var speechObjectsArray: [SSSpeechObject] = Array()
         
-        let arrayOfSpeechObjectDictionaries: Dictionary<String, String>[] = speechObjectDictionariesArray()
+        let arrayOfSpeechObjectDictionaries: [Dictionary<String, String>] = speechObjectDictionariesArray()
         
         for speechObjectDictionary: Dictionary<String, String> in arrayOfSpeechObjectDictionaries {
             
@@ -120,7 +120,7 @@ class SSDataManager : NSObject {
     */
     func saveSpeechObjects() {
     
-        var speechObjectsAsDictionaries: Dictionary<String, String>[] = Array()
+        var speechObjectsAsDictionaries: [Dictionary<String, String>] = Array()
         
         for speechObject: SSSpeechObject in speechObjects {
             
@@ -135,7 +135,7 @@ class SSDataManager : NSObject {
     /*
         Save Speech Object Dictionaries to NSUserDefaults.standardUserDefaults()
     */
-    func saveSpeechObjectDictionaries(dictionaries: Dictionary<String, String>[]) {
+    func saveSpeechObjectDictionaries(dictionaries: [Dictionary<String, String>]) {
         
         NSUserDefaults.standardUserDefaults().setValue(dictionaries, forKey: SpeakSwiftSpeechObjectsKey)
         

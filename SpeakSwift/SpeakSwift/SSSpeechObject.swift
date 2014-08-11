@@ -48,9 +48,9 @@ class SSSpeechObject {
             let volumeStr : String = dict["volume"]!
             
             // String to CFloat conversion using bridgeToObjectiveC()
-            let rate = rateStr.bridgeToObjectiveC().floatValue
-            let pitch = pitchStr.bridgeToObjectiveC().floatValue
-            let volume = volumeStr.bridgeToObjectiveC().floatValue
+            let rate = (rateStr as NSString).floatValue
+            let pitch = (pitchStr as NSString).floatValue
+            let volume = (volumeStr as NSString).floatValue
             
             let speechObject = speechObjectWith(speechString: speechString, language: language, rate: rate, pitch: pitch, volume: volume)
             
@@ -69,9 +69,9 @@ class SSSpeechObject {
         var dictionary: Dictionary<String, String> = Dictionary()
         dictionary.updateValue(speechString, forKey: "speechString")
         dictionary.updateValue(language, forKey: "language")
-        dictionary.updateValue(String(rate), forKey: "rate")
-        dictionary.updateValue(String(pitch), forKey: "pitch")
-        dictionary.updateValue(String(volume), forKey: "volume")
+        dictionary.updateValue(String(format: "%.2f", rate) , forKey: "rate")
+        dictionary.updateValue(String(format: "%.2f", pitch) , forKey: "pitch")
+        dictionary.updateValue(String(format: "%.2f", volume) , forKey: "volume")
         
         return dictionary
         

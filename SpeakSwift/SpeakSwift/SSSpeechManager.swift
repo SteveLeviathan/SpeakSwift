@@ -29,7 +29,7 @@ class SSSpeechManager : NSObject, AVSpeechSynthesizerDelegate {
         return Static.sharedInstance
     }
     
-    init() {
+    override init() {
         println("SSSpeechManager init()")
     }
     
@@ -37,7 +37,7 @@ class SSSpeechManager : NSObject, AVSpeechSynthesizerDelegate {
         The AVSpeechSynthesizer
     */
     var speechSynthesizer: AVSpeechSynthesizer {
-    if !_speechSynthesizer {
+    if _speechSynthesizer == nil {
         _speechSynthesizer = AVSpeechSynthesizer()
         _speechSynthesizer!.delegate = self
         }
@@ -48,13 +48,13 @@ class SSSpeechManager : NSObject, AVSpeechSynthesizerDelegate {
     /*
         Array of language codes, sorted alphabetically
     */
-    var languageCodes: String[] {
-    if !_languageCodes {
+    var languageCodes: [String] {
+    if _languageCodes == nil {
         
-        // Bridge the Dictionary to NSDictionary using bridgeToObjectiveC()
+        // Cast the Dictionary to NSDictionary
         // Then wen can use the keysSortedByValueUsingSelector method to sort the keys by value (language display name)
         
-        _languageCodes = languageCodesAndDisplayNames.bridgeToObjectiveC().keysSortedByValueUsingSelector(Selector("compare:")) as? String[]
+        _languageCodes = (languageCodesAndDisplayNames as NSDictionary).keysSortedByValueUsingSelector(Selector("compare:")) as? [String]
         
         // If sorting the language codes (keys) was enough, we could have used the sort() method like below, 
         // but instead we want the language codes (keys) sorted by their language display names (values)
@@ -71,19 +71,19 @@ class SSSpeechManager : NSObject, AVSpeechSynthesizerDelegate {
         }
         return _languageCodes!
     }
-    var _languageCodes: String[]? = nil
+    var _languageCodes: [String]? = nil
     
     /*
         A dictionary holding <language code/display names> key/value pairs with locale taken into account
     */
     var languageCodesAndDisplayNames: Dictionary<String, String> {
-        if !_languageCodesAndDisplayNames {
+        if _languageCodesAndDisplayNames == nil {
             
             _languageCodesAndDisplayNames = Dictionary<String, String>()
             
-            var languageCodes: String[] = Array()
+            var languageCodes: [String] = Array()
             
-            let speechVoices: AnyObject[]? = AVSpeechSynthesisVoice.speechVoices()
+            let speechVoices: [AnyObject]? = AVSpeechSynthesisVoice.speechVoices()
             
             if let speechVcs = speechVoices {
                 

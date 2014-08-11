@@ -33,7 +33,7 @@ import UIKit
 
 
 // Where you typically used the #define directive to define a primitive constant in C and Objective-C, in Swift you use a global constant instead.
-let iOSVersion = UIDevice.currentDevice().systemVersion.bridgeToObjectiveC().floatValue
+let iOSVersion = (UIDevice.currentDevice().systemVersion as NSString).floatValue
 
 // Color constants
 let honeydewColor: UIColor = UIColor(red: 204.0/255.0, green: 255.0/255.0, blue: 102.0/255.0, alpha: 1.0) // honeydew
@@ -63,13 +63,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         // Override point for customization after application launch.
         
-        println("Run this app on your device! The iPhone Simulator does not have Speech Voices (AVSpeechSynthesisVoice)!")
+        println("Run this app on your device! The iPhone Simulator might not have Speech Voices (AVSpeechSynthesisVoice)!")
         
         //Set up some UINavigationBar color settings
         
         UINavigationBar.appearance().tintColor = contrastingColor
         UINavigationBar.appearance().barTintColor = UIColor(white: 0.05, alpha: 1.0)
-        UINavigationBar.appearance().titleTextAttributes = [UITextAttributeTextColor: contrastingColor]
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: contrastingColor]
         UIPickerView.appearance().tintColor = contrastingColor
         
         

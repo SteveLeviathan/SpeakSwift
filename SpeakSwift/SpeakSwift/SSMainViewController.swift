@@ -28,7 +28,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     var savedSpeechObjectsTableViewController: SSSavedSpeechObjectsTableViewController? = nil
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
@@ -37,8 +37,13 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         println("SSMainViewController init(nibName:bundle:)")
     }
     
-    init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
+    }
+    
+    override init() {
+        super.init()
+        println("SSMainViewController init()")
     }
     
     override func viewDidLoad() {
@@ -70,7 +75,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         // Use a UIScrollView as the container view in case we need to be able to scroll the view because of the amount of UI elements taking up more space than self.view's height
         scrollView = UIScrollView(frame: view.frame)
         
-        view.addSubview(scrollView)
+        view.addSubview(scrollView!)
         
         speechTextView = UITextView(frame: CGRect(x: 0.0, y: 0.0, width: CGRectGetWidth(view.frame), height: 100.0))
         speechTextView!.frame = CGRectInset(speechTextView!.frame, 10.0, 10.0)
@@ -81,7 +86,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         speechTextView!.font = UIFont(name: "Helvetica Neue", size: 14.0)
         speechTextView!.returnKeyType = .Done
         
-        scrollView?.addSubview(speechTextView)
+        scrollView?.addSubview(speechTextView!)
         
         speakButton = UIButton(frame: CGRect(x: 0.0, y: 0.0 , width: 150.0, height: 40.0))
         speakButton?.setTitle("Speak!", forState: .Normal)
@@ -94,7 +99,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         // Call UIView positioning extension method positionBelowView() on speakButton
         speakButton!.positionBelowView(speechTextView!, xOffset: CGRectGetMidX(speechTextView!.frame) - CGRectGetWidth(speakButton!.frame)/2.0 - 10.0, yOffset: 10.0)
         
-        scrollView?.addSubview(speakButton)
+        scrollView?.addSubview(speakButton!)
         
         addToFavouritesButton = UIButton.buttonWithType(.ContactAdd) as? UIButton
         addToFavouritesButton!.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0)
@@ -104,7 +109,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         // Call UIView positioning extension method positionBelowView() on addToFavouritesButton
         addToFavouritesButton?.positionBelowView(speechTextView!, absoluteX: CGRectGetWidth(view.frame) - CGRectGetWidth(addToFavouritesButton!.frame) - 5.0, yOffset: 10.0)
         
-        scrollView?.addSubview(addToFavouritesButton)
+        scrollView?.addSubview(addToFavouritesButton!)
         
         voiceRateLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 20.0))
         voiceRateLabel!.text = "Voice rate:"
@@ -114,7 +119,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         // Call UIView positioning extension method positionBelowView() on voiceRateLabel
         voiceRateLabel!.positionBelowView(speakButton!, absoluteX: 10.0, yOffset: 18.0)
         
-        scrollView?.addSubview(voiceRateLabel)
+        scrollView?.addSubview(voiceRateLabel!)
         
         voiceRateSlider = UISlider(frame: CGRect(x: 0.0, y: 0.0, width: CGRectGetWidth(view.frame) - CGRectGetWidth(voiceRateLabel!.frame) - 50.0, height: 20.0))
         voiceRateSlider!.minimumValue = 0.0
@@ -128,7 +133,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         // Call UIView positioning extension method positionRightFromView() on voiceRateSlider
         voiceRateSlider?.positionRightFromView(voiceRateLabel!, xOffset: 0.0, absoluteY: CGRectGetMaxY(speakButton!.frame) + 20.0)
         
-        scrollView?.addSubview(voiceRateSlider)
+        scrollView?.addSubview(voiceRateSlider!)
         
         voiceRateValueLabel = UILabel(frame: CGRect(x:0.0, y: 0.0, width: 40.0, height: 20.0))
         voiceRateValueLabel!.font = UIFont(name: "Helvetica Neue", size: 12.0)
@@ -138,7 +143,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         // Call UIView positioning extension method positionRightFromView() on voiceRateValueLabel
         voiceRateValueLabel?.positionRightFromView(voiceRateSlider!, xOffset: 5.0, absoluteY: CGRectGetMaxY(speakButton!.frame) + 20.0)
         
-        scrollView?.addSubview(voiceRateValueLabel)
+        scrollView?.addSubview(voiceRateValueLabel!)
         
         voicePitchLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 20.0))
         voicePitchLabel!.text = "Voice pitch:"
@@ -148,7 +153,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         // Call UIView positioning extension method positionBelowView() on voicePitchLabel
         voicePitchLabel?.positionBelowView(voiceRateSlider!, absoluteX: 10.0, yOffset: 28.0)
         
-        scrollView?.addSubview(voicePitchLabel)
+        scrollView?.addSubview(voicePitchLabel!)
         
         voicePitchSlider = UISlider(frame: CGRect(x: 0.0, y: 0.0, width: CGRectGetWidth(view.frame) - CGRectGetWidth(voicePitchLabel!.frame) - 50.0, height: 20.0))
         voicePitchSlider!.minimumValue = 0.5
@@ -162,7 +167,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         // Call UIView positioning extension method positionRightFromView() on voicePitchSlider
         voicePitchSlider?.positionRightFromView(voicePitchLabel!, xOffset: 0.0, absoluteY: CGRectGetMaxY(voiceRateSlider!.frame) + 30.0)
         
-        scrollView?.addSubview(voicePitchSlider)
+        scrollView?.addSubview(voicePitchSlider!)
         
         voicePitchValueLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 40.0, height: 20.0))
         voicePitchValueLabel!.font = UIFont(name: "Helvetica Neue", size: 12.0)
@@ -172,7 +177,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         // Call UIView positioning extension method positionRightFromView() on voicePitchValueLabel
         voicePitchValueLabel?.positionRightFromView(voicePitchSlider!, xOffset: 5.0, absoluteY: CGRectGetMaxY(voiceRateSlider!.frame) + 30.0)
         
-        scrollView?.addSubview(voicePitchValueLabel)
+        scrollView?.addSubview(voicePitchValueLabel!)
         
         pickerView = UIPickerView(frame: CGRect(x: 0.0, y: 0.0, width: CGRectGetWidth(view.frame), height: 200.0))
         pickerView!.delegate = self
@@ -192,12 +197,12 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         */
         
         // Set the pickerView to en-US (English (United States))
-        let index: Int = SSSpeechManager.sharedManager.languageCodes.bridgeToObjectiveC().indexOfObject("en-US")
+        let index: Int = (SSSpeechManager.sharedManager.languageCodes as NSArray).indexOfObject("en-US")
         if index != NSNotFound {
             pickerView?.selectRow(index, inComponent: 0, animated: false)
         }
         
-        scrollView?.addSubview(pickerView)
+        scrollView?.addSubview(pickerView!)
         
     }
     
@@ -208,7 +213,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             
             speechTextView!.text = speechObj.speechString
             
-            let pickerViewIndex = SSSpeechManager.sharedManager.languageCodes.bridgeToObjectiveC().indexOfObject(speechObj.language)
+            let pickerViewIndex = (SSSpeechManager.sharedManager.languageCodes as NSArray).indexOfObject(speechObj.language)
             pickerView?.selectRow(pickerViewIndex, inComponent: 0, animated: true)
             
             voiceRateSlider!.value = speechObj.rate
@@ -320,7 +325,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     
     override func supportedInterfaceOrientations() -> Int  {
-        return Int(UIInterfaceOrientationMask.All.value)
+        return Int(UIInterfaceOrientationMask.All.toRaw())
     }
     
     /*
