@@ -10,16 +10,16 @@ import UIKit
 
 class SSRootNavigationController: UINavigationController {
 
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         // Custom initialization
     }
     
-    init(rootViewController: UIViewController!) {
+    override init(rootViewController: UIViewController!) {
         super.init(rootViewController: rootViewController)
     }
     
-    init(coder: NSCoder?) {
+    required init(coder: NSCoder?) {
         
         super.init(coder: coder)
         
@@ -47,7 +47,7 @@ class SSRootNavigationController: UINavigationController {
     }
     
     override func supportedInterfaceOrientations() -> Int  {
-        return Int(UIInterfaceOrientationMask.All.value)
+        return Int(UIInterfaceOrientationMask.All.toRaw())
     }
     
     /*
