@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         // Override point for customization after application launch.
         
-        println("Run this app on your device! The iPhone Simulator does not have Speech Voices (AVSpeechSynthesisVoice)!")
+        println("Run this app on your device! The iPhone Simulator might not have Speech Voices (AVSpeechSynthesisVoice)!")
         
         //Set up some UINavigationBar color settings
         
