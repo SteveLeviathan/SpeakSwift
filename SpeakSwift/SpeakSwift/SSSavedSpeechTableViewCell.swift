@@ -156,7 +156,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         
         if let languageLbl: UILabel = languageLabel {
             
-            languageLbl.text = "Language: \(SSSpeechManager.sharedManager.languageCodesAndDisplayNames[speechObject.language])"
+            languageLbl.text = "Language: \(SSSpeechManager.sharedManager.languageCodesAndDisplayNames[speechObject.language]!)"
             
         }
         
