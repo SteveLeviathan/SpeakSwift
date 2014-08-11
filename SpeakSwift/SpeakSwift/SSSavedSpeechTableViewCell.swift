@@ -25,7 +25,11 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
     
     var tableView: UITableView? = nil
     
-    init(style: UITableViewCellStyle, reuseIdentifier: String) {
+    required init(coder aDecoder: NSCoder!) {
+        super.init(coder: aDecoder)
+    }
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         // Initialization code
@@ -67,7 +71,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         speechTextLabel!.font = UIFont(name: "Helvetica Neue", size: 12.0)
         speechTextLabel!.numberOfLines = 4
         
-        contentView.addSubview(speechTextLabel)
+        contentView.addSubview(speechTextLabel!)
         
         voiceRateLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 60.0, height: 15.0))
         voiceRateLabel!.textColor = contrastingColor
@@ -77,7 +81,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         // Call UIView positioning extension method positionBelowView() on voiceRateLabel
         voiceRateLabel?.positionBelowView(speechTextLabel!, xOffset: 0.0, yOffset: 10.0)
         
-        contentView.addSubview(voiceRateLabel)
+        contentView.addSubview(voiceRateLabel!)
         
         voicePitchLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 60.0, height: 15.0))
         voicePitchLabel!.textColor = contrastingColor
@@ -87,7 +91,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         // Call UIView positioning extension method positionBelowView() on voiceRateLabel
         voicePitchLabel?.positionRightFromView(voiceRateLabel!, xOffset: 20.0, yOffset: 0.0)
         
-        contentView.addSubview(voicePitchLabel)
+        contentView.addSubview(voicePitchLabel!)
         
         languageLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: CGRectGetWidth(contentView.frame) - 40.0, height: 15.0))
         languageLabel!.textColor = contrastingColor
@@ -97,7 +101,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         // Call UIView positioning extension method positionBelowView() on languageLabel
         languageLabel?.positionBelowView(voiceRateLabel!, xOffset: 0.0, yOffset: 5.0)
         
-        contentView.addSubview(languageLabel)
+        contentView.addSubview(languageLabel!)
         
         playButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 80.0, height: 30.0))
         playButton!.backgroundColor = UIColor(white: 0.10, alpha: 1.0)
@@ -110,7 +114,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         // Call UIView positioning extension method positionBelowView() on playButton
         playButton!.positionBelowView(languageLabel!, xOffset: 0.0, yOffset: 20.0)
         
-        contentView.addSubview(playButton)
+        contentView.addSubview(playButton!)
         
         editButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 80.0, height: 30.0))
         editButton!.backgroundColor = UIColor(white: 0.10, alpha: 1.0)
@@ -123,7 +127,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         // Call UIView positioning extension method positionRightFromView() on editButton
         editButton!.positionRightFromView(playButton!, xOffset: 20.0, yOffset: 0.0)
         
-        contentView.addSubview(editButton)
+        contentView.addSubview(editButton!)
         
         
     }
