@@ -37,7 +37,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         println("SSMainViewController init(nibName:bundle:)")
     }
     
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
