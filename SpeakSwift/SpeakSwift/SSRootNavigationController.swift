@@ -15,7 +15,7 @@ class SSRootNavigationController: UINavigationController {
         // Custom initialization
     }
     
-    override init(rootViewController: UIViewController!) {
+    override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
     }
     

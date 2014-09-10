@@ -307,8 +307,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     
     func favouritesButtonTapped(sender: UIButton!) {
-        
-        navigationController.pushViewController(savedSpeechObjectsTableViewController!, animated: true)
+        navigationController?.pushViewController(savedSpeechObjectsTableViewController!, animated: true)
         
     }
     
@@ -332,12 +331,12 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         UIPickerViewDelegate & UIPickerViewDatasource methods
     */
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView!) -> Int  {
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int  {
         return 1
     }
     
     
-    func pickerView(pickerView: UIPickerView!, numberOfRowsInComponent component: Int) -> Int  {
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int  {
         
         // If there are no language codes, because of the app running in the iPhone Simulator, return 1, so we can display 1 title to tell the user there are no speech voices
         
@@ -402,7 +401,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         println("SSMainViewController speechSynthesizer: didStartSpeechUtterance:")
         
-        speakButton!.titleLabel.text = "Stop!"
+        speakButton!.titleLabel?.text = "Stop!"
         
     }
     
@@ -411,7 +410,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         println("SSMainViewController speechSynthesizer: didFinishSpeechUtterance:")
         
-        speakButton!.titleLabel.text = "Speak!"
+        speakButton!.titleLabel?.text = "Speak!"
         
         
     }
@@ -420,7 +419,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         println("SSMainViewController speechSynthesizer: didCancelSpeechUtterance:")
         
-        speakButton!.titleLabel.text = "Speak!"
+        speakButton!.titleLabel?.text = "Speak!"
         
     }
     
