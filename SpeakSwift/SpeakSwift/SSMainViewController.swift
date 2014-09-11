@@ -307,6 +307,9 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     
     func favouritesButtonTapped(sender: UIButton!) {
+        
+        speechTextView!.resignFirstResponder()
+        
         navigationController?.pushViewController(savedSpeechObjectsTableViewController!, animated: true)
         
     }
