@@ -83,9 +83,10 @@ class SSDataManager : NSObject {
         
         // Return an array of speech object dictionaries if there are any.
         
-        if var arrayOfSpeechObjectDictionaries: [AnyObject] = NSUserDefaults.standardUserDefaults().arrayForKey(SpeakSwiftSpeechObjectsKey) {
+        if let data: NSData = NSUserDefaults.standardUserDefaults().objectForKey(SpeakSwiftSpeechObjectsKey) as? NSData {
             
-            return arrayOfSpeechObjectDictionaries as [Dictionary<String, String>]
+            let arrayOfSpeechObjectDictionaries: [Dictionary<String, String>] = NSKeyedUnarchiver.unarchiveObjectWithData(data) as [Dictionary<String, String>]
+            return arrayOfSpeechObjectDictionaries
             
         }
         
@@ -137,11 +138,15 @@ class SSDataManager : NSObject {
     */
     func saveSpeechObjectDictionaries(dictionaries: [Dictionary<String, String>]) {
         
-        NSUserDefaults.standardUserDefaults().setValue(dictionaries, forKey: SpeakSwiftSpeechObjectsKey)
+        let data : NSData = NSKeyedArchiver.archivedDataWithRootObject(dictionaries)
+        
+        NSUserDefaults.standardUserDefaults().setObject(data, forKey: SpeakSwiftSpeechObjectsKey)
         
         NSUserDefaults.standardUserDefaults().synchronize()
         
     }
+    
+    
     
 }
 
