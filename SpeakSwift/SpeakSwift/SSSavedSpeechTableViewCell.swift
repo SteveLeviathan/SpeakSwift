@@ -227,6 +227,6 @@ protocol SSSavedSpeechTableViewCellDelegate {
     
     /// Delegate method, called when the user taps the Edit button.
     
-    func editButtonTappedOnSavedSpeechTableViewCell(avedSpeechTableViewCell: SSSavedSpeechTableViewCell!, withIndexPath indexPath:  NSIndexPath!)
+    func editButtonTappedOnSavedSpeechTableViewCell(savedSpeechTableViewCell: SSSavedSpeechTableViewCell!, withIndexPath indexPath:  NSIndexPath!)
     
 }
