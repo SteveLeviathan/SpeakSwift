@@ -72,6 +72,10 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Organize, target: self, action: Selector("favouritesButtonTapped:"))
         
+        let infoButton: UIButton = UIButton.buttonWithType(.InfoLight) as UIButton
+        infoButton.addTarget(self, action: Selector("infoButtonTapped:"), forControlEvents: .TouchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: infoButton)
+        
         // Use a UIScrollView as the container view in case we need to be able to scroll the view because of the amount of UI elements taking up more space than self.view's height
         scrollView = UIScrollView(frame: view.frame)
         
@@ -203,6 +207,28 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         
         scrollView?.addSubview(pickerView!)
+        
+    }
+    
+    func infoButtonTapped(sender: UIButton!) {
+        
+        let title = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleName") as String
+        let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as String
+        let build = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion") as String
+        let message = "\nVersion: \(version) (build: \(build))\n\nAppify Media\n\nAppifyMedia.com"
+        let btnTitle = "OK"
+        
+        // in iOS 8.0, UIAlertView/UIActionSheet is deprecated and replaced by UIAlertController
+        
+        //var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        //alert.addAction(UIAlertAction(title: btnTitle, style: UIAlertActionStyle.Default, handler: nil))
+        //self.presentViewController(alert, animated: true, completion: nil)
+        
+        var alert = UIAlertView()
+        alert.title = title
+        alert.message = message
+        alert.addButtonWithTitle(btnTitle)
+        alert.show()
         
     }
     
