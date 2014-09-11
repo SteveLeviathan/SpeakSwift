@@ -124,7 +124,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         voiceRateSlider = UISlider(frame: CGRect(x: 0.0, y: 0.0, width: CGRectGetWidth(view.frame) - CGRectGetWidth(voiceRateLabel!.frame) - 50.0, height: 20.0))
         voiceRateSlider!.minimumValue = 0.0
         voiceRateSlider!.maximumValue = 1.0
-        voiceRateSlider!.value = 0.3
+        voiceRateSlider!.value = 0.2
         voiceRateSlider!.minimumTrackTintColor = contrastingColor
         voiceRateSlider!.maximumTrackTintColor = contrastingColor
         voiceRateSlider!.thumbTintColor = contrastingColor
