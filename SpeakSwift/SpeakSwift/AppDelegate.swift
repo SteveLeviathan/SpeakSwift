@@ -85,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Add the mainViewController to the rootNavigationController
         
-        rootNavigationController?.addChildViewController(mainViewController)
+        rootNavigationController?.addChildViewController(mainViewController!)
         
         
         // Load saved Speech Objects

@@ -29,7 +29,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String) {
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         // Initialization code
@@ -177,7 +177,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         
         if let tblView: UITableView = tableView {
             
-            let indexPath: NSIndexPath = tblView.indexPathForCell(self)
+            let indexPath: NSIndexPath = tblView.indexPathForCell(self)!
             
             delegate?.playButtonTappedOnSavedSpeechTableViewCell(self, withIndexPath: indexPath)
             
@@ -192,7 +192,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         
         if let tblView: UITableView = tableView {
             
-            let indexPath: NSIndexPath = tblView.indexPathForCell(self)
+            let indexPath: NSIndexPath = tblView.indexPathForCell(self)!
             
             delegate?.editButtonTappedOnSavedSpeechTableViewCell(self, withIndexPath: indexPath)
             
@@ -227,6 +227,6 @@ protocol SSSavedSpeechTableViewCellDelegate {
     
     /// Delegate method, called when the user taps the Edit button.
     
-    func editButtonTappedOnSavedSpeechTableViewCell(avedSpeechTableViewCell: SSSavedSpeechTableViewCell!, withIndexPath indexPath:  NSIndexPath!)
+    func editButtonTappedOnSavedSpeechTableViewCell(savedSpeechTableViewCell: SSSavedSpeechTableViewCell!, withIndexPath indexPath:  NSIndexPath!)
     
 }

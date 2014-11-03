@@ -32,22 +32,22 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
     }
     
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return SSDataManager.sharedManager.speechObjects.count
     }
     
     
-    override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return SSSavedSpeechTableViewCell.cellHeight()
     }
     
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cellIdentifer = "SavedSpeechTableViewCellIdentifier"
         var cell: SSSavedSpeechTableViewCell? = nil //tableView!.dequeueReusableCellWithIdentifier(cellIdentifer) as? SSSavedSpeechTableViewCell
@@ -70,7 +70,7 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
         
         cell!.tableView = tableView
         
-        return cell
+        return cell!
     }
     
     
@@ -83,7 +83,7 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
     */
     
     
-    override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
         if editingStyle == .Delete {
             
@@ -103,7 +103,7 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
         
         println("SSSavedSpeechObjectsTableViewController speechSynthesizer: didStartSpeechUtterance:")
         
-        AppDelegate.appDelegate().mainViewController!.speakButton!.titleLabel.text = "Stop!"
+        AppDelegate.appDelegate().mainViewController!.speakButton!.titleLabel?.text = "Stop!"
         
     }
     
@@ -111,7 +111,7 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
         
         println("SSSavedSpeechObjectsTableViewController speechSynthesizer: didFinishSpeechUtterance:")
         
-        AppDelegate.appDelegate().mainViewController!.speakButton!.titleLabel.text = "Speak!"
+        AppDelegate.appDelegate().mainViewController!.speakButton!.titleLabel?.text = "Speak!"
         
     }
     
@@ -119,7 +119,7 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
         
         println("SSSavedSpeechObjectsTableViewController speechSynthesizer: didCancelSpeechUtterance:")
         
-        AppDelegate.appDelegate().mainViewController!.speakButton!.titleLabel.text = "Speak!"
+        AppDelegate.appDelegate().mainViewController!.speakButton!.titleLabel?.text = "Speak!"
         
     }
     
@@ -147,8 +147,7 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
         
         println("editButtonTappedOn withIndexPath")
         
-        self.navigationController.popViewControllerAnimated(true)
-        
+        self.navigationController?.popViewControllerAnimated(true)
         let speechObject: SSSpeechObject = SSDataManager.sharedManager.speechObjects[indexPath.row]
         
         AppDelegate.appDelegate().mainViewController!.updateUIControlsWithSpeechObject(speechObject)

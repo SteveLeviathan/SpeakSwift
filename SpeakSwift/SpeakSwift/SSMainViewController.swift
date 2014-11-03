@@ -72,6 +72,10 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Organize, target: self, action: Selector("favouritesButtonTapped:"))
         
+        let infoButton: UIButton = UIButton.buttonWithType(.InfoLight) as UIButton
+        infoButton.addTarget(self, action: Selector("infoButtonTapped:"), forControlEvents: .TouchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: infoButton)
+        
         // Use a UIScrollView as the container view in case we need to be able to scroll the view because of the amount of UI elements taking up more space than self.view's height
         scrollView = UIScrollView(frame: view.frame)
         
@@ -124,7 +128,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         voiceRateSlider = UISlider(frame: CGRect(x: 0.0, y: 0.0, width: CGRectGetWidth(view.frame) - CGRectGetWidth(voiceRateLabel!.frame) - 50.0, height: 20.0))
         voiceRateSlider!.minimumValue = 0.0
         voiceRateSlider!.maximumValue = 1.0
-        voiceRateSlider!.value = 0.3
+        voiceRateSlider!.value = 0.2
         voiceRateSlider!.minimumTrackTintColor = contrastingColor
         voiceRateSlider!.maximumTrackTintColor = contrastingColor
         voiceRateSlider!.thumbTintColor = contrastingColor
@@ -203,6 +207,28 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         
         scrollView?.addSubview(pickerView!)
+        
+    }
+    
+    func infoButtonTapped(sender: UIButton!) {
+        
+        let title = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleName") as String
+        let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as String
+        let build = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion") as String
+        let message = "\nVersion: \(version) (build: \(build))\n\nAppify Media\n\nAppifyMedia.com"
+        let btnTitle = "OK"
+        
+        // in iOS 8.0, UIAlertView/UIActionSheet is deprecated and replaced by UIAlertController
+        
+        //var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        //alert.addAction(UIAlertAction(title: btnTitle, style: UIAlertActionStyle.Default, handler: nil))
+        //self.presentViewController(alert, animated: true, completion: nil)
+        
+        var alert = UIAlertView()
+        alert.title = title
+        alert.message = message
+        alert.addButtonWithTitle(btnTitle)
+        alert.show()
         
     }
     
@@ -308,7 +334,9 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func favouritesButtonTapped(sender: UIButton!) {
         
-        navigationController.pushViewController(savedSpeechObjectsTableViewController!, animated: true)
+        speechTextView!.resignFirstResponder()
+        
+        navigationController?.pushViewController(savedSpeechObjectsTableViewController!, animated: true)
         
     }
     
@@ -332,12 +360,12 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         UIPickerViewDelegate & UIPickerViewDatasource methods
     */
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView!) -> Int  {
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int  {
         return 1
     }
     
     
-    func pickerView(pickerView: UIPickerView!, numberOfRowsInComponent component: Int) -> Int  {
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int  {
         
         // If there are no language codes, because of the app running in the iPhone Simulator, return 1, so we can display 1 title to tell the user there are no speech voices
         
@@ -402,7 +430,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         println("SSMainViewController speechSynthesizer: didStartSpeechUtterance:")
         
-        speakButton!.titleLabel.text = "Stop!"
+        speakButton!.titleLabel?.text = "Stop!"
         
     }
     
@@ -411,7 +439,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         println("SSMainViewController speechSynthesizer: didFinishSpeechUtterance:")
         
-        speakButton!.titleLabel.text = "Speak!"
+        speakButton!.titleLabel?.text = "Speak!"
         
         
     }
@@ -420,7 +448,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         println("SSMainViewController speechSynthesizer: didCancelSpeechUtterance:")
         
-        speakButton!.titleLabel.text = "Speak!"
+        speakButton!.titleLabel?.text = "Speak!"
         
     }
     
