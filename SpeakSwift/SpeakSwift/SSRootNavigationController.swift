@@ -47,7 +47,7 @@ class SSRootNavigationController: UINavigationController {
     }
     
     override func supportedInterfaceOrientations() -> Int  {
-        return Int(UIInterfaceOrientationMask.All.toRaw())
+        return Int(UIInterfaceOrientationMask.All.rawValue)
     }
     
     /*
