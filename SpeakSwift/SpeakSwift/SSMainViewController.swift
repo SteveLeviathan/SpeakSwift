@@ -353,7 +353,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     
     override func supportedInterfaceOrientations() -> Int  {
-        return Int(UIInterfaceOrientationMask.All.toRaw())
+        return Int(UIInterfaceOrientationMask.All.rawValue)
     }
     
     /*
