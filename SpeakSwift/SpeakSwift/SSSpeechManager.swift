@@ -89,7 +89,7 @@ class SSSpeechManager : NSObject, AVSpeechSynthesizerDelegate {
                 
                 for voice: AnyObject in speechVcs {
                     
-                    languageCodes.append((voice as AVSpeechSynthesisVoice).language)
+                    languageCodes.append((voice as! AVSpeechSynthesisVoice).language)
                     
                     let currentLocale: NSLocale = NSLocale.autoupdatingCurrentLocale()
                     

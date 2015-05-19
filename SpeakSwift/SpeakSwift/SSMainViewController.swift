@@ -41,11 +41,6 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         super.init(coder: aDecoder)
     }
     
-    override init() {
-        super.init()
-        println("SSMainViewController init()")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -72,7 +67,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Organize, target: self, action: Selector("favouritesButtonTapped:"))
         
-        let infoButton: UIButton = UIButton.buttonWithType(.InfoLight) as UIButton
+        let infoButton: UIButton = UIButton.buttonWithType(.InfoLight) as! UIButton
         infoButton.addTarget(self, action: Selector("infoButtonTapped:"), forControlEvents: .TouchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: infoButton)
         
@@ -212,9 +207,9 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func infoButtonTapped(sender: UIButton!) {
         
-        let title = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleName") as String
-        let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as String
-        let build = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion") as String
+        let title = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleName") as! String
+        let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
+        let build = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion") as! String
         let message = "\nVersion: \(version) (build: \(build))\n\nAppify Media\n\nAppifyMedia.com"
         let btnTitle = "OK"
         
@@ -378,7 +373,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     
-    func pickerView(pickerView: UIPickerView!, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString! {
+    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
         if SSSpeechManager.sharedManager.languageCodes.count > 0 {
             
@@ -400,7 +395,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         UITextViewDelegate methods
     */
     
-    func textViewShouldBeginEditing(textView: UITextView!) -> Bool {
+    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
         
         // Clear intro text
         
@@ -412,7 +407,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     
-    func textView(textView: UITextView!, shouldChangeTextInRange range: NSRange, replacementText text: String!) -> Bool {
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         
         if text == "\n" {
             textView.resignFirstResponder()
