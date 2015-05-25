@@ -30,7 +30,8 @@
 //
 
 import UIKit
-
+import Fabric
+import Crashlytics
 
 // Where you typically used the #define directive to define a primitive constant in C and Objective-C, in Swift you use a global constant instead.
 let iOSVersion = (UIDevice.currentDevice().systemVersion as NSString).floatValue
@@ -91,6 +92,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Load saved Speech Objects
         
         SSDataManager.sharedManager.speechObjects = SSDataManager.sharedManager.savedSpeechObjects()
+        
+        // Crashlytics
+        Fabric.with([Crashlytics()])
         
         return true
         

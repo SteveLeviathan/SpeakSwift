@@ -13,6 +13,8 @@
 		EA01FE391943B49300A2224B /* SpeakSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA01FE381943B49300A2224B /* SpeakSwiftTests.swift */; };
 		EA01FE451943B66B00A2224B /* SSMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA01FE441943B66B00A2224B /* SSMainViewController.swift */; };
 		EA01FE471943B69B00A2224B /* SSRootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA01FE461943B69B00A2224B /* SSRootNavigationController.swift */; };
+		EA2803FD1B13842B007240A7 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA2803FB1B13842B007240A7 /* Fabric.framework */; };
+		EA2803FE1B13842B007240A7 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA2803FC1B13842B007240A7 /* Crashlytics.framework */; };
 		EA327A941943D43C008F3BC3 /* SSDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327A931943D43C008F3BC3 /* SSDataManager.swift */; };
 		EA327A961943D7CE008F3BC3 /* SSSpeechObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327A951943D7CD008F3BC3 /* SSSpeechObject.swift */; };
 		EA327AC61945FD66008F3BC3 /* SSSpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327AC51945FD66008F3BC3 /* SSSpeechManager.swift */; };
@@ -42,6 +44,8 @@
 		EA01FE381943B49300A2224B /* SpeakSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakSwiftTests.swift; sourceTree = "<group>"; };
 		EA01FE441943B66B00A2224B /* SSMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSMainViewController.swift; sourceTree = "<group>"; };
 		EA01FE461943B69B00A2224B /* SSRootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSRootNavigationController.swift; sourceTree = "<group>"; };
+		EA2803FB1B13842B007240A7 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
+		EA2803FC1B13842B007240A7 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		EA327A931943D43C008F3BC3 /* SSDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSDataManager.swift; sourceTree = "<group>"; };
 		EA327A951943D7CD008F3BC3 /* SSSpeechObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSSpeechObject.swift; sourceTree = "<group>"; };
 		EA327AC51945FD66008F3BC3 /* SSSpeechManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSSpeechManager.swift; sourceTree = "<group>"; };
@@ -55,6 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA2803FE1B13842B007240A7 /* Crashlytics.framework in Frameworks */,
+				EA2803FD1B13842B007240A7 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +95,7 @@
 		EA01FE221943B49300A2224B /* SpeakSwift */ = {
 			isa = PBXGroup;
 			children = (
+				EA2803FA1B13840C007240A7 /* Libs */,
 				EA01FE291943B49300A2224B /* Main.storyboard */,
 				EA01FE2C1943B49300A2224B /* Images.xcassets */,
 				EA01FE251943B49300A2224B /* AppDelegate.swift */,
@@ -130,6 +137,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EA2803FA1B13840C007240A7 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				EA2803FB1B13842B007240A7 /* Fabric.framework */,
+				EA2803FC1B13842B007240A7 /* Crashlytics.framework */,
+			);
+			name = Libs;
+			sourceTree = "<group>";
+		};
 		EA90E6171950F57900E05D2E /* UIView Positioning Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +164,7 @@
 				EA01FE1C1943B49300A2224B /* Sources */,
 				EA01FE1D1943B49300A2224B /* Frameworks */,
 				EA01FE1E1943B49300A2224B /* Resources */,
+				EA2803F91B1383B5007240A7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -233,6 +250,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EA2803F91B1383B5007240A7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run <YOUR_API_KEY> <YOUR_BUILD_SECRET>";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EA01FE1C1943B49300A2224B /* Sources */ = {
@@ -366,6 +399,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Steve Overmars (36HPV94EE2)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SpeakSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -380,6 +417,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Steve Overmars (36HPV94EE2)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				INFOPLIST_FILE = SpeakSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
