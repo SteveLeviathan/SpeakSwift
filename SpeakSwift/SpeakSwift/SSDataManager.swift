@@ -52,7 +52,7 @@ class SSDataManager : NSObject {
     
     func saveSpeechObject(#speechObject : SSSpeechObject?) {
         
-        if let speechObj = speechObject? {
+        if let speechObj = speechObject {
             
             var savedObjects : [Dictionary<String, String>] = speechObjectDictionariesArray()
             
@@ -85,7 +85,7 @@ class SSDataManager : NSObject {
         
         if let data: NSData = NSUserDefaults.standardUserDefaults().objectForKey(SpeakSwiftSpeechObjectsKey) as? NSData {
             
-            let arrayOfSpeechObjectDictionaries: [Dictionary<String, String>] = NSKeyedUnarchiver.unarchiveObjectWithData(data) as [Dictionary<String, String>]
+            let arrayOfSpeechObjectDictionaries: [Dictionary<String, String>] = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! [Dictionary<String, String>]
             return arrayOfSpeechObjectDictionaries
             
         }
