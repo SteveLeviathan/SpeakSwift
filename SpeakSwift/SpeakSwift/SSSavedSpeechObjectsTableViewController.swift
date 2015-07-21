@@ -131,6 +131,12 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
         
         println("savedSpeechTableViewCell playButtonTappedOn withIndexPath")
         
+        if SSSpeechManager.sharedManager.speechSynthesizer.speaking
+        {
+            // If speaking, call stopSpeakingAtBoundary: to interrupt current speech and clear the queue.
+            SSSpeechManager.sharedManager.speechSynthesizer.stopSpeakingAtBoundary(.Immediate)
+        }
+        
         if SSSpeechManager.sharedManager.languageCodesAndDisplayNames.count > 0 {
             
             let speechObject : SSSpeechObject = SSDataManager.sharedManager.speechObjects[indexPath.row]
