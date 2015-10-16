@@ -34,10 +34,10 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         // Custom initialization
         
-        println("SSMainViewController init(nibName:bundle:)")
+        print("SSMainViewController init(nibName:bundle:)")
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -67,7 +67,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Organize, target: self, action: Selector("favouritesButtonTapped:"))
         
-        let infoButton: UIButton = UIButton.buttonWithType(.InfoLight) as! UIButton
+        let infoButton: UIButton = UIButton(type: .InfoLight)
         infoButton.addTarget(self, action: Selector("infoButtonTapped:"), forControlEvents: .TouchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: infoButton)
         
@@ -100,7 +100,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         scrollView?.addSubview(speakButton!)
         
-        addToFavouritesButton = UIButton.buttonWithType(.ContactAdd) as? UIButton
+        addToFavouritesButton = UIButton(type: .ContactAdd)
         addToFavouritesButton!.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0)
         addToFavouritesButton!.tintColor = contrastingColor
         addToFavouritesButton?.addTarget(self, action: Selector("addToFavourites"), forControlEvents: .TouchUpInside)
@@ -219,7 +219,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         //alert.addAction(UIAlertAction(title: btnTitle, style: UIAlertActionStyle.Default, handler: nil))
         //self.presentViewController(alert, animated: true, completion: nil)
         
-        var alert = UIAlertView()
+        let alert = UIAlertView()
         alert.title = title
         alert.message = message
         alert.addButtonWithTitle(btnTitle)
@@ -262,7 +262,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             
             if SSSpeechManager.sharedManager.languageCodesAndDisplayNames.count > 0 {
                 
-                var speechObject: SSSpeechObject = SSSpeechObject.speechObjectWith(speechString: speechTextView!.text!, language: SSSpeechManager.sharedManager.languageCodes[pickerView!.selectedRowInComponent(0)], rate: voiceRateSlider!.value, pitch: voicePitchSlider!.value, volume: 1.0)
+                let speechObject: SSSpeechObject = SSSpeechObject.speechObjectWith(speechString: speechTextView!.text!, language: SSSpeechManager.sharedManager.languageCodes[pickerView!.selectedRowInComponent(0)], rate: voiceRateSlider!.value, pitch: voicePitchSlider!.value, volume: 1.0)
                 
                 SSSpeechManager.sharedManager.speechSynthesizer.delegate = self
                 
@@ -287,7 +287,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         if SSSpeechManager.sharedManager.languageCodesAndDisplayNames.count > 0 {
             
-            var speechObject: SSSpeechObject = SSSpeechObject.speechObjectWith(speechString: speechTextView!.text!, language: SSSpeechManager.sharedManager.languageCodes[pickerView!.selectedRowInComponent(0)], rate: voiceRateSlider!.value, pitch: voicePitchSlider!.value, volume: 1.0)
+            let speechObject: SSSpeechObject = SSSpeechObject.speechObjectWith(speechString: speechTextView!.text!, language: SSSpeechManager.sharedManager.languageCodes[pickerView!.selectedRowInComponent(0)], rate: voiceRateSlider!.value, pitch: voicePitchSlider!.value, volume: 1.0)
             
             SSDataManager.sharedManager.addSpeechObject(speechObject: speechObject)
             
@@ -301,7 +301,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             //alert.addAction(UIAlertAction(title: btnTitle, style: UIAlertActionStyle.Default, handler: nil))
             //self.presentViewController(alert, animated: true, completion: nil)
             
-            var alert = UIAlertView()
+            let alert = UIAlertView()
             alert.title = title
             alert.message = message
             alert.addButtonWithTitle(btnTitle)
@@ -347,8 +347,8 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     
-    override func supportedInterfaceOrientations() -> Int  {
-        return Int(UIInterfaceOrientationMask.All.rawValue)
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask  {
+        return UIInterfaceOrientationMask.All
     }
     
     /*
@@ -380,7 +380,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             let languageCode : String = SSSpeechManager.sharedManager.languageCodes[row]
             let languageDisplayName : String = SSSpeechManager.sharedManager.languageCodesAndDisplayNames[languageCode]!
             
-            var attrString: NSAttributedString = NSAttributedString(string: languageDisplayName, attributes: [NSForegroundColorAttributeName: contrastingColor])
+            let attrString: NSAttributedString = NSAttributedString(string: languageDisplayName, attributes: [NSForegroundColorAttributeName: contrastingColor])
             
             return attrString
             
@@ -421,27 +421,27 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     /*
     // #pragma mark - Navigation
     */
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didStartSpeechUtterance utterance: AVSpeechUtterance!) {
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didStartSpeechUtterance utterance: AVSpeechUtterance) {
         
-        println("SSMainViewController speechSynthesizer: didStartSpeechUtterance:")
+        print("SSMainViewController speechSynthesizer: didStartSpeechUtterance:")
         
         speakButton!.titleLabel?.text = "Stop!"
         
     }
     
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didFinishSpeechUtterance utterance: AVSpeechUtterance!) {
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
         
-        println("SSMainViewController speechSynthesizer: didFinishSpeechUtterance:")
+        print("SSMainViewController speechSynthesizer: didFinishSpeechUtterance:")
         
         speakButton!.titleLabel?.text = "Speak!"
         
         
     }
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didCancelSpeechUtterance utterance: AVSpeechUtterance!) {
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didCancelSpeechUtterance utterance: AVSpeechUtterance) {
         
-        println("SSMainViewController speechSynthesizer: didCancelSpeechUtterance:")
+        print("SSMainViewController speechSynthesizer: didCancelSpeechUtterance:")
         
         speakButton!.titleLabel?.text = "Speak!"
         

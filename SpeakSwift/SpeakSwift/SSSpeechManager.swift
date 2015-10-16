@@ -30,7 +30,7 @@ class SSSpeechManager : NSObject, AVSpeechSynthesizerDelegate {
     }
     
     override init() {
-        println("SSSpeechManager init()")
+        print("SSSpeechManager init()")
     }
     
     /* 
@@ -117,7 +117,7 @@ class SSSpeechManager : NSObject, AVSpeechSynthesizerDelegate {
         speechUtterance.pitchMultiplier = speechObject.pitch
         
         var speechSynthesisVoice : AVSpeechSynthesisVoice
-        speechSynthesisVoice = AVSpeechSynthesisVoice(language: speechObject.language)
+        speechSynthesisVoice = AVSpeechSynthesisVoice(language: speechObject.language)!
         speechUtterance.voice = speechSynthesisVoice
         
         speechSynthesizer.speakUtterance(speechUtterance)
@@ -128,21 +128,21 @@ class SSSpeechManager : NSObject, AVSpeechSynthesizerDelegate {
         AVSpeechSynthesizerDelegate methods
     */
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didStartSpeechUtterance utterance: AVSpeechUtterance!) {
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didStartSpeechUtterance utterance: AVSpeechUtterance) {
         
-        println("SSSpeechManager speechSynthesizer: didStartSpeechUtterance:")
-        
-    }
-    
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didFinishSpeechUtterance utterance: AVSpeechUtterance!) {
-        
-        println("SSSpeechManager speechSynthesizer: didFinishSpeechUtterance:")
+        print("SSSpeechManager speechSynthesizer: didStartSpeechUtterance:")
         
     }
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didCancelSpeechUtterance utterance: AVSpeechUtterance!) {
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
         
-        println("SSSpeechManager speechSynthesizer: didCancelSpeechUtterance:")
+        print("SSSpeechManager speechSynthesizer: didFinishSpeechUtterance:")
+        
+    }
+    
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didCancelSpeechUtterance utterance: AVSpeechUtterance) {
+        
+        print("SSSpeechManager speechSynthesizer: didCancelSpeechUtterance:")
         
     }
     

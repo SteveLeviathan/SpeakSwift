@@ -19,7 +19,7 @@ class SSRootNavigationController: UINavigationController {
         super.init(rootViewController: rootViewController)
     }
     
-    required init(coder: NSCoder?) {
+    required init?(coder: NSCoder?) {
         
         super.init(coder: coder!)
         
@@ -46,8 +46,8 @@ class SSRootNavigationController: UINavigationController {
         return true
     }
     
-    override func supportedInterfaceOrientations() -> Int  {
-        return Int(UIInterfaceOrientationMask.All.rawValue)
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask  {
+        return UIInterfaceOrientationMask.All
     }
     
     /*
