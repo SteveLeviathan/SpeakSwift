@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="7701"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="SpeakSwift_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <group width="1" height="20" alignment="left" id="Fjb-a1-C0y">
+                            <items>
+                                <label width="1" alignment="left" text="   Favourites" textAlignment="left" id="cxq-XB-PG0">
+                                    <color key="textColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                        <table alignment="left" id="u72-rU-R8T">
+                            <items>
+                                <tableRow identifier="SpeechesRow" id="Z0i-b1-n3n" customClass="SpeechesRowController" customModule="SpeakSwift_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="JJW-2h-L2T">
+                                        <items>
+                                            <imageView width="24" height="24" alignment="left" verticalAlignment="center" image="sound.png" contentMode="scaleAspectFit" id="FaJ-VR-p4f"/>
+                                            <label width="100" height="40" alignment="right" verticalAlignment="center" text="Label" textAlignment="justified" numberOfLines="0" id="n8u-v2-0JK">
+                                                <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="imageView" destination="FaJ-VR-p4f" id="yYS-Oh-9Jh"/>
+                                        <outlet property="speechLabel" destination="n8u-v2-0JK" id="xht-1r-nKd"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <group width="1" alignment="left" id="0Qj-dw-inu">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" text="No favourite speeches yet. Please add them to your favourites list on your iPhone. " textAlignment="center" numberOfLines="0" id="E9T-MN-QQf"/>
+                            </items>
+                            <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="noFavouritesGroup" destination="0Qj-dw-inu" id="hBg-tW-BRf"/>
+                        <outlet property="speechesTable" destination="u72-rU-R8T" id="kKA-Lh-MW7"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="164" y="218"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+</document>

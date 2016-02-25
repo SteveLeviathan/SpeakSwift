@@ -25,7 +25,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
     
     var tableView: UITableView? = nil
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

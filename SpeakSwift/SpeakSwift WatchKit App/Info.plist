@@ -4,14 +4,16 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>SpeakSwift</string>
 	<key>CFBundleExecutable</key>
-	<string>${EXECUTABLE_NAME}</string>
+	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.appifymedia.speakswift</string>
+	<string>com.appifymedia.speakswift.watchkitapp</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>${PRODUCT_NAME}</string>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -20,34 +22,14 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1096</string>
-	<key>Fabric</key>
-	<dict>
-		<key>APIKey</key>
-		<string>&lt;YOUR_API_KEY&gt;</string>
-		<key>Kits</key>
-		<array>
-			<dict>
-				<key>KitInfo</key>
-				<dict/>
-				<key>KitName</key>
-				<string>Crashlytics</string>
-			</dict>
-		</array>
-	</dict>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-	</array>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleLightContent</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>WKCompanionAppBundleIdentifier</key>
+	<string>com.appifymedia.speakswift</string>
+	<key>WKWatchKitApp</key>
+	<true/>
 </dict>
 </plist>
