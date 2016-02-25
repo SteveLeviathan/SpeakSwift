@@ -32,14 +32,14 @@ class SSDataManager : NSObject {
     }
     
     override init() {
-        print("SSDataManager init()")
+        println("SSDataManager init()")
     }
     
     
     
     /// Add a single SSSpeechObject to the working array speechObjects
     
-    func addSpeechObject(speechObject speechObject : SSSpeechObject) {
+    func addSpeechObject(#speechObject : SSSpeechObject) {
         
         // Add SSSpeechObject to the top of the list
         speechObjects.insert(speechObject, atIndex: 0)
@@ -50,7 +50,7 @@ class SSDataManager : NSObject {
     
     /// Convert a single SSSpeechObject to Dictionary, add it to the other saved Speech Object Dictionaries and save them to NSUserDefaults.standardUserDefaults()
     
-    func saveSpeechObject(speechObject speechObject : SSSpeechObject?) {
+    func saveSpeechObject(#speechObject : SSSpeechObject?) {
         
         if let speechObj = speechObject {
             

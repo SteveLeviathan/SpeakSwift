@@ -99,25 +99,25 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
         AVSpeechSynthesizerDelegate methods
     */
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didStartSpeechUtterance utterance: AVSpeechUtterance) {
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didStartSpeechUtterance utterance: AVSpeechUtterance!) {
         
-        print("SSSavedSpeechObjectsTableViewController speechSynthesizer: didStartSpeechUtterance:")
+        println("SSSavedSpeechObjectsTableViewController speechSynthesizer: didStartSpeechUtterance:")
         
         AppDelegate.appDelegate().mainViewController!.speakButton!.titleLabel?.text = "Stop!"
         
     }
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didFinishSpeechUtterance utterance: AVSpeechUtterance!) {
         
-        print("SSSavedSpeechObjectsTableViewController speechSynthesizer: didFinishSpeechUtterance:")
+        println("SSSavedSpeechObjectsTableViewController speechSynthesizer: didFinishSpeechUtterance:")
         
         AppDelegate.appDelegate().mainViewController!.speakButton!.titleLabel?.text = "Speak!"
         
     }
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didCancelSpeechUtterance utterance: AVSpeechUtterance) {
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didCancelSpeechUtterance utterance: AVSpeechUtterance!) {
         
-        print("SSSavedSpeechObjectsTableViewController speechSynthesizer: didCancelSpeechUtterance:")
+        println("SSSavedSpeechObjectsTableViewController speechSynthesizer: didCancelSpeechUtterance:")
         
         AppDelegate.appDelegate().mainViewController!.speakButton!.titleLabel?.text = "Speak!"
         
@@ -129,7 +129,7 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
     
     func playButtonTappedOnSavedSpeechTableViewCell(savedSpeechTableViewCell: SSSavedSpeechTableViewCell!, withIndexPath indexPath: NSIndexPath!) {
         
-        print("savedSpeechTableViewCell playButtonTappedOn withIndexPath")
+        println("savedSpeechTableViewCell playButtonTappedOn withIndexPath")
         
         if SSSpeechManager.sharedManager.speechSynthesizer.speaking
         {
@@ -151,7 +151,7 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
     
     func editButtonTappedOnSavedSpeechTableViewCell(savedSpeechTableViewCell: SSSavedSpeechTableViewCell!, withIndexPath indexPath: NSIndexPath!) {
         
-        print("editButtonTappedOn withIndexPath")
+        println("editButtonTappedOn withIndexPath")
         
         self.navigationController?.popViewControllerAnimated(true)
         let speechObject: SSSpeechObject = SSDataManager.sharedManager.speechObjects[indexPath.row]
