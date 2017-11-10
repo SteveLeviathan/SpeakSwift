@@ -34,7 +34,7 @@ import Fabric
 import Crashlytics
 
 // Where you typically used the #define directive to define a primitive constant in C and Objective-C, in Swift you use a global constant instead.
-let iOSVersion = (UIDevice.currentDevice().systemVersion as NSString).floatValue
+let iOSVersion = (UIDevice.current.systemVersion as NSString).floatValue
 
 // Color constants
 let honeydewColor: UIColor = UIColor(red: 204.0/255.0, green: 255.0/255.0, blue: 102.0/255.0, alpha: 1.0) // honeydew
@@ -42,7 +42,7 @@ let skyColor: UIColor = UIColor(red: 102.0/255.0, green: 204.0/255.0, blue: 255.
 let floraColor: UIColor = UIColor(red: 102.0/255.0, green: 255.0/255.0, blue: 102.0/255.0, alpha: 1.0) // flora
 let limeColor: UIColor = UIColor(red: 128.0/255.0, green: 255.0/255.0, blue: 0.0/255.0, alpha: 1.0) // lime
 let seaFomeaColor: UIColor = UIColor(red: 0.0/255.0, green: 255.0/255.0, blue: 128.0/255.0, alpha: 1.0) // sea foam
-let orangeColor: UIColor = UIColor.orangeColor()
+let orangeColor: UIColor = UIColor.orange
 
 // Set contrasting color to be used throughout the app
 let contrastingColor: UIColor = floraColor
@@ -57,11 +57,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var mainViewController: SSMainViewController? = nil
     
     class func appDelegate() -> AppDelegate {
-        return UIApplication.sharedApplication().delegate as! AppDelegate
+        return UIApplication.shared.delegate as! AppDelegate
     }
     
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         print("Run this app on your device! The iPhone Simulator might not have Speech Voices (AVSpeechSynthesisVoice)!")
@@ -101,7 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
         
@@ -114,21 +114,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // If speaking, call stopSpeakingAtBoundary: to interrupt current speech and clear the queue.
         
-        if SSSpeechManager.sharedManager.speechSynthesizer.speaking {
-            SSSpeechManager.sharedManager.speechSynthesizer.stopSpeakingAtBoundary(.Immediate)
+        if SSSpeechManager.sharedManager.speechSynthesizer.isSpeaking {
+            SSSpeechManager.sharedManager.speechSynthesizer.stopSpeaking(at: .immediate)
         }
         
     }
 
     
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
     }
 
     
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
        
         print("applicationWillEnterForeground()")
@@ -136,13 +136,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        Answers.logCustomEventWithName("SpeakSwift applicationDidBecomeActive", customAttributes: nil)
+        Answers.logCustomEvent(withName: "SpeakSwift applicationDidBecomeActive", customAttributes: nil)
     }
 
     
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         
         // Save Speech Objects to NSUserDefaults.standardUserDefaults()

@@ -17,14 +17,14 @@ class SSDataManager : NSObject {
     /// The shared instance of the SSDataManager class
     static let sharedManager = SSDataManager()
     
-    private override init() {}
+    fileprivate override init() {}
     
     /// Add a single SSSpeechObject to the working array speechObjects
     
-    func addSpeechObject(speechObject speechObject : SSSpeechObject) {
+    func addSpeechObject(speechObject : SSSpeechObject) {
         
         // Add SSSpeechObject to the top of the list
-        speechObjects.insert(speechObject, atIndex: 0)
+        speechObjects.insert(speechObject, at: 0)
         
     }
     
@@ -32,14 +32,14 @@ class SSDataManager : NSObject {
     
     /// Convert a single SSSpeechObject to Dictionary, add it to the other saved Speech Object Dictionaries and save them to NSUserDefaults.standardUserDefaults()
     
-    func saveSpeechObject(speechObject speechObject : SSSpeechObject?) {
+    func saveSpeechObject(speechObject : SSSpeechObject?) {
         
         if let speechObj = speechObject {
             
             var savedObjects : [Dictionary<String, String>] = speechObjectDictionariesArray()
             
             // Add Speech Object Dictionary to the top of the list
-            savedObjects.insert(speechObj.dictionaryRepresentation(), atIndex: 0)
+            savedObjects.insert(speechObj.dictionaryRepresentation(), at: 0)
             
             // Save Speech Object Dictionaries to NSUserDefaults.standardUserDefaults()
             
@@ -47,7 +47,7 @@ class SSDataManager : NSObject {
             
             // Clear working array speechObjects
             
-            speechObjects.removeAll(keepCapacity: false)
+            speechObjects.removeAll(keepingCapacity: false)
             
             // Add saved SSSpeechObjects to working array speechObjects
             
@@ -64,10 +64,10 @@ class SSDataManager : NSObject {
     func speechObjectDictionariesArray() -> [Dictionary<String, String>] {
         
         // Return an array of speech object dictionaries if there are any.
-        let sharedUserDefaults : NSUserDefaults = NSUserDefaults(suiteName: "group.speakswift.speechdata")!
-        if let data: NSData = sharedUserDefaults.objectForKey(SpeakSwiftSpeechObjectsKey) as? NSData {
+        let sharedUserDefaults : UserDefaults = UserDefaults(suiteName: "group.speakswift.speechdata")!
+        if let data: Data = sharedUserDefaults.object(forKey: SpeakSwiftSpeechObjectsKey) as? Data {
             
-            let arrayOfSpeechObjectDictionaries: [Dictionary<String, String>] = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! [Dictionary<String, String>]
+            let arrayOfSpeechObjectDictionaries: [Dictionary<String, String>] = NSKeyedUnarchiver.unarchiveObject(with: data) as! [Dictionary<String, String>]
             return arrayOfSpeechObjectDictionaries
             
         }
@@ -118,13 +118,13 @@ class SSDataManager : NSObject {
     /*
         Save Speech Object Dictionaries to NSUserDefaults.standardUserDefaults()
     */
-    func saveSpeechObjectDictionaries(dictionaries: [Dictionary<String, String>]) {
+    func saveSpeechObjectDictionaries(_ dictionaries: [Dictionary<String, String>]) {
         
-        let data : NSData = NSKeyedArchiver.archivedDataWithRootObject(dictionaries)
+        let data : Data = NSKeyedArchiver.archivedData(withRootObject: dictionaries)
         
-        let sharedUserDefaults : NSUserDefaults = NSUserDefaults(suiteName: "group.speakswift.speechdata")!
+        let sharedUserDefaults : UserDefaults = UserDefaults(suiteName: "group.speakswift.speechdata")!
         
-        sharedUserDefaults.setObject(data, forKey: SpeakSwiftSpeechObjectsKey)
+        sharedUserDefaults.set(data, forKey: SpeakSwiftSpeechObjectsKey)
         
         sharedUserDefaults.synchronize()
         

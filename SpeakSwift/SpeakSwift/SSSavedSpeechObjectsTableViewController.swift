@@ -23,7 +23,7 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
     }
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         
@@ -32,22 +32,22 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
     }
     
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return SSDataManager.sharedManager.speechObjects.count
     }
     
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return SSSavedSpeechTableViewCell.cellHeight()
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellIdentifer = "SavedSpeechTableViewCellIdentifier"
         var cell: SSSavedSpeechTableViewCell? = nil //tableView!.dequeueReusableCellWithIdentifier(cellIdentifer) as? SSSavedSpeechTableViewCell
@@ -61,7 +61,7 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
             
         } else {
             
-            cell = SSSavedSpeechTableViewCell(style: .Default, reuseIdentifier: cellIdentifer)
+            cell = SSSavedSpeechTableViewCell(style: .default, reuseIdentifier: cellIdentifer)
             
         }
         
@@ -83,13 +83,13 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
     */
     
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        if editingStyle == .Delete {
+        if editingStyle == .delete {
             
-            SSDataManager.sharedManager.speechObjects.removeAtIndex(indexPath.row)
+            SSDataManager.sharedManager.speechObjects.remove(at: indexPath.row)
             
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             
         }
         
@@ -99,7 +99,7 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
         AVSpeechSynthesizerDelegate methods
     */
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didStartSpeechUtterance utterance: AVSpeechUtterance) {
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
         
         print("SSSavedSpeechObjectsTableViewController speechSynthesizer: didStartSpeechUtterance:")
         
@@ -107,7 +107,7 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
         
     }
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         
         print("SSSavedSpeechObjectsTableViewController speechSynthesizer: didFinishSpeechUtterance:")
         
@@ -115,7 +115,7 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
         
     }
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didCancelSpeechUtterance utterance: AVSpeechUtterance) {
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
         
         print("SSSavedSpeechObjectsTableViewController speechSynthesizer: didCancelSpeechUtterance:")
         
@@ -127,14 +127,14 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
         SSSavedSpeechTableViewCellDelegate methods
     */
     
-    func playButtonTappedOnSavedSpeechTableViewCell(savedSpeechTableViewCell: SSSavedSpeechTableViewCell!, withIndexPath indexPath: NSIndexPath!) {
+    func playButtonTappedOnSavedSpeechTableViewCell(_ savedSpeechTableViewCell: SSSavedSpeechTableViewCell!, withIndexPath indexPath: IndexPath!) {
         
         print("savedSpeechTableViewCell playButtonTappedOn withIndexPath")
         
-        if SSSpeechManager.sharedManager.speechSynthesizer.speaking
+        if SSSpeechManager.sharedManager.speechSynthesizer.isSpeaking
         {
             // If speaking, call stopSpeakingAtBoundary: to interrupt current speech and clear the queue.
-            SSSpeechManager.sharedManager.speechSynthesizer.stopSpeakingAtBoundary(.Immediate)
+            SSSpeechManager.sharedManager.speechSynthesizer.stopSpeaking(at: .immediate)
         }
         
         if SSSpeechManager.sharedManager.languageCodesAndDisplayNames.count > 0 {
@@ -149,11 +149,11 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
         
     }
     
-    func editButtonTappedOnSavedSpeechTableViewCell(savedSpeechTableViewCell: SSSavedSpeechTableViewCell!, withIndexPath indexPath: NSIndexPath!) {
+    func editButtonTappedOnSavedSpeechTableViewCell(_ savedSpeechTableViewCell: SSSavedSpeechTableViewCell!, withIndexPath indexPath: IndexPath!) {
         
         print("editButtonTappedOn withIndexPath")
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
         let speechObject: SSSpeechObject = SSDataManager.sharedManager.speechObjects[indexPath.row]
         
         AppDelegate.appDelegate().mainViewController!.updateUIControlsWithSpeechObject(speechObject)

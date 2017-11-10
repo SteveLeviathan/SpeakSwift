@@ -14,65 +14,65 @@ extension UIView {
     
     
     /// Position this view below other view
-    func positionBelowView(view : UIView, xOffset: CGFloat, yOffset: CGFloat) {
+    func positionBelowView(_ view : UIView, xOffset: CGFloat, yOffset: CGFloat) {
         
-        self.frame = CGRect(x: CGRectGetMinX(view.frame) + xOffset, y: CGRectGetMaxY(view.frame) + yOffset, width: CGRectGetWidth(self.frame), height: CGRectGetHeight(self.frame))
+        self.frame = CGRect(x: view.frame.minX + xOffset, y: view.frame.maxY + yOffset, width: self.frame.width, height: self.frame.height)
         
     }
     
     
     /// Position this view below other view with an absolute x-position
-    func positionBelowView(view : UIView, absoluteX: CGFloat, yOffset: CGFloat) {
+    func positionBelowView(_ view : UIView, absoluteX: CGFloat, yOffset: CGFloat) {
         
-        self.frame = CGRect(x: absoluteX, y: CGRectGetMaxY(view.frame) + yOffset, width: CGRectGetWidth(self.frame), height: CGRectGetHeight(self.frame))
+        self.frame = CGRect(x: absoluteX, y: view.frame.maxY + yOffset, width: self.frame.width, height: self.frame.height)
         
     }
     
     
     /// Position this view above other view
-    func positionAboveView(view : UIView, xOffset: CGFloat, yOffset: CGFloat) {
+    func positionAboveView(_ view : UIView, xOffset: CGFloat, yOffset: CGFloat) {
         
-        self.frame = CGRect(x: CGRectGetMinX(view.frame) + xOffset, y: CGRectGetMinY(view.frame) - CGRectGetHeight(self.frame) + yOffset, width: CGRectGetWidth(self.frame), height: CGRectGetHeight(self.frame))
+        self.frame = CGRect(x: view.frame.minX + xOffset, y: view.frame.minY - self.frame.height + yOffset, width: self.frame.width, height: self.frame.height)
         
     }
     
     
     /// Position this view above other view with an absolute x-position
-    func positionAboveView(view : UIView, absoluteX: CGFloat, yOffset: CGFloat) {
+    func positionAboveView(_ view : UIView, absoluteX: CGFloat, yOffset: CGFloat) {
         
-        self.frame = CGRect(x: absoluteX, y: CGRectGetMinY(view.frame) - CGRectGetHeight(self.frame) + yOffset, width: CGRectGetWidth(self.frame), height: CGRectGetHeight(self.frame))
+        self.frame = CGRect(x: absoluteX, y: view.frame.minY - self.frame.height + yOffset, width: self.frame.width, height: self.frame.height)
         
     }
     
     
     /// Position this view right from other view
-    func positionRightFromView(view : UIView, xOffset: CGFloat, yOffset: CGFloat) {
+    func positionRightFromView(_ view : UIView, xOffset: CGFloat, yOffset: CGFloat) {
         
-        self.frame = CGRect(x: CGRectGetMaxX(view.frame) + xOffset, y: CGRectGetMinY(view.frame) + yOffset, width: CGRectGetWidth(self.frame), height: CGRectGetHeight(self.frame))
+        self.frame = CGRect(x: view.frame.maxX + xOffset, y: view.frame.minY + yOffset, width: self.frame.width, height: self.frame.height)
         
     }
     
     
     /// Position this view right from other view with an absolute y-position
-    func positionRightFromView(view : UIView, xOffset: CGFloat, absoluteY: CGFloat) {
+    func positionRightFromView(_ view : UIView, xOffset: CGFloat, absoluteY: CGFloat) {
         
-        self.frame = CGRect(x: CGRectGetMaxX(view.frame) + xOffset, y: absoluteY, width: CGRectGetWidth(self.frame), height: CGRectGetHeight(self.frame))
+        self.frame = CGRect(x: view.frame.maxX + xOffset, y: absoluteY, width: self.frame.width, height: self.frame.height)
         
     }
     
     
     /// Position this view left from other view
-    func positionLeftFromView(view : UIView, xOffset: CGFloat, yOffset: CGFloat) {
+    func positionLeftFromView(_ view : UIView, xOffset: CGFloat, yOffset: CGFloat) {
         
-        self.frame = CGRect(x: CGRectGetMinX(view.frame) - CGRectGetWidth(self.frame) + xOffset, y: CGRectGetMinY(view.frame) + yOffset, width: CGRectGetWidth(self.frame), height: CGRectGetHeight(self.frame))
+        self.frame = CGRect(x: view.frame.minX - self.frame.width + xOffset, y: view.frame.minY + yOffset, width: self.frame.width, height: self.frame.height)
         
     }
     
     
     /// Position this view left from other view with an absolute y-position
-    func positionLeftFromView(view : UIView, xOffset: CGFloat, absoluteY: CGFloat) {
+    func positionLeftFromView(_ view : UIView, xOffset: CGFloat, absoluteY: CGFloat) {
         
-        self.frame = CGRect(x: CGRectGetMinX(view.frame) - CGRectGetWidth(self.frame) + xOffset, y: absoluteY, width: CGRectGetWidth(self.frame), height: CGRectGetHeight(self.frame))
+        self.frame = CGRect(x: view.frame.minX - self.frame.width + xOffset, y: absoluteY, width: self.frame.width, height: self.frame.height)
         
     }
     

@@ -28,7 +28,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     var savedSpeechObjectsTableViewController: SSSavedSpeechObjectsTableViewController? = nil
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
@@ -57,7 +57,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         // Init the SSSavedSpeechObjectsTableViewController
         
-        savedSpeechObjectsTableViewController = SSSavedSpeechObjectsTableViewController(style: UITableViewStyle.Plain)
+        savedSpeechObjectsTableViewController = SSSavedSpeechObjectsTableViewController(style: UITableViewStyle.plain)
         
         
     }
@@ -65,10 +65,10 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func setUpUI() {
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Organize, target: self, action: Selector("favouritesButtonTapped:"))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(SSMainViewController.favouritesButtonTapped(_:)))
         
-        let infoButton: UIButton = UIButton(type: .InfoLight)
-        infoButton.addTarget(self, action: Selector("infoButtonTapped:"), forControlEvents: .TouchUpInside)
+        let infoButton: UIButton = UIButton(type: .infoLight)
+        infoButton.addTarget(self, action: #selector(SSMainViewController.infoButtonTapped(_:)), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: infoButton)
         
         // Use a UIScrollView as the container view in case we need to be able to scroll the view because of the amount of UI elements taking up more space than self.view's height
@@ -76,37 +76,37 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         view.addSubview(scrollView!)
         
-        speechTextView = UITextView(frame: CGRect(x: 0.0, y: 0.0, width: CGRectGetWidth(view.frame), height: 100.0))
-        speechTextView!.frame = CGRectInset(speechTextView!.frame, 10.0, 10.0)
+        speechTextView = UITextView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: 100.0))
+        speechTextView!.frame = speechTextView!.frame.insetBy(dx: 10.0, dy: 10.0)
         speechTextView!.delegate = self
         speechTextView!.text = introText
         speechTextView!.backgroundColor = UIColor(white: 0.2, alpha: 1.0)
         speechTextView!.textColor = contrastingColor
         speechTextView!.font = UIFont(name: "Helvetica Neue", size: 14.0)
-        speechTextView!.returnKeyType = .Done
+        speechTextView!.returnKeyType = .done
         
         scrollView?.addSubview(speechTextView!)
         
         speakButton = UIButton(frame: CGRect(x: 0.0, y: 0.0 , width: 150.0, height: 40.0))
-        speakButton?.setTitle("Speak!", forState: .Normal)
-        speakButton?.setTitleColor(contrastingColor, forState: .Normal)
-        speakButton?.addTarget(self, action: Selector("speakText"), forControlEvents: .TouchUpInside)
+        speakButton?.setTitle("Speak!", for: UIControlState())
+        speakButton?.setTitleColor(contrastingColor, for: UIControlState())
+        speakButton?.addTarget(self, action: #selector(SSMainViewController.speakText), for: .touchUpInside)
         speakButton!.backgroundColor = UIColor(white: 0.10, alpha: 1.0)//UIColor.blackColor()
         speakButton!.layer.borderWidth = 1.0
-        speakButton!.layer.borderColor = contrastingColor.CGColor
+        speakButton!.layer.borderColor = contrastingColor.cgColor
         
         // Call UIView positioning extension method positionBelowView() on speakButton
-        speakButton!.positionBelowView(speechTextView!, xOffset: CGRectGetMidX(speechTextView!.frame) - CGRectGetWidth(speakButton!.frame)/2.0 - 10.0, yOffset: 10.0)
+        speakButton!.positionBelowView(speechTextView!, xOffset: speechTextView!.frame.midX - speakButton!.frame.width/2.0 - 10.0, yOffset: 10.0)
         
         scrollView?.addSubview(speakButton!)
         
-        addToFavouritesButton = UIButton(type: .ContactAdd)
+        addToFavouritesButton = UIButton(type: .contactAdd)
         addToFavouritesButton!.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0)
         addToFavouritesButton!.tintColor = contrastingColor
-        addToFavouritesButton?.addTarget(self, action: Selector("addToFavourites"), forControlEvents: .TouchUpInside)
+        addToFavouritesButton?.addTarget(self, action: #selector(SSMainViewController.addToFavourites), for: .touchUpInside)
         
         // Call UIView positioning extension method positionBelowView() on addToFavouritesButton
-        addToFavouritesButton?.positionBelowView(speechTextView!, absoluteX: CGRectGetWidth(view.frame) - CGRectGetWidth(addToFavouritesButton!.frame) - 5.0, yOffset: 10.0)
+        addToFavouritesButton?.positionBelowView(speechTextView!, absoluteX: view.frame.width - addToFavouritesButton!.frame.width - 5.0, yOffset: 10.0)
         
         scrollView?.addSubview(addToFavouritesButton!)
         
@@ -120,17 +120,17 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         scrollView?.addSubview(voiceRateLabel!)
         
-        voiceRateSlider = UISlider(frame: CGRect(x: 0.0, y: 0.0, width: CGRectGetWidth(view.frame) - CGRectGetWidth(voiceRateLabel!.frame) - 50.0, height: 20.0))
+        voiceRateSlider = UISlider(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width - voiceRateLabel!.frame.width - 50.0, height: 20.0))
         voiceRateSlider!.minimumValue = 0.0
         voiceRateSlider!.maximumValue = 1.0
         voiceRateSlider!.value = 0.2
         voiceRateSlider!.minimumTrackTintColor = contrastingColor
         voiceRateSlider!.maximumTrackTintColor = contrastingColor
         voiceRateSlider!.thumbTintColor = contrastingColor
-        voiceRateSlider?.addTarget(self, action: Selector("voiceRateSliderValueChanged:"), forControlEvents: .ValueChanged)
+        voiceRateSlider?.addTarget(self, action: #selector(SSMainViewController.voiceRateSliderValueChanged(_:)), for: .valueChanged)
         
         // Call UIView positioning extension method positionRightFromView() on voiceRateSlider
-        voiceRateSlider?.positionRightFromView(voiceRateLabel!, xOffset: 0.0, absoluteY: CGRectGetMaxY(speakButton!.frame) + 20.0)
+        voiceRateSlider?.positionRightFromView(voiceRateLabel!, xOffset: 0.0, absoluteY: speakButton!.frame.maxY + 20.0)
         
         scrollView?.addSubview(voiceRateSlider!)
         
@@ -140,7 +140,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         voiceRateSliderValueChanged(voiceRateSlider)
         
         // Call UIView positioning extension method positionRightFromView() on voiceRateValueLabel
-        voiceRateValueLabel?.positionRightFromView(voiceRateSlider!, xOffset: 5.0, absoluteY: CGRectGetMaxY(speakButton!.frame) + 20.0)
+        voiceRateValueLabel?.positionRightFromView(voiceRateSlider!, xOffset: 5.0, absoluteY: speakButton!.frame.maxY + 20.0)
         
         scrollView?.addSubview(voiceRateValueLabel!)
         
@@ -154,17 +154,17 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         scrollView?.addSubview(voicePitchLabel!)
         
-        voicePitchSlider = UISlider(frame: CGRect(x: 0.0, y: 0.0, width: CGRectGetWidth(view.frame) - CGRectGetWidth(voicePitchLabel!.frame) - 50.0, height: 20.0))
+        voicePitchSlider = UISlider(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width - voicePitchLabel!.frame.width - 50.0, height: 20.0))
         voicePitchSlider!.minimumValue = 0.5
         voicePitchSlider!.maximumValue = 2.0
         voicePitchSlider!.value = 1.0
         voicePitchSlider!.minimumTrackTintColor = contrastingColor
         voicePitchSlider!.maximumTrackTintColor = contrastingColor
         voicePitchSlider!.thumbTintColor = contrastingColor
-        voicePitchSlider?.addTarget(self, action: Selector("voicePitchSliderValueChanged:"), forControlEvents: .ValueChanged)
+        voicePitchSlider?.addTarget(self, action: #selector(SSMainViewController.voicePitchSliderValueChanged(_:)), for: .valueChanged)
         
         // Call UIView positioning extension method positionRightFromView() on voicePitchSlider
-        voicePitchSlider?.positionRightFromView(voicePitchLabel!, xOffset: 0.0, absoluteY: CGRectGetMaxY(voiceRateSlider!.frame) + 30.0)
+        voicePitchSlider?.positionRightFromView(voicePitchLabel!, xOffset: 0.0, absoluteY: voiceRateSlider!.frame.maxY + 30.0)
         
         scrollView?.addSubview(voicePitchSlider!)
         
@@ -174,11 +174,11 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         voicePitchSliderValueChanged(voicePitchSlider)
         
         // Call UIView positioning extension method positionRightFromView() on voicePitchValueLabel
-        voicePitchValueLabel?.positionRightFromView(voicePitchSlider!, xOffset: 5.0, absoluteY: CGRectGetMaxY(voiceRateSlider!.frame) + 30.0)
+        voicePitchValueLabel?.positionRightFromView(voicePitchSlider!, xOffset: 5.0, absoluteY: voiceRateSlider!.frame.maxY + 30.0)
         
         scrollView?.addSubview(voicePitchValueLabel!)
         
-        pickerView = UIPickerView(frame: CGRect(x: 0.0, y: 0.0, width: CGRectGetWidth(view.frame), height: 200.0))
+        pickerView = UIPickerView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: 200.0))
         pickerView!.delegate = self
         
         // Call UIView positioning extension method positionBelowView() on pickerView
@@ -196,7 +196,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         */
         
         // Set the pickerView to en-US (English (United States))
-        let index: Int = (SSSpeechManager.sharedManager.languageCodes as NSArray).indexOfObject("en-US")
+        let index: Int = (SSSpeechManager.sharedManager.languageCodes as NSArray).index(of: "en-US")
         if index != NSNotFound {
             pickerView?.selectRow(index, inComponent: 0, animated: false)
         }
@@ -205,11 +205,11 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
     }
     
-    func infoButtonTapped(sender: UIButton!) {
+    func infoButtonTapped(_ sender: UIButton!) {
         
-        let title = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleName") as! String
-        let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
-        let build = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion") as! String
+        let title = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
         let message = "\nVersion: \(version) (build: \(build))\n\nAppify Media\n\nAppifyMedia.com"
         let btnTitle = "OK"
         
@@ -222,19 +222,19 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         let alert = UIAlertView()
         alert.title = title
         alert.message = message
-        alert.addButtonWithTitle(btnTitle)
+        alert.addButton(withTitle: btnTitle)
         alert.show()
         
     }
     
     
-    func updateUIControlsWithSpeechObject(speechObject : SSSpeechObject?) {
+    func updateUIControlsWithSpeechObject(_ speechObject : SSSpeechObject?) {
         
         if let speechObj = speechObject {
             
             speechTextView!.text = speechObj.speechString
             
-            let pickerViewIndex = (SSSpeechManager.sharedManager.languageCodes as NSArray).indexOfObject(speechObj.language)
+            let pickerViewIndex = (SSSpeechManager.sharedManager.languageCodes as NSArray).index(of: speechObj.language)
             pickerView?.selectRow(pickerViewIndex, inComponent: 0, animated: true)
             
             voiceRateSlider!.value = speechObj.rate
@@ -255,14 +255,14 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         speechTextView!.resignFirstResponder()
         
-        if !SSSpeechManager.sharedManager.speechSynthesizer.speaking {
+        if !SSSpeechManager.sharedManager.speechSynthesizer.isSpeaking {
             
             
             // Check if sharedSpeechManager.languageCodesAndDisplayNames dictionary has entries, if not this means there are no speech voices available on the device. (e.g.: The iPhone Simulator)
             
             if SSSpeechManager.sharedManager.languageCodesAndDisplayNames.count > 0 {
                 
-                let speechObject: SSSpeechObject = SSSpeechObject.speechObjectWith(speechString: speechTextView!.text!, language: SSSpeechManager.sharedManager.languageCodes[pickerView!.selectedRowInComponent(0)], rate: voiceRateSlider!.value, pitch: voicePitchSlider!.value, volume: 1.0)
+                let speechObject: SSSpeechObject = SSSpeechObject.speechObjectWith(speechString: speechTextView!.text!, language: SSSpeechManager.sharedManager.languageCodes[pickerView!.selectedRow(inComponent: 0)], rate: voiceRateSlider!.value, pitch: voicePitchSlider!.value, volume: 1.0)
                 
                 SSSpeechManager.sharedManager.speechSynthesizer.delegate = self
                 
@@ -274,7 +274,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             
             // If speaking, call stopSpeakingAtBoundary: to interrupt current speech and clear the queue.
             
-            SSSpeechManager.sharedManager.speechSynthesizer.stopSpeakingAtBoundary(.Immediate)
+            SSSpeechManager.sharedManager.speechSynthesizer.stopSpeaking(at: .immediate)
             
         }
         
@@ -287,7 +287,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         if SSSpeechManager.sharedManager.languageCodesAndDisplayNames.count > 0 {
             
-            let speechObject: SSSpeechObject = SSSpeechObject.speechObjectWith(speechString: speechTextView!.text!, language: SSSpeechManager.sharedManager.languageCodes[pickerView!.selectedRowInComponent(0)], rate: voiceRateSlider!.value, pitch: voicePitchSlider!.value, volume: 1.0)
+            let speechObject: SSSpeechObject = SSSpeechObject.speechObjectWith(speechString: speechTextView!.text!, language: SSSpeechManager.sharedManager.languageCodes[pickerView!.selectedRow(inComponent: 0)], rate: voiceRateSlider!.value, pitch: voicePitchSlider!.value, volume: 1.0)
             
             SSDataManager.sharedManager.addSpeechObject(speechObject: speechObject)
             
@@ -304,14 +304,14 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             let alert = UIAlertView()
             alert.title = title
             alert.message = message
-            alert.addButtonWithTitle(btnTitle)
+            alert.addButton(withTitle: btnTitle)
             alert.show()
         }
         
     }
     
     
-    func voicePitchSliderValueChanged(sender: UISlider!) {
+    func voicePitchSliderValueChanged(_ sender: UISlider!) {
         
         // Format CFloat value to 2 decimal places
         
@@ -319,7 +319,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     
-    func voiceRateSliderValueChanged(sender: UISlider!) {
+    func voiceRateSliderValueChanged(_ sender: UISlider!) {
         
         // Format CFloat value to 2 decimal places
         
@@ -327,7 +327,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     
-    func favouritesButtonTapped(sender: UIButton!) {
+    func favouritesButtonTapped(_ sender: UIButton!) {
         
         speechTextView!.resignFirstResponder()
         
@@ -342,25 +342,25 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         return true
     }
     
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask  {
-        return UIInterfaceOrientationMask.All
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask  {
+        return UIInterfaceOrientationMask.all
     }
     
     /*
         UIPickerViewDelegate & UIPickerViewDatasource methods
     */
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int  {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int  {
         return 1
     }
     
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int  {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int  {
         
         // If there are no language codes, because of the app running in the iPhone Simulator, return 1, so we can display 1 title to tell the user there are no speech voices
         
@@ -373,7 +373,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
         if SSSpeechManager.sharedManager.languageCodes.count > 0 {
             
@@ -395,7 +395,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         UITextViewDelegate methods
     */
     
-    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         
         // Clear intro text
         
@@ -407,7 +407,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         if text == "\n" {
             textView.resignFirstResponder()
@@ -421,7 +421,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     /*
     // #pragma mark - Navigation
     */
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didStartSpeechUtterance utterance: AVSpeechUtterance) {
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
         
         print("SSMainViewController speechSynthesizer: didStartSpeechUtterance:")
         
@@ -430,7 +430,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         
         print("SSMainViewController speechSynthesizer: didFinishSpeechUtterance:")
         
@@ -439,7 +439,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
     }
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didCancelSpeechUtterance utterance: AVSpeechUtterance) {
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
         
         print("SSMainViewController speechSynthesizer: didCancelSpeechUtterance:")
         

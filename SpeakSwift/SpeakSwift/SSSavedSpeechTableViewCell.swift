@@ -34,11 +34,11 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         
         // Initialization code
         
-        backgroundColor = UIColor.clearColor()
+        backgroundColor = UIColor.clear
         
-        selectionStyle = .None
+        selectionStyle = .none
         
-        contentView.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.mainScreen().bounds.width, height: SSSavedSpeechTableViewCell.cellHeight())
+        contentView.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: SSSavedSpeechTableViewCell.cellHeight())
         
         setUpLabelAndButtons()
         
@@ -47,13 +47,13 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
     
     init(speechObject: SSSpeechObject, reuseIdentifier: String) {
         
-        super.init(style: .Default, reuseIdentifier: reuseIdentifier)
+        super.init(style: .default, reuseIdentifier: reuseIdentifier)
         
-        backgroundColor = UIColor.clearColor()
+        backgroundColor = UIColor.clear
         
-        selectionStyle = .None
+        selectionStyle = .none
         
-        contentView.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.mainScreen().bounds.width, height: SSSavedSpeechTableViewCell.cellHeight())
+        contentView.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: SSSavedSpeechTableViewCell.cellHeight())
         
         setUpLabelAndButtons()
         
@@ -65,9 +65,9 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
     
     func setUpLabelAndButtons() {
         
-        speechTextLabel = UILabel(frame: CGRect(x: 20.0, y: 10.0, width: CGRectGetWidth(contentView.frame) - 40.0, height: 60.0))
+        speechTextLabel = UILabel(frame: CGRect(x: 20.0, y: 10.0, width: contentView.frame.width - 40.0, height: 60.0))
         speechTextLabel!.textColor = contrastingColor
-        speechTextLabel!.textAlignment = .Left
+        speechTextLabel!.textAlignment = .left
         speechTextLabel!.font = UIFont(name: "Helvetica Neue", size: 12.0)
         speechTextLabel!.numberOfLines = 4
         
@@ -75,7 +75,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         
         voiceRateLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 60.0, height: 15.0))
         voiceRateLabel!.textColor = contrastingColor
-        voiceRateLabel!.textAlignment = .Left
+        voiceRateLabel!.textAlignment = .left
         voiceRateLabel!.font = UIFont(name: "Helvetica Neue", size: 12.0)
         
         // Call UIView positioning extension method positionBelowView() on voiceRateLabel
@@ -85,7 +85,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         
         voicePitchLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 60.0, height: 15.0))
         voicePitchLabel!.textColor = contrastingColor
-        voicePitchLabel!.textAlignment = .Left
+        voicePitchLabel!.textAlignment = .left
         voicePitchLabel!.font = UIFont(name: "Helvetica Neue", size: 12.0)
         
         // Call UIView positioning extension method positionBelowView() on voiceRateLabel
@@ -93,9 +93,9 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         
         contentView.addSubview(voicePitchLabel!)
         
-        languageLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: CGRectGetWidth(contentView.frame) - 40.0, height: 15.0))
+        languageLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: contentView.frame.width - 40.0, height: 15.0))
         languageLabel!.textColor = contrastingColor
-        languageLabel!.textAlignment = .Left
+        languageLabel!.textAlignment = .left
         languageLabel!.font = UIFont(name: "Helvetica Neue", size: 12.0)
         
         // Call UIView positioning extension method positionBelowView() on languageLabel
@@ -105,11 +105,11 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         
         playButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 80.0, height: 30.0))
         playButton!.backgroundColor = UIColor(white: 0.10, alpha: 1.0)
-        playButton?.setTitle("Play", forState: .Normal)
-        playButton?.setTitleColor(contrastingColor, forState: .Normal)
+        playButton?.setTitle("Play", for: UIControlState())
+        playButton?.setTitleColor(contrastingColor, for: UIControlState())
         playButton!.layer.borderWidth = 1.0
-        playButton!.layer.borderColor = contrastingColor.CGColor
-        playButton?.addTarget(self, action: Selector("playButtonTapped:"), forControlEvents: .TouchUpInside)
+        playButton!.layer.borderColor = contrastingColor.cgColor
+        playButton?.addTarget(self, action: #selector(SSSavedSpeechTableViewCell.playButtonTapped(_:)), for: .touchUpInside)
         
         // Call UIView positioning extension method positionBelowView() on playButton
         playButton!.positionBelowView(languageLabel!, xOffset: 0.0, yOffset: 20.0)
@@ -118,11 +118,11 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         
         editButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 80.0, height: 30.0))
         editButton!.backgroundColor = UIColor(white: 0.10, alpha: 1.0)
-        editButton?.setTitle("Edit", forState: .Normal)
-        editButton?.setTitleColor(contrastingColor, forState: .Normal)
+        editButton?.setTitle("Edit", for: UIControlState())
+        editButton?.setTitleColor(contrastingColor, for: UIControlState())
         editButton!.layer.borderWidth = 1.0
-        editButton!.layer.borderColor = contrastingColor.CGColor
-        editButton?.addTarget(self, action: Selector("editButtonTapped:"), forControlEvents: .TouchUpInside)
+        editButton!.layer.borderColor = contrastingColor.cgColor
+        editButton?.addTarget(self, action: #selector(SSSavedSpeechTableViewCell.editButtonTapped(_:)), for: .touchUpInside)
         
         // Call UIView positioning extension method positionRightFromView() on editButton
         editButton!.positionRightFromView(playButton!, xOffset: 20.0, yOffset: 0.0)
@@ -134,7 +134,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
     
     /// Populate this SSSavedSpeechTableViewCell with SSSpeechObject data
     
-    func populateWithSpeechObject (speechObject : SSSpeechObject) {
+    func populateWithSpeechObject (_ speechObject : SSSpeechObject) {
         
         if let speechTextLbl: UILabel = speechTextLabel {
             
@@ -173,11 +173,11 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
     
     /// Perform action when the Play button is tapped
     
-    func playButtonTapped(sender: UIButton!) {
+    func playButtonTapped(_ sender: UIButton!) {
         
         if let tblView: UITableView = tableView {
             
-            let indexPath: NSIndexPath = tblView.indexPathForCell(self)!
+            let indexPath: IndexPath = tblView.indexPath(for: self)!
             
             delegate?.playButtonTappedOnSavedSpeechTableViewCell(self, withIndexPath: indexPath)
             
@@ -188,11 +188,11 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
     
     /// Perform action when the Edit button is tapped
     
-    func editButtonTapped(sender: UIButton!) {
+    func editButtonTapped(_ sender: UIButton!) {
         
         if let tblView: UITableView = tableView {
             
-            let indexPath: NSIndexPath = tblView.indexPathForCell(self)!
+            let indexPath: IndexPath = tblView.indexPath(for: self)!
             
             delegate?.editButtonTappedOnSavedSpeechTableViewCell(self, withIndexPath: indexPath)
             
@@ -207,7 +207,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
     }
 
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -223,10 +223,10 @@ protocol SSSavedSpeechTableViewCellDelegate {
     
     /// Delegate method, called when the user taps the Play button.
     
-    func playButtonTappedOnSavedSpeechTableViewCell(savedSpeechTableViewCell: SSSavedSpeechTableViewCell!, withIndexPath indexPath:  NSIndexPath!)
+    func playButtonTappedOnSavedSpeechTableViewCell(_ savedSpeechTableViewCell: SSSavedSpeechTableViewCell!, withIndexPath indexPath:  IndexPath!)
     
     /// Delegate method, called when the user taps the Edit button.
     
-    func editButtonTappedOnSavedSpeechTableViewCell(savedSpeechTableViewCell: SSSavedSpeechTableViewCell!, withIndexPath indexPath:  NSIndexPath!)
+    func editButtonTappedOnSavedSpeechTableViewCell(_ savedSpeechTableViewCell: SSSavedSpeechTableViewCell!, withIndexPath indexPath:  IndexPath!)
     
 }

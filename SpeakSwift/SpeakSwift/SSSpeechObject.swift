@@ -22,7 +22,7 @@ class SSSpeechObject {
     
     /// Returns a SSSpeechObject with data from input parameters
     
-    class func speechObjectWith(speechString speechString: String, language: String, rate: CFloat, pitch: CFloat, volume: CFloat) -> SSSpeechObject {
+    class func speechObjectWith(speechString: String, language: String, rate: CFloat, pitch: CFloat, volume: CFloat) -> SSSpeechObject {
         
         let speechObject = SSSpeechObject()
         
@@ -37,7 +37,7 @@ class SSSpeechObject {
     
     /// Returns a SSSpeechObject from a Dictionary
     
-    class func speechObjectFromDictionary(dictionary dictionary: Dictionary<String, String>?) -> SSSpeechObject {
+    class func speechObjectFromDictionary(dictionary: Dictionary<String, String>?) -> SSSpeechObject {
         
         if let dict: Dictionary<String, String> = dictionary {
             

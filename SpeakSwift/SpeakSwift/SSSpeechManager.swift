@@ -16,7 +16,7 @@ class SSSpeechManager : NSObject, AVSpeechSynthesizerDelegate {
     /// The shared instance of the SSSpeechManager class
     static let sharedManager = SSSpeechManager()
     
-    private override init() {}
+    fileprivate override init() {}
     
     /* 
         The AVSpeechSynthesizer
@@ -39,7 +39,7 @@ class SSSpeechManager : NSObject, AVSpeechSynthesizerDelegate {
             // Cast the Dictionary to NSDictionary
             // Then wen can use the keysSortedByValueUsingSelector method to sort the keys by value (language display name)
         
-            _languageCodes = (languageCodesAndDisplayNames as NSDictionary).keysSortedByValueUsingSelector(Selector("compare:")) as? [String]
+            _languageCodes = (languageCodesAndDisplayNames as NSDictionary).keysSortedByValue(using: #selector(NSNumber.compare(_:))) as? [String]
         
             // If sorting the language codes (keys) was enough, we could have used the sort() method like below,
             // but instead we want the language codes (keys) sorted by their language display names (values)
@@ -76,11 +76,11 @@ class SSSpeechManager : NSObject, AVSpeechSynthesizerDelegate {
                     
                     languageCodes.append((voice as! AVSpeechSynthesisVoice).language)
                     
-                    let currentLocale: NSLocale = NSLocale.autoupdatingCurrentLocale()
+                    let currentLocale: Locale = Locale.autoupdatingCurrent
                     
                     var dictionary = Dictionary<String, String>()
                     for languageCode in languageCodes {
-                        dictionary[languageCode] = currentLocale.displayNameForKey(NSLocaleIdentifier, value: languageCode)
+                        dictionary[languageCode] = (currentLocale as NSLocale).displayName(forKey: NSLocale.Key.identifier, value: languageCode)
                     }
                     
                     _languageCodesAndDisplayNames = dictionary
@@ -94,9 +94,9 @@ class SSSpeechManager : NSObject, AVSpeechSynthesizerDelegate {
     var _languageCodesAndDisplayNames: Dictionary<String, String>? = nil
     
     
-    func speakWithSpeechObject(speechObject: SSSpeechObject) {
+    func speakWithSpeechObject(_ speechObject: SSSpeechObject) {
         
-        Answers.logCustomEventWithName("speakWithSpeechObject", customAttributes: ["language": speechObject.language, "rate":speechObject.rate, "pitch": speechObject.pitch, "text": speechObject.speechString])
+        Answers.logCustomEvent(withName: "speakWithSpeechObject", customAttributes: ["language": speechObject.language, "rate":speechObject.rate, "pitch": speechObject.pitch, "text": speechObject.speechString])
         
         var speechUtterance : AVSpeechUtterance
         speechUtterance = AVSpeechUtterance(string: speechObject.speechString)
@@ -107,7 +107,7 @@ class SSSpeechManager : NSObject, AVSpeechSynthesizerDelegate {
         speechSynthesisVoice = AVSpeechSynthesisVoice(language: speechObject.language)!
         speechUtterance.voice = speechSynthesisVoice
         
-        speechSynthesizer.speakUtterance(speechUtterance)
+        speechSynthesizer.speak(speechUtterance)
         
     }
     
@@ -115,19 +115,19 @@ class SSSpeechManager : NSObject, AVSpeechSynthesizerDelegate {
         AVSpeechSynthesizerDelegate methods
     */
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didStartSpeechUtterance utterance: AVSpeechUtterance) {
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
         
         print("SSSpeechManager speechSynthesizer: didStartSpeechUtterance:")
         
     }
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         
         print("SSSpeechManager speechSynthesizer: didFinishSpeechUtterance:")
         
     }
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didCancelSpeechUtterance utterance: AVSpeechUtterance) {
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
         
         print("SSSpeechManager speechSynthesizer: didCancelSpeechUtterance:")
         
