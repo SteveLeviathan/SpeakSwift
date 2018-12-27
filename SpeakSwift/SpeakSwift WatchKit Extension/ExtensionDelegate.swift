@@ -34,11 +34,9 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
         guard session.activationState == .activated else { return }
         guard session.isReachable else { return }
 
-        session.sendMessage(["get": "speeches"], replyHandler: { (reply) in
+        session.sendMessage(["get": "speeches"], replyHandler: { reply in
             self.notifyListenersWith(data: reply)
-        }) { (error) in
-            //
-        }
+        })
     }
 
     func subscribe(listener: WCSessionDelegateListening) {
@@ -50,7 +48,6 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
             $0.receivedData(data)
         }
     }
-
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
