@@ -53,8 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        print("Run this app on your device! The iPhone Simulator might not have Speech Voices (AVSpeechSynthesisVoice)!")
-        
         //Set up some UI color settings
         
         setupUIAppearance()
@@ -121,8 +119,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
         
-        print("applicationWillResignActive()")
-        
         // Save Speech Objects to NSUserDefaults.standardUserDefaults()
         
         SSDataManager.sharedManager.saveSpeechObjects()
@@ -146,9 +142,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-       
-        print("applicationWillEnterForeground()")
-        
     }
 
     
@@ -164,16 +157,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Save Speech Objects to NSUserDefaults.standardUserDefaults()
         
         SSDataManager.sharedManager.saveSpeechObjects()
-        
-        print("applicationWillTerminate()")
-        
     }
 
-}
-
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
-	guard let input = input else { return nil }
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

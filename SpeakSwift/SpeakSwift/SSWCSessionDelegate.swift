@@ -26,12 +26,12 @@ class SSWCSessionDelegate: NSObject, WCSessionDelegate {
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         print("SSWCSessionDelegate didReceiveMessage message: \(message)")
-        let action = "get"
-        let dataType = "speeches"
+        let actionGet = "get"
+        let dataTypeSpeeches = "speeches"
 
-        guard message[action] as? String == dataType else { return }
+        guard message[actionGet] as? String == dataTypeSpeeches else { return }
 
-        let reply = [dataType: SSDataManager.sharedManager.speechObjectDictionariesArray()]
+        let reply = [dataTypeSpeeches: SSDataManager.sharedManager.speechObjectDictionariesArray()]
         replyHandler(reply)
     }
 }

@@ -141,10 +141,8 @@ class SSDataManager {
                 return
             }
 
-            session.sendMessage(["speeches": speechObjectsAsDictionaries], replyHandler: { (reply) in
+            session.sendMessage(["speeches": speechObjectsAsDictionaries], replyHandler: { reply in
                 print(reply)
-            }, errorHandler: { (error) in
-                //
             })
 
         } else {
@@ -169,6 +167,3 @@ class SSDataManager {
     }
 
 }
-
-
-

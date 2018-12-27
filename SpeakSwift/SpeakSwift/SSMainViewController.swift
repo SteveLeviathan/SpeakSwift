@@ -365,7 +365,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             
         }
         
-        return NSAttributedString(string: "Simulator: No speech voices.", attributes: [.foregroundColor: contrastingColor])
+        return NSAttributedString(string: "No speech voices.", attributes: [.foregroundColor: contrastingColor])
         
     }
 
@@ -398,8 +398,6 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
         
-        print("SSMainViewController speechSynthesizer: didStartSpeechUtterance:")
-        
         speakButton.titleLabel?.text = "Stop!"
         
     }
@@ -407,30 +405,14 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         
-        print("SSMainViewController speechSynthesizer: didFinishSpeechUtterance:")
-        
         speakButton.titleLabel?.text = "Speak!"
-        
-        
+
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
         
-        print("SSMainViewController speechSynthesizer: didCancelSpeechUtterance:")
-        
         speakButton.titleLabel?.text = "Speak!"
         
     }
 
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
-	guard let input = input else { return nil }
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
-	return input.rawValue
 }

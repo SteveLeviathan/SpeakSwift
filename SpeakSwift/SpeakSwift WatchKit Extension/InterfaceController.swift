@@ -46,18 +46,14 @@ class InterfaceController: WKInterfaceController {
     }
     
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
-        print("didSelectRowAtIndex: \(rowIndex)")
         if rowIndex < speechObjects.count {
             let speechObject = speechObjects[rowIndex]
             
             speakText(speechObject)
         }
-        
     }
     
     func speakText(_ speechObject: SSSpeechObject) {
-        print("speakText: \(speechObject.speechString)")
-        
         if SSSpeechManager.sharedManager.speechSynthesizer.isSpeaking {
             // If speaking, call stopSpeakingAtBoundary: to interrupt current speech and clear the queue.
             SSSpeechManager.sharedManager.speechSynthesizer.stopSpeaking(at: .immediate)

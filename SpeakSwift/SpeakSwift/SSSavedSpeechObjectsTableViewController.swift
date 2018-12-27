@@ -87,14 +87,10 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
         }
         
     }
-    
-    /*
-        AVSpeechSynthesizerDelegate methods
-    */
+
+    // MARK: - AVSpeechSynthesizerDelegate methods
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
-        
-        print("SSSavedSpeechObjectsTableViewController speechSynthesizer: didStartSpeechUtterance:")
         
         AppDelegate.appDelegate().mainViewController!.speakButton!.titleLabel?.text = "Stop!"
         
@@ -102,28 +98,21 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         
-        print("SSSavedSpeechObjectsTableViewController speechSynthesizer: didFinishSpeechUtterance:")
-        
         AppDelegate.appDelegate().mainViewController!.speakButton!.titleLabel?.text = "Speak!"
         
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
         
-        print("SSSavedSpeechObjectsTableViewController speechSynthesizer: didCancelSpeechUtterance:")
-        
         AppDelegate.appDelegate().mainViewController!.speakButton!.titleLabel?.text = "Speak!"
         
     }
-    
-    /*
-        SSSavedSpeechTableViewCellDelegate methods
-    */
+
+
+    // MARK: - SSSavedSpeechTableViewCellDelegate methods
     
     func playButtonTappedOnSavedSpeechTableViewCell(_ savedSpeechTableViewCell: SSSavedSpeechTableViewCell!, withIndexPath indexPath: IndexPath!) {
-        
-        print("savedSpeechTableViewCell playButtonTappedOn withIndexPath")
-        
+
         if SSSpeechManager.sharedManager.speechSynthesizer.isSpeaking {
             // If speaking, call stopSpeakingAtBoundary: to interrupt current speech and clear the queue.
             SSSpeechManager.sharedManager.speechSynthesizer.stopSpeaking(at: .immediate)
@@ -142,9 +131,7 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
     }
     
     func editButtonTappedOnSavedSpeechTableViewCell(_ savedSpeechTableViewCell: SSSavedSpeechTableViewCell!, withIndexPath indexPath: IndexPath!) {
-        
-        print("editButtonTappedOn withIndexPath")
-        
+
         self.navigationController?.popViewController(animated: true)
         let speechObject: SSSpeechObject = SSDataManager.sharedManager.speechObjects[indexPath.row]
         
