@@ -32,46 +32,32 @@
 import UIKit
 import Fabric
 import Crashlytics
-
-// Where you typically used the #define directive to define a primitive constant in C and Objective-C, in Swift you use a global constant instead.
-let iOSVersion = (UIDevice.current.systemVersion as NSString).floatValue
-
-// Color constants
-let honeydewColor: UIColor = UIColor(red: 204.0/255.0, green: 255.0/255.0, blue: 102.0/255.0, alpha: 1.0) // honeydew
-let skyColor: UIColor = UIColor(red: 102.0/255.0, green: 204.0/255.0, blue: 255.0/255.0, alpha: 1.0) // sky
-let floraColor: UIColor = UIColor(red: 102.0/255.0, green: 255.0/255.0, blue: 102.0/255.0, alpha: 1.0) // flora
-let limeColor: UIColor = UIColor(red: 128.0/255.0, green: 255.0/255.0, blue: 0.0/255.0, alpha: 1.0) // lime
-let seaFomeaColor: UIColor = UIColor(red: 0.0/255.0, green: 255.0/255.0, blue: 128.0/255.0, alpha: 1.0) // sea foam
-let orangeColor: UIColor = UIColor.orange
-
-// Set contrasting color to be used throughout the app
-let contrastingColor: UIColor = floraColor
+import WatchConnectivity
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow? = nil
     
-    var rootNavigationController: SSRootNavigationController? = nil
+    var rootNavigationController: SSRootNavigationController!
     
-    var mainViewController: SSMainViewController? = nil
+    var mainViewController: SSMainViewController!
+
+    var wcSessionDelegate: SSWCSessionDelegate!
     
     class func appDelegate() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
     
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         print("Run this app on your device! The iPhone Simulator might not have Speech Voices (AVSpeechSynthesisVoice)!")
         
-        //Set up some UINavigationBar color settings
+        //Set up some UI color settings
         
-        UINavigationBar.appearance().tintColor = contrastingColor
-        UINavigationBar.appearance().barTintColor = UIColor(white: 0.05, alpha: 1.0)
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: contrastingColor]
-        UIPickerView.appearance().tintColor = contrastingColor
+        setupUIAppearance()
         
         
         // Set the rootNavigationController as the window's rootViewController
@@ -86,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Add the mainViewController to the rootNavigationController
         
-        rootNavigationController?.addChildViewController(mainViewController!)
+        rootNavigationController?.addChild(mainViewController!)
         
         
         // Load saved Speech Objects
@@ -95,9 +81,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Crashlytics
         Fabric.with([Crashlytics()])
-        
+
+
+        activateWatchConnectivitySession()
+
+
         return true
         
+    }
+
+    private func setupUIAppearance() {
+        UINavigationBar.appearance().tintColor = contrastingColor
+        UINavigationBar.appearance().barTintColor = UIColor(white: 0.05, alpha: 1.0)
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: contrastingColor]
+        UIPickerView.appearance().tintColor = contrastingColor
+    }
+
+    private func activateWatchConnectivitySession() {
+        if (WCSession.isSupported()) {
+            let session = WCSession.default
+            wcSessionDelegate = SSWCSessionDelegate()
+            session.delegate = wcSessionDelegate
+            session.activate()
+
+            if session.isPaired != true {
+                print("Apple Watch is not paired")
+            }
+
+            if session.isWatchAppInstalled != true {
+                print("WatchKit app is not installed")
+            }
+        } else {
+            print("WatchConnectivity is not supported on this device")
+        }
     }
 
     
@@ -155,3 +171,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}

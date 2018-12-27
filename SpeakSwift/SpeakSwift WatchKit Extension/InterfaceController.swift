@@ -12,15 +12,21 @@ import Crashlytics
 
 class InterfaceController: WKInterfaceController {
 
-    
     @IBOutlet var speechesTable: WKInterfaceTable!
     @IBOutlet var noFavouritesGroup: WKInterfaceGroup!
+
+    var speechObjects: [SSSpeechObject] = []
+
+    var receivedData: [String : Any]!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         // Configure interface objects here.
         setTitle("SpeakSwift")
+
+        let watchDelegate = WKExtension.shared().delegate as? ExtensionDelegate
+        watchDelegate?.subscribe(listener: self)
     }
 
     override func willActivate() {
@@ -28,22 +34,10 @@ class InterfaceController: WKInterfaceController {
         super.willActivate()
         
         Answers.logCustomEvent(withName: "Apple Watch Main Interface Activated", customAttributes: nil)
-        
-        // Load saved Speech Objects
-        SSDataManager.sharedManager.speechObjects = SSDataManager.sharedManager.savedSpeechObjects()
-        
-        let speechObjectsCount : Int = SSDataManager.sharedManager.speechObjects.count;
-        if speechObjectsCount > 0 {
-            noFavouritesGroup.setHidden(true)
-        }
 
-        speechesTable.setNumberOfRows(speechObjectsCount, withRowType: "SpeechesRow")
-        for (index, speechObject) in SSDataManager.sharedManager.speechObjects.enumerated() {
-            if let row = speechesTable.rowController(at: index) as? SpeechesRowController {
-                row.speechLabel.setText(speechObject.speechString)
-                row.imageView.setImageNamed("sound")
-            }
-        }
+        let watchDelegate = WKExtension.shared().delegate as? ExtensionDelegate
+        watchDelegate?.fetchData()
+
     }
 
     override func didDeactivate() {
@@ -53,8 +47,8 @@ class InterfaceController: WKInterfaceController {
     
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
         print("didSelectRowAtIndex: \(rowIndex)")
-        if rowIndex < SSDataManager.sharedManager.speechObjects.count {
-            let speechObject : SSSpeechObject = SSDataManager.sharedManager.speechObjects[rowIndex]
+        if rowIndex < speechObjects.count {
+            let speechObject = speechObjects[rowIndex]
             
             speakText(speechObject)
         }
@@ -73,6 +67,48 @@ class InterfaceController: WKInterfaceController {
         if SSSpeechManager.sharedManager.languageCodesAndDisplayNames.count > 0 {
             SSSpeechManager.sharedManager.speakWithSpeechObject(speechObject)
         }
+    }
+
+}
+
+extension InterfaceController: WCSessionDelegateListening {
+
+    func receivedData(_ data: [String : Any]) {
+        receivedData = data
+        reloadTableView()
+    }
+
+    func reloadTableView() {
+        // Load saved Speech Objects
+        guard let data = receivedData else { return }
+
+        speechObjects = speechObjects(from: data["speeches"] as! [[String: String]])
+
+        let speechObjectsCount = speechObjects.count
+        if speechObjectsCount > 0 {
+            noFavouritesGroup.setHidden(true)
+        }
+
+        speechesTable.setNumberOfRows(speechObjectsCount, withRowType: "SpeechesRow")
+        for (index, speechObject) in speechObjects.enumerated() {
+            if let row = speechesTable.rowController(at: index) as? SpeechesRowController {
+                row.speechLabel.setText(speechObject.speechString)
+                row.imageView.setImageNamed("sound")
+            }
+        }
+    }
+
+    func speechObjects(from array: [[String: String]]) -> [SSSpeechObject] {
+
+        var speechObjectsArray: [SSSpeechObject] = []
+
+        for speechObjectDictionary in array {
+
+            speechObjectsArray.append(SSSpeechObject.speechObjectFromDictionary(dictionary: speechObjectDictionary))
+
+        }
+
+        return speechObjectsArray
     }
 
 }

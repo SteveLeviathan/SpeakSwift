@@ -6,37 +6,41 @@
 //  Copyright (c) 2014 Appify Media. All rights reserved.
 //
 
+import Foundation
 import UIKit
+import WatchConnectivity
 
 let SpeakSwiftSpeechObjectsKey = "SpeakSwift.SpeechObjects"
 
-class SSDataManager : NSObject {
+class SSDataManager {
     
-    var speechObjects: [SSSpeechObject] = Array()
-    
+    var speechObjects: [SSSpeechObject] = []
+
     /// The shared instance of the SSDataManager class
     static let sharedManager = SSDataManager()
     
-    fileprivate override init() {}
+    fileprivate init() {}
     
     /// Add a single SSSpeechObject to the working array speechObjects
     
-    func addSpeechObject(speechObject : SSSpeechObject) {
+    func addSpeechObject(speechObject: SSSpeechObject) {
         
         // Add SSSpeechObject to the top of the list
         speechObjects.insert(speechObject, at: 0)
-        
+
+        saveSpeechObjects()
+
     }
     
     
     
     /// Convert a single SSSpeechObject to Dictionary, add it to the other saved Speech Object Dictionaries and save them to NSUserDefaults.standardUserDefaults()
     
-    func saveSpeechObject(speechObject : SSSpeechObject?) {
+    func saveSpeechObject(speechObject: SSSpeechObject?) {
         
         if let speechObj = speechObject {
             
-            var savedObjects : [Dictionary<String, String>] = speechObjectDictionariesArray()
+            var savedObjects = speechObjectDictionariesArray()
             
             // Add Speech Object Dictionary to the top of the list
             savedObjects.insert(speechObj.dictionaryRepresentation(), at: 0)
@@ -61,20 +65,18 @@ class SSDataManager : NSObject {
     /* 
         Load Speech Object Dictionaries from NSUserDefaults.standardUserDefaults()
     */
-    func speechObjectDictionariesArray() -> [Dictionary<String, String>] {
+    func speechObjectDictionariesArray() -> [[String: String]] {
         
         // Return an array of speech object dictionaries if there are any.
-        let sharedUserDefaults : UserDefaults = UserDefaults(suiteName: "group.speakswift.speechdata")!
-        if let data: Data = sharedUserDefaults.object(forKey: SpeakSwiftSpeechObjectsKey) as? Data {
+        let sharedUserDefaults = UserDefaults(suiteName: "group.speakswift.speechdata")!
+        if let data = sharedUserDefaults.object(forKey: SpeakSwiftSpeechObjectsKey) as? Data {
             
-            let arrayOfSpeechObjectDictionaries: [Dictionary<String, String>] = NSKeyedUnarchiver.unarchiveObject(with: data) as! [Dictionary<String, String>]
+            let arrayOfSpeechObjectDictionaries = NSKeyedUnarchiver.unarchiveObject(with: data) as! [[String: String]]
             return arrayOfSpeechObjectDictionaries
             
         }
-        
-        // If there are no Speech Object Dictionaries, return an empty array
-        
-        return [Dictionary<String, String>]()
+
+        return []
         
     }
     
@@ -84,16 +86,27 @@ class SSDataManager : NSObject {
     */
     func savedSpeechObjects() -> [SSSpeechObject] {
         
-        var speechObjectsArray: [SSSpeechObject] = Array()
+        var speechObjectsArray: [SSSpeechObject] = []
         
-        let arrayOfSpeechObjectDictionaries: [Dictionary<String, String>] = speechObjectDictionariesArray()
-        
-        for speechObjectDictionary: Dictionary<String, String> in arrayOfSpeechObjectDictionaries {
+        for speechObjectDictionary in speechObjectDictionariesArray() {
             
             speechObjectsArray.append(SSSpeechObject.speechObjectFromDictionary(dictionary: speechObjectDictionary))
             
         }
         
+        return speechObjectsArray
+    }
+
+    func speechObjects(from array: [[String: String]]) -> [SSSpeechObject] {
+
+        var speechObjectsArray: [SSSpeechObject] = []
+
+        for speechObjectDictionary in array {
+
+            speechObjectsArray.append(SSSpeechObject.speechObjectFromDictionary(dictionary: speechObjectDictionary))
+
+        }
+
         return speechObjectsArray
     }
     
@@ -103,7 +116,7 @@ class SSDataManager : NSObject {
     */
     func saveSpeechObjects() {
     
-        var speechObjectsAsDictionaries: [Dictionary<String, String>] = Array()
+        var speechObjectsAsDictionaries: [[String: String]] = []
         
         for speechObject: SSSpeechObject in speechObjects {
             
@@ -112,26 +125,49 @@ class SSDataManager : NSObject {
         }
         
         saveSpeechObjectDictionaries(speechObjectsAsDictionaries)
+
+        if (WCSession.isSupported()) {
+            let session = WCSession.default
+
+            guard session.activationState == .activated else { return }
+
+            if !session.isPaired {
+                print("Apple Watch is not paired")
+                return
+            }
+
+            if !session.isWatchAppInstalled{
+                print("WatchKit app is not installed")
+                return
+            }
+
+            session.sendMessage(["speeches": speechObjectsAsDictionaries], replyHandler: { (reply) in
+                print(reply)
+            }, errorHandler: { (error) in
+                //
+            })
+
+        } else {
+            print("WatchConnectivity is not supported on this device")
+        }
     }
-    
+
     
     /*
         Save Speech Object Dictionaries to NSUserDefaults.standardUserDefaults()
     */
-    func saveSpeechObjectDictionaries(_ dictionaries: [Dictionary<String, String>]) {
+    func saveSpeechObjectDictionaries(_ dictionaries: [[String: String]]) {
         
-        let data : Data = NSKeyedArchiver.archivedData(withRootObject: dictionaries)
+        let data = NSKeyedArchiver.archivedData(withRootObject: dictionaries)
         
-        let sharedUserDefaults : UserDefaults = UserDefaults(suiteName: "group.speakswift.speechdata")!
+        let sharedUserDefaults = UserDefaults(suiteName: "group.speakswift.speechdata")!
         
         sharedUserDefaults.set(data, forKey: SpeakSwiftSpeechObjectsKey)
         
         sharedUserDefaults.synchronize()
         
     }
-    
-    
-    
+
 }
 
 

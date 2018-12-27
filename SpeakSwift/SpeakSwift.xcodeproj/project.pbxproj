@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA2DC69D1FB87FD3009DF01B /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA2803FB1B13842B007240A7 /* Fabric.framework */; };
+		AA2DC69E1FB87FD7009DF01B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA2803FC1B13842B007240A7 /* Crashlytics.framework */; };
+		AA42073D1FB7B22300DED001 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA615CDA1B5BEC1C002999E2 /* InterfaceController.swift */; };
+		AA42073F1FB7B24100DED001 /* SpeechesRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA615CF81B5C787E002999E2 /* SpeechesRowController.swift */; };
+		AA4207431FB7B2A500DED001 /* SSSpeechObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327A951943D7CD008F3BC3 /* SSSpeechObject.swift */; };
+		AA4207441FB7B2B200DED001 /* SSSpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327AC51945FD66008F3BC3 /* SSSpeechManager.swift */; };
+		AA5D2FC61FB7AA04000F1A33 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA5D2FC41FB7AA04000F1A33 /* Interface.storyboard */; };
+		AA5D2FC81FB7AA04000F1A33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA5D2FC71FB7AA04000F1A33 /* Assets.xcassets */; };
+		AA5D2FCF1FB7AA04000F1A33 /* SpeakSwift WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AA5D2FCE1FB7AA04000F1A33 /* SpeakSwift WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AA5D2FDC1FB7AA04000F1A33 /* SpeakSwift WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AA5D2FC21FB7AA04000F1A33 /* SpeakSwift WatchKit App.app */; };
+		AA5D2FE61FB7AAF4000F1A33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA5D2FE51FB7AAF3000F1A33 /* Assets.xcassets */; };
+		AAE227E61FB7C0820071CA7A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE227E51FB7C0820071CA7A /* ExtensionDelegate.swift */; };
+		AAE227E81FB7C4FC0071CA7A /* SSWCSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE227E71FB7C4FC0071CA7A /* SSWCSessionDelegate.swift */; };
+		AAE260EF21D2490D00FAE780 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE260EE21D2490D00FAE780 /* Constants.swift */; };
+		AAE260F121D27BA800FAE780 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAE260F021D27BA800FAE780 /* Launch Screen.storyboard */; };
 		EA01FE261943B49300A2224B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA01FE251943B49300A2224B /* AppDelegate.swift */; };
 		EA01FE2B1943B49300A2224B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA01FE291943B49300A2224B /* Main.storyboard */; };
 		EA01FE2D1943B49300A2224B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA01FE2C1943B49300A2224B /* Images.xcassets */; };
@@ -20,28 +35,26 @@
 		EA327AC61945FD66008F3BC3 /* SSSpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327AC51945FD66008F3BC3 /* SSSpeechManager.swift */; };
 		EA327AC819460FA2008F3BC3 /* SSSavedSpeechObjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327AC719460FA2008F3BC3 /* SSSavedSpeechObjectsTableViewController.swift */; };
 		EA40CD2D194930620033D0E1 /* SSSavedSpeechTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40CD2C194930620033D0E1 /* SSSavedSpeechTableViewCell.swift */; };
-		EA615CDB1B5BEC1C002999E2 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA615CDA1B5BEC1C002999E2 /* InterfaceController.swift */; };
-		EA615CDF1B5BEC1C002999E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA615CDE1B5BEC1C002999E2 /* Images.xcassets */; };
-		EA615CE31B5BEC1C002999E2 /* SpeakSwift WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = EA615CE21B5BEC1C002999E2 /* SpeakSwift WatchKit App.app */; };
-		EA615CEB1B5BEC1C002999E2 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA615CE91B5BEC1C002999E2 /* Interface.storyboard */; };
-		EA615CED1B5BEC1C002999E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA615CEC1B5BEC1C002999E2 /* Images.xcassets */; };
-		EA615CF01B5BEC1C002999E2 /* SpeakSwift WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA615CD61B5BEC1C002999E2 /* SpeakSwift WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		EA615CF91B5C787E002999E2 /* SpeechesRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA615CF81B5C787E002999E2 /* SpeechesRowController.swift */; };
 		EA615CFB1B5C8559002999E2 /* Icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = EA615CFA1B5C8559002999E2 /* Icon-180.png */; };
-		EA615CFC1B5C8559002999E2 /* Icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = EA615CFA1B5C8559002999E2 /* Icon-180.png */; };
-		EA615CFD1B5C8559002999E2 /* Icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = EA615CFA1B5C8559002999E2 /* Icon-180.png */; };
-		EA615CFE1B5C8694002999E2 /* SSDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327A931943D43C008F3BC3 /* SSDataManager.swift */; };
-		EA615CFF1B5C8697002999E2 /* SSSpeechObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327A951943D7CD008F3BC3 /* SSSpeechObject.swift */; };
-		EA615D001B5C869A002999E2 /* SSSpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327AC51945FD66008F3BC3 /* SSSpeechManager.swift */; };
-		EA781E851B5D7BF7008020F5 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA2803FB1B13842B007240A7 /* Fabric.framework */; };
-		EA781E861B5D7BF9008020F5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA2803FC1B13842B007240A7 /* Crashlytics.framework */; };
 		EA781E881B61A81C008020F5 /* sound.png in Resources */ = {isa = PBXBuildFile; fileRef = EA781E871B61A81C008020F5 /* sound.png */; };
-		EA781E891B61A81C008020F5 /* sound.png in Resources */ = {isa = PBXBuildFile; fileRef = EA781E871B61A81C008020F5 /* sound.png */; };
-		EA781E8A1B61A943008020F5 /* sound.png in Resources */ = {isa = PBXBuildFile; fileRef = EA781E871B61A81C008020F5 /* sound.png */; };
 		EA90E6161950F34000E05D2E /* UIViewPositioningExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA90E6151950F34000E05D2E /* UIViewPositioningExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		AA5D2FD01FB7AA04000F1A33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA01FE181943B49300A2224B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA5D2FCD1FB7AA04000F1A33;
+			remoteInfo = "SpeakSwift WatchKit Extension";
+		};
+		AA5D2FDA1FB7AA04000F1A33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA01FE181943B49300A2224B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA5D2FC11FB7AA04000F1A33;
+			remoteInfo = "SpeakSwift WatchKit";
+		};
 		EA01FE331943B49300A2224B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EA01FE181943B49300A2224B /* Project object */;
@@ -49,30 +62,37 @@
 			remoteGlobalIDString = EA01FE1F1943B49300A2224B;
 			remoteInfo = SpeakSwift;
 		};
-		EA615CE41B5BEC1C002999E2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EA01FE181943B49300A2224B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EA615CE11B5BEC1C002999E2;
-			remoteInfo = "SpeakSwift WatchKit App";
-		};
-		EA615CEE1B5BEC1C002999E2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EA01FE181943B49300A2224B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EA615CD51B5BEC1C002999E2;
-			remoteInfo = "SpeakSwift WatchKit Extension";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		AA5D2FE01FB7AA04000F1A33 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AA5D2FCF1FB7AA04000F1A33 /* SpeakSwift WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA5D2FE41FB7AA04000F1A33 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				AA5D2FDC1FB7AA04000F1A33 /* SpeakSwift WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EA615CF71B5BEC1C002999E2 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				EA615CF01B5BEC1C002999E2 /* SpeakSwift WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,6 +100,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA2DC69A1FB879B4009DF01B /* SpeakSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpeakSwift.entitlements; sourceTree = "<group>"; };
+		AA2DC69B1FB879D5009DF01B /* SpeakSwift WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SpeakSwift WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		AA5D2FC21FB7AA04000F1A33 /* SpeakSwift WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SpeakSwift WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA5D2FC51FB7AA04000F1A33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		AA5D2FC71FB7AA04000F1A33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA5D2FC91FB7AA04000F1A33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA5D2FCE1FB7AA04000F1A33 /* SpeakSwift WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "SpeakSwift WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA5D2FE51FB7AAF3000F1A33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AAE227E51FB7C0820071CA7A /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		AAE227E71FB7C4FC0071CA7A /* SSWCSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSWCSessionDelegate.swift; sourceTree = "<group>"; };
+		AAE260EE21D2490D00FAE780 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		AAE260F021D27BA800FAE780 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		EA01FE201943B49300A2224B /* SpeakSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA01FE241943B49300A2224B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA01FE251943B49300A2224B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,23 +129,24 @@
 		EA327AC51945FD66008F3BC3 /* SSSpeechManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSSpeechManager.swift; sourceTree = "<group>"; };
 		EA327AC719460FA2008F3BC3 /* SSSavedSpeechObjectsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSSavedSpeechObjectsTableViewController.swift; sourceTree = "<group>"; };
 		EA40CD2C194930620033D0E1 /* SSSavedSpeechTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSSavedSpeechTableViewCell.swift; sourceTree = "<group>"; };
-		EA615CD61B5BEC1C002999E2 /* SpeakSwift WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "SpeakSwift WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA615CD91B5BEC1C002999E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA615CDA1B5BEC1C002999E2 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		EA615CDE1B5BEC1C002999E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		EA615CE21B5BEC1C002999E2 /* SpeakSwift WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SpeakSwift WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA615CE81B5BEC1C002999E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EA615CEA1B5BEC1C002999E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		EA615CEC1B5BEC1C002999E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EA615CF81B5C787E002999E2 /* SpeechesRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechesRowController.swift; sourceTree = "<group>"; };
 		EA615CFA1B5C8559002999E2 /* Icon-180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-180.png"; sourceTree = "<group>"; };
-		EA781E831B5C9674008020F5 /* SpeakSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SpeakSwift.entitlements; sourceTree = "<group>"; };
-		EA781E841B5C9682008020F5 /* SpeakSwift WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "SpeakSwift WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		EA781E871B61A81C008020F5 /* sound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sound.png; sourceTree = "<group>"; };
 		EA90E6151950F34000E05D2E /* UIViewPositioningExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewPositioningExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AA5D2FCB1FB7AA04000F1A33 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA2DC69D1FB87FD3009DF01B /* Fabric.framework in Frameworks */,
+				AA2DC69E1FB87FD7009DF01B /* Crashlytics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EA01FE1D1943B49300A2224B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -130,26 +163,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EA615CD31B5BEC1C002999E2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EA781E861B5D7BF9008020F5 /* Crashlytics.framework in Frameworks */,
-				EA781E851B5D7BF7008020F5 /* Fabric.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA2DC69C1FB87FD3009DF01B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA5D2FC31FB7AA04000F1A33 /* SpeakSwift WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				AA5D2FC41FB7AA04000F1A33 /* Interface.storyboard */,
+				AA5D2FC71FB7AA04000F1A33 /* Assets.xcassets */,
+				AA5D2FC91FB7AA04000F1A33 /* Info.plist */,
+			);
+			path = "SpeakSwift WatchKit App";
+			sourceTree = "<group>";
+		};
 		EA01FE171943B49300A2224B = {
 			isa = PBXGroup;
 			children = (
 				EA01FE221943B49300A2224B /* SpeakSwift */,
 				EA01FE351943B49300A2224B /* SpeakSwiftTests */,
 				EA615CD71B5BEC1C002999E2 /* SpeakSwift WatchKit Extension */,
-				EA615CE61B5BEC1C002999E2 /* SpeakSwift WatchKit App */,
+				AA5D2FC31FB7AA04000F1A33 /* SpeakSwift WatchKit App */,
 				EA01FE211943B49300A2224B /* Products */,
+				AA2DC69C1FB87FD3009DF01B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -158,8 +200,8 @@
 			children = (
 				EA01FE201943B49300A2224B /* SpeakSwift.app */,
 				EA01FE321943B49300A2224B /* SpeakSwiftTests.xctest */,
-				EA615CD61B5BEC1C002999E2 /* SpeakSwift WatchKit Extension.appex */,
-				EA615CE21B5BEC1C002999E2 /* SpeakSwift WatchKit App.app */,
+				AA5D2FC21FB7AA04000F1A33 /* SpeakSwift WatchKit App.app */,
+				AA5D2FCE1FB7AA04000F1A33 /* SpeakSwift WatchKit Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -167,13 +209,15 @@
 		EA01FE221943B49300A2224B /* SpeakSwift */ = {
 			isa = PBXGroup;
 			children = (
-				EA781E831B5C9674008020F5 /* SpeakSwift.entitlements */,
+				EA2803FA1B13840C007240A7 /* Libs */,
+				AA2DC69A1FB879B4009DF01B /* SpeakSwift.entitlements */,
 				EA781E871B61A81C008020F5 /* sound.png */,
 				EA615CFA1B5C8559002999E2 /* Icon-180.png */,
-				EA2803FA1B13840C007240A7 /* Libs */,
 				EA01FE291943B49300A2224B /* Main.storyboard */,
 				EA01FE2C1943B49300A2224B /* Images.xcassets */,
+				AAE260EE21D2490D00FAE780 /* Constants.swift */,
 				EA01FE251943B49300A2224B /* AppDelegate.swift */,
+				AAE227E71FB7C4FC0071CA7A /* SSWCSessionDelegate.swift */,
 				EA01FE461943B69B00A2224B /* SSRootNavigationController.swift */,
 				EA01FE441943B66B00A2224B /* SSMainViewController.swift */,
 				EA327A931943D43C008F3BC3 /* SSDataManager.swift */,
@@ -183,6 +227,7 @@
 				EA40CD2C194930620033D0E1 /* SSSavedSpeechTableViewCell.swift */,
 				EA90E6171950F57900E05D2E /* UIView Positioning Extension */,
 				EA01FE231943B49300A2224B /* Supporting Files */,
+				AAE260F021D27BA800FAE780 /* Launch Screen.storyboard */,
 			);
 			path = SpeakSwift;
 			sourceTree = "<group>";
@@ -224,9 +269,10 @@
 		EA615CD71B5BEC1C002999E2 /* SpeakSwift WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				EA781E841B5C9682008020F5 /* SpeakSwift WatchKit Extension.entitlements */,
+				AA2DC69B1FB879D5009DF01B /* SpeakSwift WatchKit Extension.entitlements */,
 				EA615CDA1B5BEC1C002999E2 /* InterfaceController.swift */,
-				EA615CDE1B5BEC1C002999E2 /* Images.xcassets */,
+				AAE227E51FB7C0820071CA7A /* ExtensionDelegate.swift */,
+				AA5D2FE51FB7AAF3000F1A33 /* Assets.xcassets */,
 				EA615CD81B5BEC1C002999E2 /* Supporting Files */,
 				EA615CF81B5C787E002999E2 /* SpeechesRowController.swift */,
 			);
@@ -237,24 +283,6 @@
 			isa = PBXGroup;
 			children = (
 				EA615CD91B5BEC1C002999E2 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		EA615CE61B5BEC1C002999E2 /* SpeakSwift WatchKit App */ = {
-			isa = PBXGroup;
-			children = (
-				EA615CE91B5BEC1C002999E2 /* Interface.storyboard */,
-				EA615CEC1B5BEC1C002999E2 /* Images.xcassets */,
-				EA615CE71B5BEC1C002999E2 /* Supporting Files */,
-			);
-			path = "SpeakSwift WatchKit App";
-			sourceTree = "<group>";
-		};
-		EA615CE71B5BEC1C002999E2 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				EA615CE81B5BEC1C002999E2 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -270,6 +298,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AA5D2FC11FB7AA04000F1A33 /* SpeakSwift WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA5D2FE11FB7AA04000F1A33 /* Build configuration list for PBXNativeTarget "SpeakSwift WatchKit App" */;
+			buildPhases = (
+				AA5D2FC01FB7AA04000F1A33 /* Resources */,
+				AA5D2FE01FB7AA04000F1A33 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA5D2FD11FB7AA04000F1A33 /* PBXTargetDependency */,
+			);
+			name = "SpeakSwift WatchKit App";
+			productName = "SpeakSwift WatchKit";
+			productReference = AA5D2FC21FB7AA04000F1A33 /* SpeakSwift WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		AA5D2FCD1FB7AA04000F1A33 /* SpeakSwift WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA5D2FDD1FB7AA04000F1A33 /* Build configuration list for PBXNativeTarget "SpeakSwift WatchKit Extension" */;
+			buildPhases = (
+				AA5D2FCA1FB7AA04000F1A33 /* Sources */,
+				AA5D2FCB1FB7AA04000F1A33 /* Frameworks */,
+				AA5D2FCC1FB7AA04000F1A33 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SpeakSwift WatchKit Extension";
+			productName = "SpeakSwift WatchKit Extension";
+			productReference = AA5D2FCE1FB7AA04000F1A33 /* SpeakSwift WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		EA01FE1F1943B49300A2224B /* SpeakSwift */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA01FE3C1943B49300A2224B /* Build configuration list for PBXNativeTarget "SpeakSwift" */;
@@ -279,11 +341,12 @@
 				EA01FE1E1943B49300A2224B /* Resources */,
 				EA2803F91B1383B5007240A7 /* ShellScript */,
 				EA615CF71B5BEC1C002999E2 /* Embed App Extensions */,
+				AA5D2FE41FB7AA04000F1A33 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				EA615CEF1B5BEC1C002999E2 /* PBXTargetDependency */,
+				AA5D2FDB1FB7AA04000F1A33 /* PBXTargetDependency */,
 			);
 			name = SpeakSwift;
 			productName = SpeakSwift;
@@ -308,39 +371,6 @@
 			productReference = EA01FE321943B49300A2224B /* SpeakSwiftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		EA615CD51B5BEC1C002999E2 /* SpeakSwift WatchKit Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EA615CF61B5BEC1C002999E2 /* Build configuration list for PBXNativeTarget "SpeakSwift WatchKit Extension" */;
-			buildPhases = (
-				EA615CD21B5BEC1C002999E2 /* Sources */,
-				EA615CD31B5BEC1C002999E2 /* Frameworks */,
-				EA615CD41B5BEC1C002999E2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EA615CE51B5BEC1C002999E2 /* PBXTargetDependency */,
-			);
-			name = "SpeakSwift WatchKit Extension";
-			productName = "SpeakSwift WatchKit Extension";
-			productReference = EA615CD61B5BEC1C002999E2 /* SpeakSwift WatchKit Extension.appex */;
-			productType = "com.apple.product-type.watchkit-extension";
-		};
-		EA615CE11B5BEC1C002999E2 /* SpeakSwift WatchKit App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EA615CF51B5BEC1C002999E2 /* Build configuration list for PBXNativeTarget "SpeakSwift WatchKit App" */;
-			buildPhases = (
-				EA615CE01B5BEC1C002999E2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "SpeakSwift WatchKit App";
-			productName = "SpeakSwift WatchKit App";
-			productReference = EA615CE21B5BEC1C002999E2 /* SpeakSwift WatchKit App.app */;
-			productType = "com.apple.product-type.application.watchapp";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -349,41 +379,47 @@
 			attributes = {
 				CLASSPREFIX = SS;
 				LastSwiftMigration = 0720;
-				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0600;
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Appify Media";
 				TargetAttributes = {
-					EA01FE1F1943B49300A2224B = {
-						CreatedOnToolsVersion = 6.0;
+					AA5D2FC11FB7AA04000F1A33 = {
+						CreatedOnToolsVersion = 9.1;
 						DevelopmentTeam = 36HPV94EE2;
-						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
+								enabled = 0;
+							};
+						};
+					};
+					AA5D2FCD1FB7AA04000F1A33 = {
+						CreatedOnToolsVersion = 9.1;
+						DevelopmentTeam = 36HPV94EE2;
+						LastSwiftMigration = 1010;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
+					};
+					EA01FE1F1943B49300A2224B = {
+						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 36HPV94EE2;
+						LastSwiftMigration = 1010;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
 							};
 						};
 					};
 					EA01FE311943B49300A2224B = {
 						CreatedOnToolsVersion = 6.0;
-						LastSwiftMigration = 0830;
-						TestTargetID = EA01FE1F1943B49300A2224B;
-					};
-					EA615CD51B5BEC1C002999E2 = {
-						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 36HPV94EE2;
-						LastSwiftMigration = 0830;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
-							};
-						};
-					};
-					EA615CE11B5BEC1C002999E2 = {
-						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 36HPV94EE2;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
+						TestTargetID = EA01FE1F1943B49300A2224B;
 					};
 				};
 			};
@@ -402,13 +438,30 @@
 			targets = (
 				EA01FE1F1943B49300A2224B /* SpeakSwift */,
 				EA01FE311943B49300A2224B /* SpeakSwiftTests */,
-				EA615CD51B5BEC1C002999E2 /* SpeakSwift WatchKit Extension */,
-				EA615CE11B5BEC1C002999E2 /* SpeakSwift WatchKit App */,
+				AA5D2FC11FB7AA04000F1A33 /* SpeakSwift WatchKit App */,
+				AA5D2FCD1FB7AA04000F1A33 /* SpeakSwift WatchKit Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AA5D2FC01FB7AA04000F1A33 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA5D2FC81FB7AA04000F1A33 /* Assets.xcassets in Resources */,
+				AA5D2FC61FB7AA04000F1A33 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA5D2FCC1FB7AA04000F1A33 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA5D2FE61FB7AAF4000F1A33 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EA01FE1E1943B49300A2224B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -416,6 +469,7 @@
 				EA01FE2B1943B49300A2224B /* Main.storyboard in Resources */,
 				EA781E881B61A81C008020F5 /* sound.png in Resources */,
 				EA615CFB1B5C8559002999E2 /* Icon-180.png in Resources */,
+				AAE260F121D27BA800FAE780 /* Launch Screen.storyboard in Resources */,
 				EA01FE2D1943B49300A2224B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,28 +478,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EA615CD41B5BEC1C002999E2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EA615CDF1B5BEC1C002999E2 /* Images.xcassets in Resources */,
-				EA781E891B61A81C008020F5 /* sound.png in Resources */,
-				EA615CFC1B5C8559002999E2 /* Icon-180.png in Resources */,
-				EA615CE31B5BEC1C002999E2 /* SpeakSwift WatchKit App.app in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EA615CE01B5BEC1C002999E2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EA615CEB1B5BEC1C002999E2 /* Interface.storyboard in Resources */,
-				EA781E8A1B61A943008020F5 /* sound.png in Resources */,
-				EA615CFD1B5C8559002999E2 /* Icon-180.png in Resources */,
-				EA615CED1B5BEC1C002999E2 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,17 +500,31 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AA5D2FCA1FB7AA04000F1A33 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA4207431FB7B2A500DED001 /* SSSpeechObject.swift in Sources */,
+				AA42073F1FB7B24100DED001 /* SpeechesRowController.swift in Sources */,
+				AAE227E61FB7C0820071CA7A /* ExtensionDelegate.swift in Sources */,
+				AA42073D1FB7B22300DED001 /* InterfaceController.swift in Sources */,
+				AA4207441FB7B2B200DED001 /* SSSpeechManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EA01FE1C1943B49300A2224B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				EA327A941943D43C008F3BC3 /* SSDataManager.swift in Sources */,
+				AAE260EF21D2490D00FAE780 /* Constants.swift in Sources */,
 				EA327AC819460FA2008F3BC3 /* SSSavedSpeechObjectsTableViewController.swift in Sources */,
 				EA01FE261943B49300A2224B /* AppDelegate.swift in Sources */,
 				EA327AC61945FD66008F3BC3 /* SSSpeechManager.swift in Sources */,
 				EA40CD2D194930620033D0E1 /* SSSavedSpeechTableViewCell.swift in Sources */,
 				EA01FE471943B69B00A2224B /* SSRootNavigationController.swift in Sources */,
 				EA327A961943D7CE008F3BC3 /* SSSpeechObject.swift in Sources */,
+				AAE227E81FB7C4FC0071CA7A /* SSWCSessionDelegate.swift in Sources */,
 				EA90E6161950F34000E05D2E /* UIViewPositioningExtension.swift in Sources */,
 				EA01FE451943B66B00A2224B /* SSMainViewController.swift in Sources */,
 			);
@@ -492,39 +538,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EA615CD21B5BEC1C002999E2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EA615CFF1B5C8697002999E2 /* SSSpeechObject.swift in Sources */,
-				EA615CDB1B5BEC1C002999E2 /* InterfaceController.swift in Sources */,
-				EA615CFE1B5C8694002999E2 /* SSDataManager.swift in Sources */,
-				EA615D001B5C869A002999E2 /* SSSpeechManager.swift in Sources */,
-				EA615CF91B5C787E002999E2 /* SpeechesRowController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		AA5D2FD11FB7AA04000F1A33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA5D2FCD1FB7AA04000F1A33 /* SpeakSwift WatchKit Extension */;
+			targetProxy = AA5D2FD01FB7AA04000F1A33 /* PBXContainerItemProxy */;
+		};
+		AA5D2FDB1FB7AA04000F1A33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA5D2FC11FB7AA04000F1A33 /* SpeakSwift WatchKit App */;
+			targetProxy = AA5D2FDA1FB7AA04000F1A33 /* PBXContainerItemProxy */;
+		};
 		EA01FE341943B49300A2224B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EA01FE1F1943B49300A2224B /* SpeakSwift */;
 			targetProxy = EA01FE331943B49300A2224B /* PBXContainerItemProxy */;
 		};
-		EA615CE51B5BEC1C002999E2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EA615CE11B5BEC1C002999E2 /* SpeakSwift WatchKit App */;
-			targetProxy = EA615CE41B5BEC1C002999E2 /* PBXContainerItemProxy */;
-		};
-		EA615CEF1B5BEC1C002999E2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EA615CD51B5BEC1C002999E2 /* SpeakSwift WatchKit Extension */;
-			targetProxy = EA615CEE1B5BEC1C002999E2 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		AA5D2FC41FB7AA04000F1A33 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA5D2FC51FB7AA04000F1A33 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		EA01FE291943B49300A2224B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -533,17 +575,177 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		EA615CE91B5BEC1C002999E2 /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EA615CEA1B5BEC1C002999E2 /* Base */,
-			);
-			name = Interface.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AA5D2FDE1FB7AA04000F1A33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 36HPV94EE2;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "SpeakSwift WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appifymedia.speakswift.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		AA5D2FDF1FB7AA04000F1A33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 36HPV94EE2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "SpeakSwift WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appifymedia.speakswift.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
+		AA5D2FE21FB7AA04000F1A33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 36HPV94EE2;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IBSC_MODULE = SpeakSwift_WatchKit_Extension;
+				INFOPLIST_FILE = "SpeakSwift WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appifymedia.speakswift.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		AA5D2FE31FB7AA04000F1A33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 36HPV94EE2;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IBSC_MODULE = SpeakSwift_WatchKit_Extension;
+				INFOPLIST_FILE = "SpeakSwift WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appifymedia.speakswift.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
 		EA01FE3A1943B49300A2224B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -552,20 +754,32 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -595,13 +809,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -609,6 +833,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -618,6 +843,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				METAL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -628,22 +854,24 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = SpeakSwift/SpeakSwift.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 36HPV94EE2;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SpeakSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appifymedia.speakswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Debug;
 		};
@@ -652,10 +880,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = SpeakSwift/SpeakSwift.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 36HPV94EE2;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -663,12 +890,15 @@
 				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				INFOPLIST_FILE = SpeakSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appifymedia.speakswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
 		};
@@ -677,6 +907,9 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpeakSwift.app/SpeakSwift";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -686,12 +919,17 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = SpeakSwiftTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appifymedia.beta.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "86102752-6ed2-4db6-b96a-ea238499a38d";
-				SWIFT_VERSION = 3.0;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Debug;
 		};
@@ -700,131 +938,49 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpeakSwift.app/SpeakSwift";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = SpeakSwiftTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appifymedia.beta.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "86102752-6ed2-4db6-b96a-ea238499a38d";
-				SWIFT_VERSION = 3.0;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Release;
-		};
-		EA615CF11B5BEC1C002999E2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "SpeakSwift WatchKit Extension/SpeakSwift WatchKit Extension.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_BITCODE = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "SpeakSwift WatchKit Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		EA615CF21B5BEC1C002999E2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "SpeakSwift WatchKit Extension/SpeakSwift WatchKit Extension.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_BITCODE = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "SpeakSwift WatchKit Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		EA615CF31B5BEC1C002999E2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
-				ENABLE_BITCODE = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				IBSC_MODULE = SpeakSwift_WatchKit_Extension;
-				INFOPLIST_FILE = "SpeakSwift WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
-			};
-			name = Debug;
-		};
-		EA615CF41B5BEC1C002999E2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
-				ENABLE_BITCODE = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IBSC_MODULE = SpeakSwift_WatchKit_Extension;
-				INFOPLIST_FILE = "SpeakSwift WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AA5D2FDD1FB7AA04000F1A33 /* Build configuration list for PBXNativeTarget "SpeakSwift WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA5D2FDE1FB7AA04000F1A33 /* Debug */,
+				AA5D2FDF1FB7AA04000F1A33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA5D2FE11FB7AA04000F1A33 /* Build configuration list for PBXNativeTarget "SpeakSwift WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA5D2FE21FB7AA04000F1A33 /* Debug */,
+				AA5D2FE31FB7AA04000F1A33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EA01FE1B1943B49300A2224B /* Build configuration list for PBXProject "SpeakSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -848,24 +1004,6 @@
 			buildConfigurations = (
 				EA01FE401943B49300A2224B /* Debug */,
 				EA01FE411943B49300A2224B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EA615CF51B5BEC1C002999E2 /* Build configuration list for PBXNativeTarget "SpeakSwift WatchKit App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EA615CF31B5BEC1C002999E2 /* Debug */,
-				EA615CF41B5BEC1C002999E2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EA615CF61B5BEC1C002999E2 /* Build configuration list for PBXNativeTarget "SpeakSwift WatchKit Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EA615CF11B5BEC1C002999E2 /* Debug */,
-				EA615CF21B5BEC1C002999E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

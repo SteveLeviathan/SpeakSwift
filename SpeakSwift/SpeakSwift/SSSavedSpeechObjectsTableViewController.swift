@@ -50,11 +50,11 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellIdentifer = "SavedSpeechTableViewCellIdentifier"
-        var cell: SSSavedSpeechTableViewCell? = nil //tableView!.dequeueReusableCellWithIdentifier(cellIdentifer) as? SSSavedSpeechTableViewCell
+        var cell: SSSavedSpeechTableViewCell? = nil
         
         if SSDataManager.sharedManager.speechObjects.count > 0 {
             
-            let speechObject : SSSpeechObject = SSDataManager.sharedManager.speechObjects[indexPath.row]
+            let speechObject: SSSpeechObject = SSDataManager.sharedManager.speechObjects[indexPath.row]
             
             cell = SSSavedSpeechTableViewCell(speechObject: speechObject, reuseIdentifier: cellIdentifer)
             
@@ -74,20 +74,13 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
     }
     
     
-    /*
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-    
-        navigationController.popViewControllerAnimated(true)
-    
-    }
-    */
-    
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
             
             SSDataManager.sharedManager.speechObjects.remove(at: indexPath.row)
+
+            SSDataManager.sharedManager.saveSpeechObjects()
             
             tableView.deleteRows(at: [indexPath], with: .fade)
             
@@ -131,15 +124,14 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
         
         print("savedSpeechTableViewCell playButtonTappedOn withIndexPath")
         
-        if SSSpeechManager.sharedManager.speechSynthesizer.isSpeaking
-        {
+        if SSSpeechManager.sharedManager.speechSynthesizer.isSpeaking {
             // If speaking, call stopSpeakingAtBoundary: to interrupt current speech and clear the queue.
             SSSpeechManager.sharedManager.speechSynthesizer.stopSpeaking(at: .immediate)
         }
         
         if SSSpeechManager.sharedManager.languageCodesAndDisplayNames.count > 0 {
             
-            let speechObject : SSSpeechObject = SSDataManager.sharedManager.speechObjects[indexPath.row]
+            let speechObject: SSSpeechObject = SSDataManager.sharedManager.speechObjects[indexPath.row]
             
             SSSpeechManager.sharedManager.speechSynthesizer.delegate = self
             

@@ -10,19 +10,15 @@ import Foundation
 
 class SSSpeechObject {
    
-    var rate : CFloat = 1.0
-    var pitch : CFloat = 1.0
-    var language : String = ""
-    var volume : CFloat = 1.0
-    var speechString : String = ""
-    
-    init () {
-        print("SSSpeechObject init()")
-    }
-    
+    var rate: Float = 1.0
+    var pitch: Float = 1.0
+    var language  = ""
+    var volume: Float = 1.0
+    var speechString = ""
+
     /// Returns a SSSpeechObject with data from input parameters
     
-    class func speechObjectWith(speechString: String, language: String, rate: CFloat, pitch: CFloat, volume: CFloat) -> SSSpeechObject {
+    class func speechObjectWith(speechString: String, language: String, rate: Float, pitch: Float, volume: Float) -> SSSpeechObject {
         
         let speechObject = SSSpeechObject()
         
@@ -33,40 +29,43 @@ class SSSpeechObject {
         speechObject.volume = volume
         
         return speechObject
+
     }
     
     /// Returns a SSSpeechObject from a Dictionary
     
-    class func speechObjectFromDictionary(dictionary: Dictionary<String, String>?) -> SSSpeechObject {
-        
-        if let dict: Dictionary<String, String> = dictionary {
-            
-            let speechString : String = dict["speechString"]!
-            let language : String = dict["language"]!
-            let rateStr : String = dict["rate"]!
-            let pitchStr : String = dict["pitch"]!
-            let volumeStr : String = dict["volume"]!
-            
-            // String to CFloat conversion using bridgeToObjectiveC()
-            let rate = (rateStr as NSString).floatValue
-            let pitch = (pitchStr as NSString).floatValue
-            let volume = (volumeStr as NSString).floatValue
-            
-            let speechObject = speechObjectWith(speechString: speechString, language: language, rate: rate, pitch: pitch, volume: volume)
-            
-            return speechObject
-        }
-        return SSSpeechObject()
-        
+    class func speechObjectFromDictionary(dictionary: [String: String]?) -> SSSpeechObject {
+
+        guard let dict = dictionary else { return SSSpeechObject() }
+
+        let speechString = dict["speechString"]!
+        let language = dict["language"]!
+        let rateStr = dict["rate"]!
+        let pitchStr = dict["pitch"]!
+        let volumeStr = dict["volume"]!
+
+        let rate =  Float(rateStr)
+        let pitch = Float(pitchStr)
+        let volume = Float(volumeStr)
+
+        let speechObject = speechObjectWith(
+            speechString: speechString,
+            language: language,
+            rate: rate!,
+            pitch: pitch!,
+            volume: volume!
+        )
+
+        return speechObject
         
     }
     
     
     /// Returns a Dictionary representation of a SSSPeechObject
     
-    func dictionaryRepresentation () -> Dictionary<String, String> {
+    func dictionaryRepresentation () -> [String: String] {
         
-        var dictionary: Dictionary<String, String> = Dictionary()
+        var dictionary: [String: String] = [: ]
         dictionary.updateValue(speechString, forKey: "speechString")
         dictionary.updateValue(language, forKey: "language")
         dictionary.updateValue(String(format: "%.2f", rate) , forKey: "rate")
