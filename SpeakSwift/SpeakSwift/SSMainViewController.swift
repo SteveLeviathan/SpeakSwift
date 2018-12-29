@@ -9,6 +9,11 @@
 import UIKit
 import AVFoundation
 
+protocol SSMainViewControllerDelegate: class {
+    func setSpeakButtonTitle(title: String)
+    func updateUIControlsWithSpeechObject(_ speechObject: SSSpeechObject)
+}
+
 class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, AVSpeechSynthesizerDelegate {
     
     var scrollView: UIScrollView!
@@ -26,8 +31,6 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     let introText  = "This is the SpeakSwift app! By pressing the 'Speak!' button, your device will speak out loud any text you've typed inside this text box!"
     
-    var savedSpeechObjectsTableViewController: SSSavedSpeechObjectsTableViewController!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,11 +43,6 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         // Set up the user interface
         
         setUpUI()
-        
-        
-        // Init the SSSavedSpeechObjectsTableViewController
-        
-        savedSpeechObjectsTableViewController = SSSavedSpeechObjectsTableViewController(style: .plain)
 
     }
     
@@ -63,7 +61,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         view.addSubview(scrollView)
         
         speechTextView = UITextView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: 100.0))
-        speechTextView.frame = speechTextView!.frame.insetBy(dx: 10.0, dy: 10.0)
+        speechTextView.frame = speechTextView.frame.insetBy(dx: 10.0, dy: 10.0)
         speechTextView.delegate = self
         speechTextView.text = introText
         speechTextView.backgroundColor = UIColor(white: 0.2, alpha: 1.0)
@@ -74,8 +72,8 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         scrollView.addSubview(speechTextView!)
         
         speakButton = UIButton(frame: CGRect(x: 0.0, y: 0.0 , width: 150.0, height: 40.0))
-        speakButton.setTitle("Speak!", for: UIControl.State())
-        speakButton.setTitleColor(contrastingColor, for: UIControl.State())
+        speakButton.setTitle("Speak!", for: .normal)
+        speakButton.setTitleColor(contrastingColor, for: .normal)
         speakButton.addTarget(self, action: #selector(speakText), for: .touchUpInside)
         speakButton.backgroundColor = UIColor(white: 0.10, alpha: 1.0)
         speakButton.layer.borderWidth = 1.0
@@ -206,24 +204,6 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 
     }
     
-    
-    func updateUIControlsWithSpeechObject(_ speechObject: SSSpeechObject?) {
-
-        guard let speechObj = speechObject else { return }
-
-        speechTextView.text = speechObj.speechString
-
-        let pickerViewIndex = (SSSpeechManager.sharedManager.languageCodes as NSArray).index(of: speechObj.language)
-        pickerView.selectRow(pickerViewIndex, inComponent: 0, animated: true)
-
-        voiceRateSlider.value = speechObj.rate
-        voiceRateSliderValueChanged(voiceRateSlider)
-
-        voicePitchSlider.value = speechObj.pitch
-        voicePitchSliderValueChanged(voicePitchSlider)
-        
-    }
-    
     /// Make the device speak te text.
     
     @objc
@@ -238,7 +218,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             
             // Check if sharedSpeechManager.languageCodesAndDisplayNames dictionary has entries, if not this means there are no speech voices available on the device. (e.g.: The iPhone Simulator)
             
-            if SSSpeechManager.sharedManager.languageCodesAndDisplayNames.count > 0 {
+            if !SSSpeechManager.sharedManager.languageCodesAndDisplayNames.isEmpty {
                 
                 let speechObject = SSSpeechObject.speechObjectWith(
                     speechString: speechTextView.text!,
@@ -270,7 +250,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @objc
     func addToFavourites() {
         
-        if SSSpeechManager.sharedManager.languageCodesAndDisplayNames.count > 0 {
+        if !SSSpeechManager.sharedManager.languageCodesAndDisplayNames.isEmpty {
             
             let speechObject = SSSpeechObject.speechObjectWith(
                 speechString: speechTextView.text!,
@@ -317,7 +297,9 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     func favouritesButtonTapped(_ sender: UIButton) {
         
         speechTextView.resignFirstResponder()
-        
+
+        let savedSpeechObjectsTableViewController = SSSavedSpeechObjectsTableViewController(style: .plain)
+        savedSpeechObjectsTableViewController.mainViewControllerDelegate = self
         navigationController?.pushViewController(savedSpeechObjectsTableViewController, animated: true)
         
     }
@@ -342,19 +324,21 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int  {
         
         // If there are no language codes, because of the app running in the iPhone Simulator, return 1, so we can display 1 title to tell the user there are no speech voices
-        
-        if SSSpeechManager.sharedManager.languageCodes.count == 0 {
+
+        let count = SSSpeechManager.sharedManager.languageCodes.count
+
+        if count == 0 {
             return 1
         }
         
-        return SSSpeechManager.sharedManager.languageCodes.count
+        return count
         
     }
     
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
-        if SSSpeechManager.sharedManager.languageCodes.count > 0 {
+        if !SSSpeechManager.sharedManager.languageCodes.isEmpty {
             
             let languageCode = SSSpeechManager.sharedManager.languageCodes[row]
             let languageDisplayName = SSSpeechManager.sharedManager.languageCodesAndDisplayNames[languageCode]!
@@ -415,4 +399,26 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
     }
 
+}
+
+
+extension SSMainViewController: SSMainViewControllerDelegate {
+    func setSpeakButtonTitle(title: String) {
+        speakButton.setTitle(title, for: .normal)
+    }
+
+    func updateUIControlsWithSpeechObject(_ speechObject: SSSpeechObject) {
+
+        speechTextView.text = speechObject.speechString
+
+        let pickerViewIndex = (SSSpeechManager.sharedManager.languageCodes as NSArray).index(of: speechObject.language)
+        pickerView.selectRow(pickerViewIndex, inComponent: 0, animated: true)
+
+        voiceRateSlider.value = speechObject.rate
+        voiceRateSliderValueChanged(voiceRateSlider)
+
+        voicePitchSlider.value = speechObject.pitch
+        voicePitchSliderValueChanged(voicePitchSlider)
+
+    }
 }

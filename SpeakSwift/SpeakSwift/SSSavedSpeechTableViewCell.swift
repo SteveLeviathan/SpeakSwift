@@ -29,7 +29,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
     
     weak var delegate: SSSavedSpeechTableViewCellDelegate?
     
-    var tableView: UITableView!
+    weak var tableView: UITableView?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -101,8 +101,8 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         
         playButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 80.0, height: 30.0))
         playButton.backgroundColor = UIColor(white: 0.10, alpha: 1.0)
-        playButton.setTitle("Play", for: UIControl.State())
-        playButton.setTitleColor(contrastingColor, for: UIControl.State())
+        playButton.setTitle("Play", for: .normal)
+        playButton.setTitleColor(contrastingColor, for: .normal)
         playButton.layer.borderWidth = 1.0
         playButton.layer.borderColor = contrastingColor.cgColor
         playButton.addTarget(self, action: #selector(SSSavedSpeechTableViewCell.playButtonTapped), for: .touchUpInside)
@@ -114,8 +114,8 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         
         editButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 80.0, height: 30.0))
         editButton.backgroundColor = UIColor(white: 0.10, alpha: 1.0)
-        editButton.setTitle("Edit", for: UIControl.State())
-        editButton.setTitleColor(contrastingColor, for: UIControl.State())
+        editButton.setTitle("Edit", for: .normal)
+        editButton.setTitleColor(contrastingColor, for: .normal)
         editButton.layer.borderWidth = 1.0
         editButton.layer.borderColor = contrastingColor.cgColor
         editButton.addTarget(self, action: #selector(SSSavedSpeechTableViewCell.editButtonTapped), for: .touchUpInside)
@@ -152,7 +152,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
     @objc
     func playButtonTapped(_ sender: UIButton!) {
 
-        guard let indexPath = tableView.indexPath(for: self) else { return }
+        guard let indexPath = tableView?.indexPath(for: self) else { return }
 
         delegate?.playButtonTappedOnSavedSpeechTableViewCell(self, withIndexPath: indexPath)
         
@@ -163,7 +163,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
     @objc
     func editButtonTapped(_ sender: UIButton!) {
 
-        guard let indexPath = tableView.indexPath(for: self) else { return }
+        guard let indexPath = tableView?.indexPath(for: self) else { return }
 
         delegate?.editButtonTappedOnSavedSpeechTableViewCell(self, withIndexPath: indexPath)
         

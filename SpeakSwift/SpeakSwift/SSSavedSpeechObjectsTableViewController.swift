@@ -10,7 +10,9 @@ import UIKit
 import AVFoundation
 
 class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSynthesizerDelegate, SSSavedSpeechTableViewCellDelegate {
-    
+
+    weak var mainViewControllerDelegate: SSMainViewControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,9 +52,9 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellIdentifer = "SavedSpeechTableViewCellIdentifier"
-        var cell: SSSavedSpeechTableViewCell? = nil
+        let cell: SSSavedSpeechTableViewCell
         
-        if SSDataManager.sharedManager.speechObjects.count > 0 {
+        if !SSDataManager.sharedManager.speechObjects.isEmpty {
             
             let speechObject: SSSpeechObject = SSDataManager.sharedManager.speechObjects[indexPath.row]
             
@@ -66,11 +68,11 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
         }
         
         // Set the delegate to self so it responds to SSSavedSpeechTableViewCellDelegate methods
-        cell!.delegate = self
+        cell.delegate = self
+
+        cell.tableView = tableView
         
-        cell!.tableView = tableView
-        
-        return cell!
+        return cell
     }
     
     
@@ -91,20 +93,20 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
     // MARK: - AVSpeechSynthesizerDelegate methods
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
-        
-        AppDelegate.appDelegate().mainViewController!.speakButton!.titleLabel?.text = "Stop!"
+
+        mainViewControllerDelegate?.setSpeakButtonTitle(title: "Stop!")
         
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        
-        AppDelegate.appDelegate().mainViewController!.speakButton!.titleLabel?.text = "Speak!"
+
+        mainViewControllerDelegate?.setSpeakButtonTitle(title: "Speak!")
         
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
-        
-        AppDelegate.appDelegate().mainViewController!.speakButton!.titleLabel?.text = "Speak!"
+
+        mainViewControllerDelegate?.setSpeakButtonTitle(title: "Speak!")
         
     }
 
@@ -118,9 +120,9 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
             SSSpeechManager.sharedManager.speechSynthesizer.stopSpeaking(at: .immediate)
         }
         
-        if SSSpeechManager.sharedManager.languageCodesAndDisplayNames.count > 0 {
+        if !SSSpeechManager.sharedManager.languageCodesAndDisplayNames.isEmpty {
             
-            let speechObject: SSSpeechObject = SSDataManager.sharedManager.speechObjects[indexPath.row]
+            let speechObject = SSDataManager.sharedManager.speechObjects[indexPath.row]
             
             SSSpeechManager.sharedManager.speechSynthesizer.delegate = self
             
@@ -135,7 +137,7 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
         self.navigationController?.popViewController(animated: true)
         let speechObject: SSSpeechObject = SSDataManager.sharedManager.speechObjects[indexPath.row]
         
-        AppDelegate.appDelegate().mainViewController!.updateUIControlsWithSpeechObject(speechObject)
+        mainViewControllerDelegate?.updateUIControlsWithSpeechObject(speechObject)
         
     }
     
