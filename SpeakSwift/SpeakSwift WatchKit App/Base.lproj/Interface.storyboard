@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13529" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14460.31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14460.16"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="SpeakSwift_WatchKit" customModuleProvider="target">
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="SpeakSwift_WatchKit_App" customModuleProvider="target">
                     <items>
                         <group width="1" height="20" alignment="left" id="Fjb-a1-C0y">
                             <items>
@@ -28,7 +28,7 @@
                                     <group key="rootItem" width="1" alignment="left" id="JJW-2h-L2T">
                                         <items>
                                             <imageView width="24" height="24" alignment="left" verticalAlignment="center" image="sound" contentMode="scaleAspectFit" id="FaJ-VR-p4f"/>
-                                            <label width="100" height="40" alignment="right" verticalAlignment="center" text="Label" textAlignment="justified" numberOfLines="0" id="n8u-v2-0JK">
+                                            <label width="0.80000000000000004" widthAdjustment="5" height="40" alignment="right" verticalAlignment="center" text="Label" textAlignment="justified" numberOfLines="0" id="n8u-v2-0JK">
                                                 <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
                                             </label>
                                         </items>

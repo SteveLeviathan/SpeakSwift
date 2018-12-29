@@ -64,7 +64,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         speechTextLabel = UILabel(frame: CGRect(x: 20.0, y: 10.0, width: contentView.frame.width - 40.0, height: 60.0))
         speechTextLabel.textColor = contrastingColor
         speechTextLabel.textAlignment = .left
-        speechTextLabel.font = UIFont(name: "Helvetica Neue", size: 12.0)
+        speechTextLabel.font = UIFont(name: "Helvetica Neue", size: 16.0)
         speechTextLabel.numberOfLines = 4
         
         contentView.addSubview(speechTextLabel)
