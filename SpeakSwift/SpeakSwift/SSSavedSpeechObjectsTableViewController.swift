@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Crashlytics
 
 class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSynthesizerDelegate, SSSavedSpeechTableViewCellDelegate {
 
@@ -127,6 +128,8 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
             SSSpeechManager.sharedManager.speechSynthesizer.delegate = self
             
             SSSpeechManager.sharedManager.speakWithSpeechObject(speechObject)
+
+            Answers.logCustomEvent(withName: "speakWithSpeechObject", customAttributes: ["language": speechObject.language, "rate":speechObject.rate, "pitch": speechObject.pitch, "text": speechObject.speechString, "view": "Favourites"])
             
         }
         

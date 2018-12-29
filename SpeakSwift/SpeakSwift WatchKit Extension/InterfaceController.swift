@@ -8,7 +8,6 @@
 
 import WatchKit
 import Foundation
-import Crashlytics
 
 class InterfaceController: WKInterfaceController {
 
@@ -32,8 +31,6 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        
-        Answers.logCustomEvent(withName: "Apple Watch Main Interface Activated", customAttributes: nil)
 
         let watchDelegate = WKExtension.shared().delegate as? ExtensionDelegate
         watchDelegate?.fetchData()

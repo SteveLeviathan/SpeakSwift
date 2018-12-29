@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import AVFoundation
-import Crashlytics
 
 class SSSpeechManager: NSObject, AVSpeechSynthesizerDelegate {
     
@@ -75,8 +74,6 @@ class SSSpeechManager: NSObject, AVSpeechSynthesizerDelegate {
     
     
     func speakWithSpeechObject(_ speechObject: SSSpeechObject) {
-        
-        Answers.logCustomEvent(withName: "speakWithSpeechObject", customAttributes: ["language": speechObject.language, "rate":speechObject.rate, "pitch": speechObject.pitch, "text": speechObject.speechString])
         
         let speechUtterance = AVSpeechUtterance(string: speechObject.speechString)
         speechUtterance.rate = speechObject.rate

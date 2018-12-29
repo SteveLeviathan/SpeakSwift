@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Crashlytics
 
 protocol SSMainViewControllerDelegate: class {
     func setSpeakButtonTitle(title: String)
@@ -231,12 +232,14 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 SSSpeechManager.sharedManager.speechSynthesizer.delegate = self
                 
                 SSSpeechManager.sharedManager.speakWithSpeechObject(speechObject)
+
+                Answers.logCustomEvent(withName: "speakWithSpeechObject", customAttributes: ["language": speechObject.language, "rate":speechObject.rate, "pitch": speechObject.pitch, "text": speechObject.speechString, "view": "Main"])
                 
             }
             
         } else {
             
-            // If speaking, call stopSpeakingAtBoundary: to interrupt current speech and clear the queue.
+            // If speaking, call stopSpeaking(at:) to interrupt current speech and clear the queue.
             
             SSSpeechManager.sharedManager.speechSynthesizer.stopSpeaking(at: .immediate)
             
