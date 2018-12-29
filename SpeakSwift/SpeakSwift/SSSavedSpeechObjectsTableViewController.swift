@@ -129,7 +129,16 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
             
             SSSpeechManager.sharedManager.speakWithSpeechObject(speechObject)
 
-            Answers.logCustomEvent(withName: "speakWithSpeechObject", customAttributes: ["language": speechObject.language, "rate":speechObject.rate, "pitch": speechObject.pitch, "text": speechObject.speechString, "view": "Favourites"])
+            Answers.logCustomEvent(
+                withName: "speakWithSpeechObject",
+                customAttributes: [
+                    "language": speechObject.language,
+                    "rate":speechObject.rate,
+                    "pitch": speechObject.pitch,
+                    "text": speechObject.speechString,
+                    "view": "Favourites"
+                ]
+            )
             
         }
         

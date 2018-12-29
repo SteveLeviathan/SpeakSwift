@@ -233,7 +233,16 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 
                 SSSpeechManager.sharedManager.speakWithSpeechObject(speechObject)
 
-                Answers.logCustomEvent(withName: "speakWithSpeechObject", customAttributes: ["language": speechObject.language, "rate":speechObject.rate, "pitch": speechObject.pitch, "text": speechObject.speechString, "view": "Main"])
+                Answers.logCustomEvent(
+                    withName: "speakWithSpeechObject",
+                    customAttributes: [
+                        "language": speechObject.language,
+                        "rate":speechObject.rate,
+                        "pitch": speechObject.pitch,
+                        "text": speechObject.speechString,
+                        "view": "Main"
+                    ]
+                )
                 
             }
             
