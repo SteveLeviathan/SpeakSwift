@@ -58,10 +58,7 @@ class InterfaceController: WKInterfaceController {
             speechManager.speechSynthesizer.stopSpeaking(at: .immediate)
         }
         
-        // Check if sharedSpeechManager.languageCodesAndDisplayNames dictionary has entries, if not this means there are no speech voices available on the device. (e.g.: The iPhone Simulator)
-        if !speechManager.languageCodesAndDisplayNames.isEmpty {
-            speechManager.speakWithSpeechObject(speechObject)
-        }
+        speechManager.speakWithSpeechObject(speechObject)
     }
 
 }

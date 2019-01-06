@@ -207,35 +207,28 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         if !speechManager.speechSynthesizer.isSpeaking {
             
-            
-            // Check if sharedSpeechManager.languageCodesAndDisplayNames dictionary has entries, if not this means there are no speech voices available on the device. (e.g.: The iPhone Simulator)
-            
-            if !speechManager.languageCodesAndDisplayNames.isEmpty {
-                
-                let speechObject = SSSpeechObject.speechObjectWith(
-                    speechString: speechTextView.text!,
-                    language: speechManager.languageCodes[pickerView.selectedRow(inComponent: 0)],
-                    rate: voiceRateSlider.value,
-                    pitch: voicePitchSlider.value,
-                    volume: 1.0
-                )
-                
-                speechManager.speechSynthesizer.delegate = self
-                
-                speechManager.speakWithSpeechObject(speechObject)
+            let speechObject = SSSpeechObject.speechObjectWith(
+                speechString: speechTextView.text!,
+                language: speechManager.languageCodes[pickerView.selectedRow(inComponent: 0)],
+                rate: voiceRateSlider.value,
+                pitch: voicePitchSlider.value,
+                volume: 1.0
+            )
 
-                Answers.logCustomEvent(
-                    withName: "speakWithSpeechObject",
-                    customAttributes: [
-                        "language": speechObject.language,
-                        "rate":speechObject.rate,
-                        "pitch": speechObject.pitch,
-                        "text": speechObject.speechString,
-                        "view": "Main"
-                    ]
-                )
-                
-            }
+            speechManager.speechSynthesizer.delegate = self
+
+            speechManager.speakWithSpeechObject(speechObject)
+
+            Answers.logCustomEvent(
+                withName: "speakWithSpeechObject",
+                customAttributes: [
+                    "language": speechObject.language,
+                    "rate":speechObject.rate,
+                    "pitch": speechObject.pitch,
+                    "text": speechObject.speechString,
+                    "view": "Main"
+                ]
+            )
             
         } else {
             
