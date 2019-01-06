@@ -31,7 +31,7 @@ class SSWCSessionDelegate: NSObject, WCSessionDelegate {
 
         guard message[actionGet] as? String == dataTypeSpeeches else { return }
 
-        let reply = [dataTypeSpeeches: SSDataManager.sharedManager.speechObjectDictionariesArray()]
+        let reply = [dataTypeSpeeches: SSDataManager.shared.speechObjectDictionariesArray()]
         replyHandler(reply)
     }
 }

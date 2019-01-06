@@ -13,7 +13,7 @@ import AVFoundation
 class SSSpeechManager: NSObject, AVSpeechSynthesizerDelegate {
     
     /// The shared instance of the SSSpeechManager class
-    static let sharedManager = SSSpeechManager()
+    static let shared = SSSpeechManager()
     
     fileprivate override init() {}
     

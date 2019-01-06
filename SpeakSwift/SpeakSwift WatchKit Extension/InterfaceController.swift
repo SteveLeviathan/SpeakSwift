@@ -17,6 +17,8 @@ class InterfaceController: WKInterfaceController {
     var speechObjects: [SSSpeechObject] = []
 
     var receivedData: [String : Any]!
+
+    let speechManager = SSSpeechManager.shared
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -51,14 +53,14 @@ class InterfaceController: WKInterfaceController {
     }
     
     func speakText(_ speechObject: SSSpeechObject) {
-        if SSSpeechManager.sharedManager.speechSynthesizer.isSpeaking {
+        if speechManager.speechSynthesizer.isSpeaking {
             // If speaking, call stopSpeakingAtBoundary: to interrupt current speech and clear the queue.
-            SSSpeechManager.sharedManager.speechSynthesizer.stopSpeaking(at: .immediate)
+            speechManager.speechSynthesizer.stopSpeaking(at: .immediate)
         }
         
         // Check if sharedSpeechManager.languageCodesAndDisplayNames dictionary has entries, if not this means there are no speech voices available on the device. (e.g.: The iPhone Simulator)
-        if !SSSpeechManager.sharedManager.languageCodesAndDisplayNames.isEmpty {
-            SSSpeechManager.sharedManager.speakWithSpeechObject(speechObject)
+        if !speechManager.languageCodesAndDisplayNames.isEmpty {
+            speechManager.speakWithSpeechObject(speechObject)
         }
     }
 

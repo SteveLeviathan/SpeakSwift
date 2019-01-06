@@ -14,6 +14,10 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
 
     weak var mainViewControllerDelegate: SSMainViewControllerDelegate?
 
+    let speechManager = SSSpeechManager.shared
+
+    let dataManager = SSDataManager.shared
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,7 +45,7 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return SSDataManager.sharedManager.speechObjects.count
+        return dataManager.speechObjects.count
     }
     
     
@@ -55,11 +59,13 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
         let cellIdentifer = "SavedSpeechTableViewCellIdentifier"
         let cell: SSSavedSpeechTableViewCell
         
-        if !SSDataManager.sharedManager.speechObjects.isEmpty {
+        if !dataManager.speechObjects.isEmpty {
             
-            let speechObject: SSSpeechObject = SSDataManager.sharedManager.speechObjects[indexPath.row]
-            
-            cell = SSSavedSpeechTableViewCell(speechObject: speechObject, reuseIdentifier: cellIdentifer)
+            let speechObject = dataManager.speechObjects[indexPath.row]
+
+            let language = speechManager.languageCodesAndDisplayNames[speechObject.language]!
+
+            cell = SSSavedSpeechTableViewCell(speechObject: speechObject, language: language, reuseIdentifier: cellIdentifer)
             
             
         } else {
@@ -81,9 +87,9 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
         
         if editingStyle == .delete {
             
-            SSDataManager.sharedManager.speechObjects.remove(at: indexPath.row)
+            dataManager.speechObjects.remove(at: indexPath.row)
 
-            SSDataManager.sharedManager.saveSpeechObjects()
+            dataManager.saveSpeechObjects()
             
             tableView.deleteRows(at: [indexPath], with: .fade)
             
@@ -116,18 +122,18 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
     
     func playButtonTappedOnSavedSpeechTableViewCell(_ savedSpeechTableViewCell: SSSavedSpeechTableViewCell!, withIndexPath indexPath: IndexPath!) {
 
-        if SSSpeechManager.sharedManager.speechSynthesizer.isSpeaking {
+        if speechManager.speechSynthesizer.isSpeaking {
             // If speaking, call stopSpeakingAtBoundary: to interrupt current speech and clear the queue.
-            SSSpeechManager.sharedManager.speechSynthesizer.stopSpeaking(at: .immediate)
+            speechManager.speechSynthesizer.stopSpeaking(at: .immediate)
         }
         
-        if !SSSpeechManager.sharedManager.languageCodesAndDisplayNames.isEmpty {
+        if !speechManager.languageCodesAndDisplayNames.isEmpty {
             
-            let speechObject = SSDataManager.sharedManager.speechObjects[indexPath.row]
+            let speechObject = dataManager.speechObjects[indexPath.row]
             
-            SSSpeechManager.sharedManager.speechSynthesizer.delegate = self
+            speechManager.speechSynthesizer.delegate = self
             
-            SSSpeechManager.sharedManager.speakWithSpeechObject(speechObject)
+            speechManager.speakWithSpeechObject(speechObject)
 
             Answers.logCustomEvent(
                 withName: "speakWithSpeechObject",
@@ -147,7 +153,8 @@ class SSSavedSpeechObjectsTableViewController: UITableViewController, AVSpeechSy
     func editButtonTappedOnSavedSpeechTableViewCell(_ savedSpeechTableViewCell: SSSavedSpeechTableViewCell!, withIndexPath indexPath: IndexPath!) {
 
         self.navigationController?.popViewController(animated: true)
-        let speechObject: SSSpeechObject = SSDataManager.sharedManager.speechObjects[indexPath.row]
+
+        let speechObject = dataManager.speechObjects[indexPath.row]
         
         mainViewControllerDelegate?.updateUIControlsWithSpeechObject(speechObject)
         

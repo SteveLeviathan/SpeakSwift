@@ -44,6 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var mainViewController: SSMainViewController!
 
     var wcSessionDelegate: SSWCSessionDelegate!
+
+    let dataManager = SSDataManager.shared
+
+    let speechManager = SSSpeechManager.shared
     
     class func appDelegate() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
@@ -75,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Load saved Speech Objects
         
-        SSDataManager.sharedManager.speechObjects = SSDataManager.sharedManager.savedSpeechObjects()
+        dataManager.speechObjects = dataManager.savedSpeechObjects()
         
         // Crashlytics
         Fabric.with([Crashlytics()])
@@ -121,13 +125,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Save Speech Objects to NSUserDefaults.standardUserDefaults()
         
-        SSDataManager.sharedManager.saveSpeechObjects()
+        dataManager.saveSpeechObjects()
         
         
         // If speaking, call stopSpeakingAtBoundary: to interrupt current speech and clear the queue.
         
-        if SSSpeechManager.sharedManager.speechSynthesizer.isSpeaking {
-            SSSpeechManager.sharedManager.speechSynthesizer.stopSpeaking(at: .immediate)
+        if speechManager.speechSynthesizer.isSpeaking {
+            speechManager.speechSynthesizer.stopSpeaking(at: .immediate)
         }
         
     }
@@ -156,7 +160,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Save Speech Objects to NSUserDefaults.standardUserDefaults()
         
-        SSDataManager.sharedManager.saveSpeechObjects()
+        dataManager.saveSpeechObjects()
     }
 
 }

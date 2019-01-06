@@ -65,7 +65,7 @@ class SSSpeechObject {
     
     func dictionaryRepresentation () -> [String: String] {
         
-        var dictionary: [String: String] = [: ]
+        var dictionary: [String: String] = [:]
         dictionary.updateValue(speechString, forKey: "speechString")
         dictionary.updateValue(language, forKey: "language")
         dictionary.updateValue(String(format: "%.2f", rate) , forKey: "rate")

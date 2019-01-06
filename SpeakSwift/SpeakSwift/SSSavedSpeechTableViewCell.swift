@@ -44,20 +44,20 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
     }
     
     
-    init(speechObject: SSSpeechObject, reuseIdentifier: String) {
+    init(speechObject: SSSpeechObject, language: String, reuseIdentifier: String) {
         
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
 
         setUpUI()
         
-        populateWithSpeechObject(speechObject)
+        populateWithSpeechObject(speechObject, language: language)
         
     }
 
     
     func setUpUI() {
 
-        backgroundColor = UIColor.clear
+        backgroundColor = .clear
         selectionStyle = .none
         contentView.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: SSSavedSpeechTableViewCell.cellHeight())
 
@@ -129,12 +129,12 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
     
     /// Populate this SSSavedSpeechTableViewCell with SSSpeechObject data
     
-    func populateWithSpeechObject (_ speechObject: SSSpeechObject) {
+    private func populateWithSpeechObject(_ speechObject: SSSpeechObject, language: String) {
 
         speechTextLabel.text = speechObject.speechString
         voiceRateLabel.text = String(format: "Rate: %.2f", speechObject.rate)
         voicePitchLabel.text = String(format: "Pitch: %.2f", speechObject.pitch)
-        languageLabel.text = "Language: \(SSSpeechManager.sharedManager.languageCodesAndDisplayNames[speechObject.language]!)"
+        languageLabel.text = "Language: \(language)"
 
     }
     

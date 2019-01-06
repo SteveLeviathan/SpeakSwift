@@ -31,7 +31,9 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var addToFavouritesButton: UIButton!
     
     let introText  = "This is the SpeakSwift app! By pressing the 'Speak!' button, your device will speak out loud any text you've typed inside this text box!"
-    
+
+    let speechManager = SSSpeechManager.shared
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -169,19 +171,8 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         // Call UIView positioning extension method positionBelowView() on pickerView
         pickerView.positionBelowView(voicePitchSlider, absoluteX: 0.0, yOffset: 10.0)
         
-        /*
-        // Set the pickerView to the language of the device
-        if let currentLanguageCode = AVSpeechSynthesisVoice.currentLanguageCode() {
-            let index = SSSpeechManager.sharedManager.languageCodes.bridgeToObjectiveC().indexOfObject(currentLanguageCode)
-            if index != NSNotFound {
-                pickerView?.selectRow(index, inComponent: 0, animated: false)
-            }
-            
-        }
-        */
-        
         // Set the pickerView to en-US (English (United States))
-        let index = (SSSpeechManager.sharedManager.languageCodes as NSArray).index(of: "en-US")
+        let index = (speechManager.languageCodes as NSArray).index(of: "en-US")
         if index != NSNotFound {
             pickerView.selectRow(index, inComponent: 0, animated: false)
         }
@@ -214,24 +205,24 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         speechTextView.resignFirstResponder()
         
-        if !SSSpeechManager.sharedManager.speechSynthesizer.isSpeaking {
+        if !speechManager.speechSynthesizer.isSpeaking {
             
             
             // Check if sharedSpeechManager.languageCodesAndDisplayNames dictionary has entries, if not this means there are no speech voices available on the device. (e.g.: The iPhone Simulator)
             
-            if !SSSpeechManager.sharedManager.languageCodesAndDisplayNames.isEmpty {
+            if !speechManager.languageCodesAndDisplayNames.isEmpty {
                 
                 let speechObject = SSSpeechObject.speechObjectWith(
                     speechString: speechTextView.text!,
-                    language: SSSpeechManager.sharedManager.languageCodes[pickerView.selectedRow(inComponent: 0)],
+                    language: speechManager.languageCodes[pickerView.selectedRow(inComponent: 0)],
                     rate: voiceRateSlider.value,
                     pitch: voicePitchSlider.value,
                     volume: 1.0
                 )
                 
-                SSSpeechManager.sharedManager.speechSynthesizer.delegate = self
+                speechManager.speechSynthesizer.delegate = self
                 
-                SSSpeechManager.sharedManager.speakWithSpeechObject(speechObject)
+                speechManager.speakWithSpeechObject(speechObject)
 
                 Answers.logCustomEvent(
                     withName: "speakWithSpeechObject",
@@ -250,7 +241,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             
             // If speaking, call stopSpeaking(at:) to interrupt current speech and clear the queue.
             
-            SSSpeechManager.sharedManager.speechSynthesizer.stopSpeaking(at: .immediate)
+            speechManager.speechSynthesizer.stopSpeaking(at: .immediate)
             
         }
         
@@ -262,17 +253,17 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @objc
     func addToFavourites() {
         
-        if !SSSpeechManager.sharedManager.languageCodesAndDisplayNames.isEmpty {
+        if !speechManager.languageCodesAndDisplayNames.isEmpty {
             
             let speechObject = SSSpeechObject.speechObjectWith(
                 speechString: speechTextView.text!,
-                language: SSSpeechManager.sharedManager.languageCodes[pickerView.selectedRow(inComponent: 0)],
+                language: speechManager.languageCodes[pickerView.selectedRow(inComponent: 0)],
                 rate: voiceRateSlider.value,
                 pitch: voicePitchSlider.value,
                 volume: 1.0
             )
             
-            SSDataManager.sharedManager.addSpeechObject(speechObject: speechObject)
+            SSDataManager.shared.addSpeechObject(speechObject: speechObject)
             
             let title = "Favourites"
             let message = "The speech text was added to your favourites."
@@ -337,7 +328,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         // If there are no language codes, because of the app running in the iPhone Simulator, return 1, so we can display 1 title to tell the user there are no speech voices
 
-        let count = SSSpeechManager.sharedManager.languageCodes.count
+        let count = speechManager.languageCodes.count
 
         if count == 0 {
             return 1
@@ -350,10 +341,10 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
-        if !SSSpeechManager.sharedManager.languageCodes.isEmpty {
+        if !speechManager.languageCodes.isEmpty {
             
-            let languageCode = SSSpeechManager.sharedManager.languageCodes[row]
-            let languageDisplayName = SSSpeechManager.sharedManager.languageCodesAndDisplayNames[languageCode]!
+            let languageCode = speechManager.languageCodes[row]
+            let languageDisplayName = speechManager.languageCodesAndDisplayNames[languageCode]!
             
             let attrString = NSAttributedString(string: languageDisplayName, attributes: [.foregroundColor: contrastingColor])
             
@@ -423,7 +414,7 @@ extension SSMainViewController: SSMainViewControllerDelegate {
 
         speechTextView.text = speechObject.speechString
 
-        let pickerViewIndex = (SSSpeechManager.sharedManager.languageCodes as NSArray).index(of: speechObject.language)
+        let pickerViewIndex = (speechManager.languageCodes as NSArray).index(of: speechObject.language)
         pickerView.selectRow(pickerViewIndex, inComponent: 0, animated: true)
 
         voiceRateSlider.value = speechObject.rate

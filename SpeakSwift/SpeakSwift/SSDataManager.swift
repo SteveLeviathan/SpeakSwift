@@ -17,7 +17,7 @@ class SSDataManager {
     var speechObjects: [SSSpeechObject] = []
 
     /// The shared instance of the SSDataManager class
-    static let sharedManager = SSDataManager()
+    static let shared = SSDataManager()
     
     fileprivate init() {}
     
@@ -55,7 +55,7 @@ class SSDataManager {
             
             // Add saved SSSpeechObjects to working array speechObjects
             
-            speechObjects += SSDataManager.sharedManager.savedSpeechObjects()
+            speechObjects += SSDataManager.shared.savedSpeechObjects()
             
         }
         
