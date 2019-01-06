@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA2DC69D1FB87FD3009DF01B /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA2803FB1B13842B007240A7 /* Fabric.framework */; };
-		AA2DC69E1FB87FD7009DF01B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA2803FC1B13842B007240A7 /* Crashlytics.framework */; };
 		AA42073D1FB7B22300DED001 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA615CDA1B5BEC1C002999E2 /* InterfaceController.swift */; };
 		AA42073F1FB7B24100DED001 /* SpeechesRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA615CF81B5C787E002999E2 /* SpeechesRowController.swift */; };
 		AA4207431FB7B2A500DED001 /* SSSpeechObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327A951943D7CD008F3BC3 /* SSSpeechObject.swift */; };
@@ -142,8 +140,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA2DC69D1FB87FD3009DF01B /* Fabric.framework in Frameworks */,
-				AA2DC69E1FB87FD7009DF01B /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
