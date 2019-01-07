@@ -1,5 +1,5 @@
 //
-//  SSSpeechObject.swift
+//  SpeechObject.swift
 //  SpeakSwift
 //
 //  Created by Steve Overmars on 08-06-14.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SSSpeechObject {
+class SpeechObject {
    
     var rate: Float = 1.0
     var pitch: Float = 1.0
@@ -16,11 +16,11 @@ class SSSpeechObject {
     var volume: Float = 1.0
     var speechString = ""
 
-    /// Returns a SSSpeechObject with data from input parameters
+    /// Returns a SpeechObject with data from input parameters
     
-    class func speechObjectWith(speechString: String, language: String, rate: Float, pitch: Float, volume: Float) -> SSSpeechObject {
+    class func speechObjectWith(speechString: String, language: String, rate: Float, pitch: Float, volume: Float) -> SpeechObject {
         
-        let speechObject = SSSpeechObject()
+        let speechObject = SpeechObject()
         
         speechObject.speechString = speechString
         speechObject.language = language
@@ -32,11 +32,11 @@ class SSSpeechObject {
 
     }
     
-    /// Returns a SSSpeechObject from a Dictionary
+    /// Returns a SpeechObject from a Dictionary
     
-    class func speechObjectFromDictionary(dictionary: [String: String]?) -> SSSpeechObject {
+    class func speechObjectFromDictionary(dictionary: [String: String]?) -> SpeechObject {
 
-        guard let dict = dictionary else { return SSSpeechObject() }
+        guard let dict = dictionary else { return SpeechObject() }
 
         let speechString = dict["speechString"]!
         let language = dict["language"]!
@@ -61,7 +61,7 @@ class SSSpeechObject {
     }
     
     
-    /// Returns a Dictionary representation of a SSSPeechObject
+    /// Returns a Dictionary representation of a SpeechObject
     
     func dictionaryRepresentation () -> [String: String] {
         

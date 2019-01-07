@@ -14,11 +14,11 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet var speechesTable: WKInterfaceTable!
     @IBOutlet var noFavouritesGroup: WKInterfaceGroup!
 
-    var speechObjects: [SSSpeechObject] = []
+    var speechObjects: [SpeechObject] = []
 
     var receivedData: [String : Any]!
 
-    let speechManager = SSSpeechManager.shared
+    let speechManager = SpeechManager.shared
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -52,7 +52,7 @@ class InterfaceController: WKInterfaceController {
         }
     }
     
-    func speakText(_ speechObject: SSSpeechObject) {
+    func speakText(_ speechObject: SpeechObject) {
         if speechManager.speechSynthesizer.isSpeaking {
             // If speaking, call stopSpeakingAtBoundary: to interrupt current speech and clear the queue.
             speechManager.speechSynthesizer.stopSpeaking(at: .immediate)
@@ -90,13 +90,13 @@ extension InterfaceController: WCSessionDelegateListening {
         }
     }
 
-    func speechObjects(from array: [[String: String]]) -> [SSSpeechObject] {
+    func speechObjects(from array: [[String: String]]) -> [SpeechObject] {
 
-        var speechObjectsArray: [SSSpeechObject] = []
+        var speechObjectsArray: [SpeechObject] = []
 
         for speechObjectDictionary in array {
 
-            speechObjectsArray.append(SSSpeechObject.speechObjectFromDictionary(dictionary: speechObjectDictionary))
+            speechObjectsArray.append(SpeechObject.speechObjectFromDictionary(dictionary: speechObjectDictionary))
 
         }
 

@@ -1,5 +1,5 @@
 //
-//  SSSpeechManager.swift
+//  SpeechManager.swift
 //  SpeakSwift
 //
 //  Created by Steve Overmars on 09-06-14.
@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 import AVFoundation
 
-class SSSpeechManager: NSObject, AVSpeechSynthesizerDelegate {
+class SpeechManager: NSObject, AVSpeechSynthesizerDelegate {
     
-    /// The shared instance of the SSSpeechManager class
-    static let shared = SSSpeechManager()
+    /// The shared instance of the SpeechManager class
+    static let shared = SpeechManager()
     
     fileprivate override init() {}
     
@@ -73,7 +73,7 @@ class SSSpeechManager: NSObject, AVSpeechSynthesizerDelegate {
     private var _languageCodesAndDisplayNames: [String: String]? = nil
     
     
-    func speakWithSpeechObject(_ speechObject: SSSpeechObject) {
+    func speakWithSpeechObject(_ speechObject: SpeechObject) {
         
         let speechUtterance = AVSpeechUtterance(string: speechObject.speechString)
         speechUtterance.rate = speechObject.rate

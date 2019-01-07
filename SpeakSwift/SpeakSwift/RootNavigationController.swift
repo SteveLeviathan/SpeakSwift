@@ -1,5 +1,5 @@
 //
-//  SSRootNavigationController.swift
+//  RootNavigationController.swift
 //  SpeakSwift
 //
 //  Created by Steve Overmars on 07-06-14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SSRootNavigationController: UINavigationController {
+class RootNavigationController: UINavigationController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent

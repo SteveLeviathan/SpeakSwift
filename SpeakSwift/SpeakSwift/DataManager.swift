@@ -1,5 +1,5 @@
 //
-//  SSDataManager.swift
+//  DataManager.swift
 //  SpeakSwift
 //
 //  Created by Steve Overmars on 08-06-14.
@@ -12,20 +12,20 @@ import WatchConnectivity
 
 let SpeakSwiftSpeechObjectsKey = "SpeakSwift.SpeechObjects"
 
-class SSDataManager {
+class DataManager {
     
-    var speechObjects: [SSSpeechObject] = []
+    var speechObjects: [SpeechObject] = []
 
-    /// The shared instance of the SSDataManager class
-    static let shared = SSDataManager()
+    /// The shared instance of the DataManager class
+    static let shared = DataManager()
     
     fileprivate init() {}
     
-    /// Add a single SSSpeechObject to the working array speechObjects
+    /// Add a single SpeechObject to the working array speechObjects
     
-    func addSpeechObject(speechObject: SSSpeechObject) {
+    func addSpeechObject(speechObject: SpeechObject) {
         
-        // Add SSSpeechObject to the top of the list
+        // Add SpeechObject to the top of the list
         speechObjects.insert(speechObject, at: 0)
 
         saveSpeechObjects()
@@ -34,9 +34,9 @@ class SSDataManager {
     
     
     
-    /// Convert a single SSSpeechObject to Dictionary, add it to the other saved Speech Object Dictionaries and save them to NSUserDefaults.standardUserDefaults()
+    /// Convert a single SpeechObject to Dictionary, add it to the other saved Speech Object Dictionaries and save them to NSUserDefaults.standardUserDefaults()
     
-    func saveSpeechObject(speechObject: SSSpeechObject?) {
+    func saveSpeechObject(speechObject: SpeechObject?) {
         
         if let speechObj = speechObject {
             
@@ -53,9 +53,9 @@ class SSDataManager {
             
             speechObjects.removeAll(keepingCapacity: false)
             
-            // Add saved SSSpeechObjects to working array speechObjects
+            // Add saved SpeechObjects to working array speechObjects
             
-            speechObjects += SSDataManager.shared.savedSpeechObjects()
+            speechObjects += DataManager.shared.savedSpeechObjects()
             
         }
         
@@ -82,28 +82,28 @@ class SSDataManager {
     
     
     /* 
-        Returns saved Speech Object Dictionaries as an Array of SSSpeechObjects
+        Returns saved Speech Object Dictionaries as an Array of SpeechObjects
     */
-    func savedSpeechObjects() -> [SSSpeechObject] {
+    func savedSpeechObjects() -> [SpeechObject] {
         
-        var speechObjectsArray: [SSSpeechObject] = []
+        var speechObjectsArray: [SpeechObject] = []
         
         for speechObjectDictionary in speechObjectDictionariesArray() {
             
-            speechObjectsArray.append(SSSpeechObject.speechObjectFromDictionary(dictionary: speechObjectDictionary))
+            speechObjectsArray.append(SpeechObject.speechObjectFromDictionary(dictionary: speechObjectDictionary))
             
         }
         
         return speechObjectsArray
     }
 
-    func speechObjects(from array: [[String: String]]) -> [SSSpeechObject] {
+    func speechObjects(from array: [[String: String]]) -> [SpeechObject] {
 
-        var speechObjectsArray: [SSSpeechObject] = []
+        var speechObjectsArray: [SpeechObject] = []
 
         for speechObjectDictionary in array {
 
-            speechObjectsArray.append(SSSpeechObject.speechObjectFromDictionary(dictionary: speechObjectDictionary))
+            speechObjectsArray.append(SpeechObject.speechObjectFromDictionary(dictionary: speechObjectDictionary))
 
         }
 
@@ -112,13 +112,13 @@ class SSDataManager {
     
     
     /* 
-        Convert SSSpeechObjects to Dictionaries and save to NSUserDefaults.standardUserDefaults()
+        Convert SpeechObjects to Dictionaries and save to NSUserDefaults.standardUserDefaults()
     */
     func saveSpeechObjects() {
     
         var speechObjectsAsDictionaries: [[String: String]] = []
         
-        for speechObject: SSSpeechObject in speechObjects {
+        for speechObject: SpeechObject in speechObjects {
             
             speechObjectsAsDictionaries.append(speechObject.dictionaryRepresentation())
             

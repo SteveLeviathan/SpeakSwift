@@ -39,15 +39,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow? = nil
     
-    var rootNavigationController: SSRootNavigationController!
+    var rootNavigationController: RootNavigationController!
     
-    var mainViewController: SSMainViewController!
+    var mainViewController: MainViewController!
 
-    var wcSessionDelegate: SSWCSessionDelegate!
+    var wcSessionDelegate: SessionDelegate!
 
-    let dataManager = SSDataManager.shared
+    let dataManager = DataManager.shared
 
-    let speechManager = SSSpeechManager.shared
+    let speechManager = SpeechManager.shared
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -59,12 +59,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Set the rootNavigationController as the window's rootViewController
         
-        rootNavigationController = window!.rootViewController! as? SSRootNavigationController
+        rootNavigationController = window!.rootViewController! as? RootNavigationController
         
         
-        // Init the SSMainViewController
+        // Init the MainViewController
         
-        mainViewController = SSMainViewController()
+        mainViewController = MainViewController()
         
         
         // Add the mainViewController to the rootNavigationController
@@ -97,7 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func activateWatchConnectivitySession() {
         if (WCSession.isSupported()) {
             let session = WCSession.default
-            wcSessionDelegate = SSWCSessionDelegate()
+            wcSessionDelegate = SessionDelegate()
             session.delegate = wcSessionDelegate
             session.activate()
 

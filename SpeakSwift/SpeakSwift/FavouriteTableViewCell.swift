@@ -1,5 +1,5 @@
 //
-//  SSSavedSpeechTableViewCell.swift
+//  FavouriteTableViewCell.swift
 //  SpeakSwift
 //
 //  Created by Steve Overmars on 12-06-14.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-protocol SSSavedSpeechTableViewCellDelegate: class {
+protocol FavouriteTableViewCellDelegate: class {
 
-    func playButtonTappedOnSavedSpeechTableViewCell(_ savedSpeechTableViewCell: SSSavedSpeechTableViewCell!, withIndexPath indexPath:  IndexPath!)
+    func playButtonTappedOnFavouriteTableViewCell(_ FavouriteTableViewCell: FavouriteTableViewCell!, withIndexPath indexPath:  IndexPath!)
 
-    func editButtonTappedOnSavedSpeechTableViewCell(_ savedSpeechTableViewCell: SSSavedSpeechTableViewCell!, withIndexPath indexPath:  IndexPath!)
+    func editButtonTappedOnFavouriteTableViewCell(_ FavouriteTableViewCell: FavouriteTableViewCell!, withIndexPath indexPath:  IndexPath!)
 
 }
 
-class SSSavedSpeechTableViewCell: UITableViewCell {
+class FavouriteTableViewCell: UITableViewCell {
 
     var playButton: UIButton!
     
@@ -27,7 +27,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
     var voicePitchLabel: UILabel!
     var languageLabel: UILabel!
     
-    weak var delegate: SSSavedSpeechTableViewCellDelegate?
+    weak var delegate: FavouriteTableViewCellDelegate?
     
     weak var tableView: UITableView?
     
@@ -44,7 +44,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
     }
     
     
-    init(speechObject: SSSpeechObject, language: String, reuseIdentifier: String) {
+    init(speechObject: SpeechObject, language: String, reuseIdentifier: String) {
         
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
 
@@ -59,7 +59,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
 
         backgroundColor = .clear
         selectionStyle = .none
-        contentView.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: SSSavedSpeechTableViewCell.cellHeight())
+        contentView.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: FavouriteTableViewCell.cellHeight())
 
         speechTextLabel = UILabel(frame: CGRect(x: 20.0, y: 10.0, width: contentView.frame.width - 40.0, height: 60.0))
         speechTextLabel.textColor = contrastingColor
@@ -105,7 +105,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         playButton.setTitleColor(contrastingColor, for: .normal)
         playButton.layer.borderWidth = 1.0
         playButton.layer.borderColor = contrastingColor.cgColor
-        playButton.addTarget(self, action: #selector(SSSavedSpeechTableViewCell.playButtonTapped), for: .touchUpInside)
+        playButton.addTarget(self, action: #selector(FavouriteTableViewCell.playButtonTapped), for: .touchUpInside)
         
         // Call UIView positioning extension method positionBelowView() on playButton
         playButton.positionBelowView(languageLabel, xOffset: 0.0, yOffset: 20.0)
@@ -118,7 +118,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
         editButton.setTitleColor(contrastingColor, for: .normal)
         editButton.layer.borderWidth = 1.0
         editButton.layer.borderColor = contrastingColor.cgColor
-        editButton.addTarget(self, action: #selector(SSSavedSpeechTableViewCell.editButtonTapped), for: .touchUpInside)
+        editButton.addTarget(self, action: #selector(FavouriteTableViewCell.editButtonTapped), for: .touchUpInside)
         
         // Call UIView positioning extension method positionRightFromView() on editButton
         editButton.positionRightFromView(playButton, xOffset: 20.0, yOffset: 0.0)
@@ -127,9 +127,9 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
 
     }
     
-    /// Populate this SSSavedSpeechTableViewCell with SSSpeechObject data
+    /// Populate this FavouriteTableViewCell with SpeechObject data
     
-    private func populateWithSpeechObject(_ speechObject: SSSpeechObject, language: String) {
+    private func populateWithSpeechObject(_ speechObject: SpeechObject, language: String) {
 
         speechTextLabel.text = speechObject.speechString
         voiceRateLabel.text = String(format: "Rate: %.2f", speechObject.rate)
@@ -154,7 +154,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
 
         guard let indexPath = tableView?.indexPath(for: self) else { return }
 
-        delegate?.playButtonTappedOnSavedSpeechTableViewCell(self, withIndexPath: indexPath)
+        delegate?.playButtonTappedOnFavouriteTableViewCell(self, withIndexPath: indexPath)
         
     }
     
@@ -165,7 +165,7 @@ class SSSavedSpeechTableViewCell: UITableViewCell {
 
         guard let indexPath = tableView?.indexPath(for: self) else { return }
 
-        delegate?.editButtonTappedOnSavedSpeechTableViewCell(self, withIndexPath: indexPath)
+        delegate?.editButtonTappedOnFavouriteTableViewCell(self, withIndexPath: indexPath)
         
     }
 

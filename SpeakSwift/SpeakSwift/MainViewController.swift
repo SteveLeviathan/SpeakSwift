@@ -1,5 +1,5 @@
 //
-//  SSMainViewController.swift
+//  MainViewController.swift
 //  SpeakSwift
 //
 //  Created by Steve Overmars on 07-06-14.
@@ -10,12 +10,12 @@ import UIKit
 import AVFoundation
 import Crashlytics
 
-protocol SSMainViewControllerDelegate: class {
+protocol MainViewControllerDelegate: class {
     func setSpeakButtonTitle(title: String)
-    func updateUIControlsWithSpeechObject(_ speechObject: SSSpeechObject)
+    func updateUIControlsWithSpeechObject(_ speechObject: SpeechObject)
 }
 
-class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, AVSpeechSynthesizerDelegate {
+class MainViewController: UIViewController {
     
     var scrollView: UIScrollView!
     var speechTextView: UITextView!
@@ -32,7 +32,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     let introText  = "This is the SpeakSwift app! By pressing the 'Speak!' button, your device will speak out loud any text you've typed inside this text box!"
 
-    let speechManager = SSSpeechManager.shared
+    let speechManager = SpeechManager.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -207,7 +207,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         if !speechManager.speechSynthesizer.isSpeaking {
             
-            let speechObject = SSSpeechObject.speechObjectWith(
+            let speechObject = SpeechObject.speechObjectWith(
                 speechString: speechTextView.text!,
                 language: speechManager.languageCodes[pickerView.selectedRow(inComponent: 0)],
                 rate: voiceRateSlider.value,
@@ -248,7 +248,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         if !speechManager.languageCodesAndDisplayNames.isEmpty {
             
-            let speechObject = SSSpeechObject.speechObjectWith(
+            let speechObject = SpeechObject.speechObjectWith(
                 speechString: speechTextView.text!,
                 language: speechManager.languageCodes[pickerView.selectedRow(inComponent: 0)],
                 rate: voiceRateSlider.value,
@@ -256,7 +256,7 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 volume: 1.0
             )
             
-            SSDataManager.shared.addSpeechObject(speechObject: speechObject)
+            DataManager.shared.addSpeechObject(speechObject: speechObject)
             
             let title = "Favourites"
             let message = "The speech text was added to your favourites."
@@ -294,9 +294,9 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         speechTextView.resignFirstResponder()
 
-        let savedSpeechObjectsTableViewController = SSSavedSpeechObjectsTableViewController(style: .plain)
-        savedSpeechObjectsTableViewController.mainViewControllerDelegate = self
-        navigationController?.pushViewController(savedSpeechObjectsTableViewController, animated: true)
+        let favouritesTableViewController = FavouritesTableViewController(style: .plain)
+        favouritesTableViewController.mainViewControllerDelegate = self
+        navigationController?.pushViewController(favouritesTableViewController, animated: true)
         
     }
 
@@ -310,15 +310,18 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         return UIInterfaceOrientationMask.all
     }
 
-    // MARK: - UIPickerViewDelegate & UIPickerViewDatasource methods
-    
+}
+
+// MARK: - UIPickerViewDelegate & UIPickerViewDatasource methods
+
+extension MainViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int  {
         return 1
     }
-    
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int  {
-        
+
         // If there are no language codes, because of the app running in the iPhone Simulator, return 1, so we can display 1 title to tell the user there are no speech voices
 
         let count = speechManager.languageCodes.count
@@ -326,84 +329,88 @@ class SSMainViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         if count == 0 {
             return 1
         }
-        
+
         return count
-        
+
     }
-    
-    
+
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        
+
         if !speechManager.languageCodes.isEmpty {
-            
+
             let languageCode = speechManager.languageCodes[row]
             let languageDisplayName = speechManager.languageCodesAndDisplayNames[languageCode]!
-            
+
             let attrString = NSAttributedString(string: languageDisplayName, attributes: [.foregroundColor: contrastingColor])
-            
+
             return attrString
-            
+
         }
-        
+
         return NSAttributedString(string: "No speech voices.", attributes: [.foregroundColor: contrastingColor])
-        
-    }
 
-    // MARK: - UITextViewDelegate methods
-    
-    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        
-        // Clear intro text
-        
-        if textView.text == introText {
-            textView.text = ""
-        }
-        
-        return true
-    }
-    
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
-        if text == "\n" {
-            textView.resignFirstResponder()
-            return false
-        }
-        
-        return true
-    }
-    
-    
-    // MARK: - AVSpeechSynthesizerDelegate methods
-
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
-        
-        speakButton.titleLabel?.text = "Stop!"
-        
-    }
-    
-    
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        
-        speakButton.titleLabel?.text = "Speak!"
-
-    }
-    
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
-        
-        speakButton.titleLabel?.text = "Speak!"
-        
     }
 
 }
 
+// MARK: - UITextViewDelegate methods
 
-extension SSMainViewController: SSMainViewControllerDelegate {
+extension MainViewController: UITextViewDelegate {
+
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+
+        // Clear intro text
+
+        if textView.text == introText {
+            textView.text = ""
+        }
+
+        return true
+    }
+
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+
+        return true
+    }
+
+}
+
+// MARK: - AVSpeechSynthesizerDelegate methods
+
+extension MainViewController: AVSpeechSynthesizerDelegate {
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
+
+        speakButton.titleLabel?.text = "Stop!"
+
+    }
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+
+        speakButton.titleLabel?.text = "Speak!"
+
+    }
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
+
+        speakButton.titleLabel?.text = "Speak!"
+
+    }
+
+}
+
+extension MainViewController: MainViewControllerDelegate {
+
     func setSpeakButtonTitle(title: String) {
         speakButton.setTitle(title, for: .normal)
     }
 
-    func updateUIControlsWithSpeechObject(_ speechObject: SSSpeechObject) {
+    func updateUIControlsWithSpeechObject(_ speechObject: SpeechObject) {
 
         speechTextView.text = speechObject.speechString
 
@@ -417,4 +424,5 @@ extension SSMainViewController: SSMainViewControllerDelegate {
         voicePitchSliderValueChanged(voicePitchSlider)
 
     }
+    
 }
