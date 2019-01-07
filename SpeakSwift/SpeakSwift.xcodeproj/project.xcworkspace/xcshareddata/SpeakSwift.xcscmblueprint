@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "A0EA5E00FDCCCDF6BB16B74E8608BFCB5278D7D7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "5002B6B0-4CDE-41D5-BBDC-3C174AFC1BAD" : 0,
+    "A0EA5E00FDCCCDF6BB16B74E8608BFCB5278D7D7" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "25644E53-FA08-4061-9291-53AEE49A9F2E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "5002B6B0-4CDE-41D5-BBDC-3C174AFC1BAD" : "SpeakSwift (GitHub)",
+    "A0EA5E00FDCCCDF6BB16B74E8608BFCB5278D7D7" : "SpeakSwift%20(GitHub)"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SpeakSwift",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SpeakSwift\/SpeakSwift.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SteveLeviathan\/SpeakSwift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5002B6B0-4CDE-41D5-BBDC-3C174AFC1BAD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SteveLeviathan\/SpeakSwift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A0EA5E00FDCCCDF6BB16B74E8608BFCB5278D7D7"
+    }
+  ]
+}
