@@ -9,30 +9,30 @@
 /* Begin PBXBuildFile section */
 		AA42073D1FB7B22300DED001 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA615CDA1B5BEC1C002999E2 /* InterfaceController.swift */; };
 		AA42073F1FB7B24100DED001 /* SpeechesRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA615CF81B5C787E002999E2 /* SpeechesRowController.swift */; };
-		AA4207431FB7B2A500DED001 /* SSSpeechObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327A951943D7CD008F3BC3 /* SSSpeechObject.swift */; };
-		AA4207441FB7B2B200DED001 /* SSSpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327AC51945FD66008F3BC3 /* SSSpeechManager.swift */; };
+		AA4207431FB7B2A500DED001 /* SpeechObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327A951943D7CD008F3BC3 /* SpeechObject.swift */; };
+		AA4207441FB7B2B200DED001 /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327AC51945FD66008F3BC3 /* SpeechManager.swift */; };
 		AA5D2FC61FB7AA04000F1A33 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA5D2FC41FB7AA04000F1A33 /* Interface.storyboard */; };
 		AA5D2FC81FB7AA04000F1A33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA5D2FC71FB7AA04000F1A33 /* Assets.xcassets */; };
 		AA5D2FCF1FB7AA04000F1A33 /* SpeakSwift WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AA5D2FCE1FB7AA04000F1A33 /* SpeakSwift WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AA5D2FDC1FB7AA04000F1A33 /* SpeakSwift WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AA5D2FC21FB7AA04000F1A33 /* SpeakSwift WatchKit App.app */; };
 		AA5D2FE61FB7AAF4000F1A33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA5D2FE51FB7AAF3000F1A33 /* Assets.xcassets */; };
 		AAE227E61FB7C0820071CA7A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE227E51FB7C0820071CA7A /* ExtensionDelegate.swift */; };
-		AAE227E81FB7C4FC0071CA7A /* SSWCSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE227E71FB7C4FC0071CA7A /* SSWCSessionDelegate.swift */; };
+		AAE227E81FB7C4FC0071CA7A /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE227E71FB7C4FC0071CA7A /* SessionDelegate.swift */; };
 		AAE260EF21D2490D00FAE780 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE260EE21D2490D00FAE780 /* Constants.swift */; };
 		AAE260F121D27BA800FAE780 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAE260F021D27BA800FAE780 /* Launch Screen.storyboard */; };
 		EA01FE261943B49300A2224B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA01FE251943B49300A2224B /* AppDelegate.swift */; };
 		EA01FE2B1943B49300A2224B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA01FE291943B49300A2224B /* Main.storyboard */; };
 		EA01FE2D1943B49300A2224B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA01FE2C1943B49300A2224B /* Images.xcassets */; };
 		EA01FE391943B49300A2224B /* SpeakSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA01FE381943B49300A2224B /* SpeakSwiftTests.swift */; };
-		EA01FE451943B66B00A2224B /* SSMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA01FE441943B66B00A2224B /* SSMainViewController.swift */; };
-		EA01FE471943B69B00A2224B /* SSRootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA01FE461943B69B00A2224B /* SSRootNavigationController.swift */; };
+		EA01FE451943B66B00A2224B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA01FE441943B66B00A2224B /* MainViewController.swift */; };
+		EA01FE471943B69B00A2224B /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA01FE461943B69B00A2224B /* RootNavigationController.swift */; };
 		EA2803FD1B13842B007240A7 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA2803FB1B13842B007240A7 /* Fabric.framework */; };
 		EA2803FE1B13842B007240A7 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA2803FC1B13842B007240A7 /* Crashlytics.framework */; };
-		EA327A941943D43C008F3BC3 /* SSDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327A931943D43C008F3BC3 /* SSDataManager.swift */; };
-		EA327A961943D7CE008F3BC3 /* SSSpeechObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327A951943D7CD008F3BC3 /* SSSpeechObject.swift */; };
-		EA327AC61945FD66008F3BC3 /* SSSpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327AC51945FD66008F3BC3 /* SSSpeechManager.swift */; };
-		EA327AC819460FA2008F3BC3 /* SSSavedSpeechObjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327AC719460FA2008F3BC3 /* SSSavedSpeechObjectsTableViewController.swift */; };
-		EA40CD2D194930620033D0E1 /* SSSavedSpeechTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40CD2C194930620033D0E1 /* SSSavedSpeechTableViewCell.swift */; };
+		EA327A941943D43C008F3BC3 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327A931943D43C008F3BC3 /* DataManager.swift */; };
+		EA327A961943D7CE008F3BC3 /* SpeechObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327A951943D7CD008F3BC3 /* SpeechObject.swift */; };
+		EA327AC61945FD66008F3BC3 /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327AC51945FD66008F3BC3 /* SpeechManager.swift */; };
+		EA327AC819460FA2008F3BC3 /* FavouritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327AC719460FA2008F3BC3 /* FavouritesTableViewController.swift */; };
+		EA40CD2D194930620033D0E1 /* FavouriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40CD2C194930620033D0E1 /* FavouriteTableViewCell.swift */; };
 		EA615CFB1B5C8559002999E2 /* Icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = EA615CFA1B5C8559002999E2 /* Icon-180.png */; };
 		EA781E881B61A81C008020F5 /* sound.png in Resources */ = {isa = PBXBuildFile; fileRef = EA781E871B61A81C008020F5 /* sound.png */; };
 		EA90E6161950F34000E05D2E /* UIViewPositioningExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA90E6151950F34000E05D2E /* UIViewPositioningExtension.swift */; };
@@ -107,7 +107,7 @@
 		AA5D2FCE1FB7AA04000F1A33 /* SpeakSwift WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "SpeakSwift WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA5D2FE51FB7AAF3000F1A33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAE227E51FB7C0820071CA7A /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		AAE227E71FB7C4FC0071CA7A /* SSWCSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSWCSessionDelegate.swift; sourceTree = "<group>"; };
+		AAE227E71FB7C4FC0071CA7A /* SessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDelegate.swift; sourceTree = "<group>"; };
 		AAE260EE21D2490D00FAE780 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AAE260F021D27BA800FAE780 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		EA01FE201943B49300A2224B /* SpeakSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,15 +118,15 @@
 		EA01FE321943B49300A2224B /* SpeakSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeakSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA01FE371943B49300A2224B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA01FE381943B49300A2224B /* SpeakSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakSwiftTests.swift; sourceTree = "<group>"; };
-		EA01FE441943B66B00A2224B /* SSMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSMainViewController.swift; sourceTree = "<group>"; };
-		EA01FE461943B69B00A2224B /* SSRootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSRootNavigationController.swift; sourceTree = "<group>"; };
+		EA01FE441943B66B00A2224B /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		EA01FE461943B69B00A2224B /* RootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		EA2803FB1B13842B007240A7 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		EA2803FC1B13842B007240A7 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
-		EA327A931943D43C008F3BC3 /* SSDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSDataManager.swift; sourceTree = "<group>"; };
-		EA327A951943D7CD008F3BC3 /* SSSpeechObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSSpeechObject.swift; sourceTree = "<group>"; };
-		EA327AC51945FD66008F3BC3 /* SSSpeechManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSSpeechManager.swift; sourceTree = "<group>"; };
-		EA327AC719460FA2008F3BC3 /* SSSavedSpeechObjectsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSSavedSpeechObjectsTableViewController.swift; sourceTree = "<group>"; };
-		EA40CD2C194930620033D0E1 /* SSSavedSpeechTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSSavedSpeechTableViewCell.swift; sourceTree = "<group>"; };
+		EA327A931943D43C008F3BC3 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		EA327A951943D7CD008F3BC3 /* SpeechObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechObject.swift; sourceTree = "<group>"; };
+		EA327AC51945FD66008F3BC3 /* SpeechManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechManager.swift; sourceTree = "<group>"; };
+		EA327AC719460FA2008F3BC3 /* FavouritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesTableViewController.swift; sourceTree = "<group>"; };
+		EA40CD2C194930620033D0E1 /* FavouriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteTableViewCell.swift; sourceTree = "<group>"; };
 		EA615CD91B5BEC1C002999E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA615CDA1B5BEC1C002999E2 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		EA615CF81B5C787E002999E2 /* SpeechesRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechesRowController.swift; sourceTree = "<group>"; };
@@ -213,14 +213,14 @@
 				EA01FE2C1943B49300A2224B /* Images.xcassets */,
 				AAE260EE21D2490D00FAE780 /* Constants.swift */,
 				EA01FE251943B49300A2224B /* AppDelegate.swift */,
-				AAE227E71FB7C4FC0071CA7A /* SSWCSessionDelegate.swift */,
-				EA01FE461943B69B00A2224B /* SSRootNavigationController.swift */,
-				EA01FE441943B66B00A2224B /* SSMainViewController.swift */,
-				EA327A931943D43C008F3BC3 /* SSDataManager.swift */,
-				EA327A951943D7CD008F3BC3 /* SSSpeechObject.swift */,
-				EA327AC51945FD66008F3BC3 /* SSSpeechManager.swift */,
-				EA327AC719460FA2008F3BC3 /* SSSavedSpeechObjectsTableViewController.swift */,
-				EA40CD2C194930620033D0E1 /* SSSavedSpeechTableViewCell.swift */,
+				AAE227E71FB7C4FC0071CA7A /* SessionDelegate.swift */,
+				EA01FE461943B69B00A2224B /* RootNavigationController.swift */,
+				EA01FE441943B66B00A2224B /* MainViewController.swift */,
+				EA327A931943D43C008F3BC3 /* DataManager.swift */,
+				EA327A951943D7CD008F3BC3 /* SpeechObject.swift */,
+				EA327AC51945FD66008F3BC3 /* SpeechManager.swift */,
+				EA327AC719460FA2008F3BC3 /* FavouritesTableViewController.swift */,
+				EA40CD2C194930620033D0E1 /* FavouriteTableViewCell.swift */,
 				EA90E6171950F57900E05D2E /* UIView Positioning Extension */,
 				EA01FE231943B49300A2224B /* Supporting Files */,
 				AAE260F021D27BA800FAE780 /* Launch Screen.storyboard */,
@@ -500,11 +500,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA4207431FB7B2A500DED001 /* SSSpeechObject.swift in Sources */,
+				AA4207431FB7B2A500DED001 /* SpeechObject.swift in Sources */,
 				AA42073F1FB7B24100DED001 /* SpeechesRowController.swift in Sources */,
 				AAE227E61FB7C0820071CA7A /* ExtensionDelegate.swift in Sources */,
 				AA42073D1FB7B22300DED001 /* InterfaceController.swift in Sources */,
-				AA4207441FB7B2B200DED001 /* SSSpeechManager.swift in Sources */,
+				AA4207441FB7B2B200DED001 /* SpeechManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,17 +512,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA327A941943D43C008F3BC3 /* SSDataManager.swift in Sources */,
+				EA327A941943D43C008F3BC3 /* DataManager.swift in Sources */,
 				AAE260EF21D2490D00FAE780 /* Constants.swift in Sources */,
-				EA327AC819460FA2008F3BC3 /* SSSavedSpeechObjectsTableViewController.swift in Sources */,
+				EA327AC819460FA2008F3BC3 /* FavouritesTableViewController.swift in Sources */,
 				EA01FE261943B49300A2224B /* AppDelegate.swift in Sources */,
-				EA327AC61945FD66008F3BC3 /* SSSpeechManager.swift in Sources */,
-				EA40CD2D194930620033D0E1 /* SSSavedSpeechTableViewCell.swift in Sources */,
-				EA01FE471943B69B00A2224B /* SSRootNavigationController.swift in Sources */,
-				EA327A961943D7CE008F3BC3 /* SSSpeechObject.swift in Sources */,
-				AAE227E81FB7C4FC0071CA7A /* SSWCSessionDelegate.swift in Sources */,
+				EA327AC61945FD66008F3BC3 /* SpeechManager.swift in Sources */,
+				EA40CD2D194930620033D0E1 /* FavouriteTableViewCell.swift in Sources */,
+				EA01FE471943B69B00A2224B /* RootNavigationController.swift in Sources */,
+				EA327A961943D7CE008F3BC3 /* SpeechObject.swift in Sources */,
+				AAE227E81FB7C4FC0071CA7A /* SessionDelegate.swift in Sources */,
 				EA90E6161950F34000E05D2E /* UIViewPositioningExtension.swift in Sources */,
-				EA01FE451943B66B00A2224B /* SSMainViewController.swift in Sources */,
+				EA01FE451943B66B00A2224B /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
