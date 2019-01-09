@@ -33,7 +33,6 @@
 		EA327AC61945FD66008F3BC3 /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327AC51945FD66008F3BC3 /* SpeechManager.swift */; };
 		EA327AC819460FA2008F3BC3 /* FavouritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA327AC719460FA2008F3BC3 /* FavouritesTableViewController.swift */; };
 		EA40CD2D194930620033D0E1 /* FavouriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40CD2C194930620033D0E1 /* FavouriteTableViewCell.swift */; };
-		EA615CFB1B5C8559002999E2 /* Icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = EA615CFA1B5C8559002999E2 /* Icon-180.png */; };
 		EA781E881B61A81C008020F5 /* sound.png in Resources */ = {isa = PBXBuildFile; fileRef = EA781E871B61A81C008020F5 /* sound.png */; };
 		EA90E6161950F34000E05D2E /* UIViewPositioningExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA90E6151950F34000E05D2E /* UIViewPositioningExtension.swift */; };
 /* End PBXBuildFile section */
@@ -130,7 +129,6 @@
 		EA615CD91B5BEC1C002999E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA615CDA1B5BEC1C002999E2 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		EA615CF81B5C787E002999E2 /* SpeechesRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechesRowController.swift; sourceTree = "<group>"; };
-		EA615CFA1B5C8559002999E2 /* Icon-180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-180.png"; sourceTree = "<group>"; };
 		EA781E871B61A81C008020F5 /* sound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sound.png; sourceTree = "<group>"; };
 		EA90E6151950F34000E05D2E /* UIViewPositioningExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewPositioningExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -208,7 +206,6 @@
 				EA2803FA1B13840C007240A7 /* Libs */,
 				AA2DC69A1FB879B4009DF01B /* SpeakSwift.entitlements */,
 				EA781E871B61A81C008020F5 /* sound.png */,
-				EA615CFA1B5C8559002999E2 /* Icon-180.png */,
 				EA01FE291943B49300A2224B /* Main.storyboard */,
 				EA01FE2C1943B49300A2224B /* Images.xcassets */,
 				AAE260EE21D2490D00FAE780 /* Constants.swift */,
@@ -464,7 +461,6 @@
 			files = (
 				EA01FE2B1943B49300A2224B /* Main.storyboard in Resources */,
 				EA781E881B61A81C008020F5 /* sound.png in Resources */,
-				EA615CFB1B5C8559002999E2 /* Icon-180.png in Resources */,
 				AAE260F121D27BA800FAE780 /* Launch Screen.storyboard in Resources */,
 				EA01FE2D1943B49300A2224B /* Images.xcassets in Resources */,
 			);
