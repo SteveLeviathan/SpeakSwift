@@ -7,7 +7,9 @@
 //
 
 import Foundation
+#if !os(iOS)
 import WatchKit
+#endif
 import WatchConnectivity
 
 class SessionDelegate: NSObject, WCSessionDelegate {
