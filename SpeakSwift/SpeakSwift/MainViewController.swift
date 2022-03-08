@@ -207,7 +207,7 @@ class MainViewController: UIViewController {
         
         if !speechManager.speechSynthesizer.isSpeaking {
             
-            let speechObject = SpeechObject.speechObjectWith(
+            let speechObject = SpeechObject(
                 speechString: speechTextView.text!,
                 language: speechManager.languageCodes[pickerView.selectedRow(inComponent: 0)],
                 rate: voiceRateSlider.value,
@@ -248,7 +248,7 @@ class MainViewController: UIViewController {
         
         if !speechManager.languageCodesAndDisplayNames.isEmpty {
             
-            let speechObject = SpeechObject.speechObjectWith(
+            let speechObject = SpeechObject(
                 speechString: speechTextView.text!,
                 language: speechManager.languageCodes[pickerView.selectedRow(inComponent: 0)],
                 rate: voiceRateSlider.value,

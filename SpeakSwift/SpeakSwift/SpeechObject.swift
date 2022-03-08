@@ -8,70 +8,61 @@
 
 import Foundation
 
-class SpeechObject {
-   
-    var rate: Float = 1.0
-    var pitch: Float = 1.0
-    var language  = ""
-    var volume: Float = 1.0
-    var speechString = ""
+struct SpeechObject {
 
-    /// Returns a SpeechObject with data from input parameters
-    
-    class func speechObjectWith(speechString: String, language: String, rate: Float, pitch: Float, volume: Float) -> SpeechObject {
-        
-        let speechObject = SpeechObject()
-        
-        speechObject.speechString = speechString
-        speechObject.language = language
-        speechObject.rate = rate
-        speechObject.pitch = pitch
-        speechObject.volume = volume
-        
-        return speechObject
+    let speechString: String
+    let language: String
+    let rate: Float
+    let pitch: Float
+    let volume: Float
+
+    init(speechString: String = "",
+         language: String = "",
+         rate: Float = 1.0,
+         pitch: Float = 1.0,
+         volume: Float = 1.0) {
+
+        self.speechString = speechString
+        self.language = language
+        self.rate = rate
+        self.pitch = pitch
+        self.volume = volume
 
     }
     
     /// Returns a SpeechObject from a Dictionary
     
-    class func speechObjectFromDictionary(dictionary: [String: String]?) -> SpeechObject {
+    init(dictionary: [String: String]) {
+        let speechString = dictionary["speechString"] ?? ""
+        let language = dictionary["language"] ?? ""
+        let rateStr = dictionary["rate"] ?? "1.0"
+        let pitchStr = dictionary["pitch"] ?? "1.0"
+        let volumeStr = dictionary["volume"] ?? "1.0"
 
-        guard let dict = dictionary else { return SpeechObject() }
+        let rate =  Float(rateStr) ?? 1.0
+        let pitch = Float(pitchStr) ?? 1.0
+        let volume = Float(volumeStr) ?? 1.0
 
-        let speechString = dict["speechString"]!
-        let language = dict["language"]!
-        let rateStr = dict["rate"]!
-        let pitchStr = dict["pitch"]!
-        let volumeStr = dict["volume"]!
+        self.speechString = speechString
+        self.language = language
+        self.rate = rate
+        self.pitch = pitch
+        self.volume = volume
 
-        let rate =  Float(rateStr)
-        let pitch = Float(pitchStr)
-        let volume = Float(volumeStr)
-
-        let speechObject = speechObjectWith(
-            speechString: speechString,
-            language: language,
-            rate: rate!,
-            pitch: pitch!,
-            volume: volume!
-        )
-
-        return speechObject
-        
     }
-    
-    
+
     /// Returns a Dictionary representation of a SpeechObject
     
     func dictionaryRepresentation () -> [String: String] {
         
         var dictionary: [String: String] = [:]
-        dictionary.updateValue(speechString, forKey: "speechString")
-        dictionary.updateValue(language, forKey: "language")
-        dictionary.updateValue(String(format: "%.2f", rate) , forKey: "rate")
-        dictionary.updateValue(String(format: "%.2f", pitch) , forKey: "pitch")
-        dictionary.updateValue(String(format: "%.2f", volume) , forKey: "volume")
-        
+
+        dictionary["speechString"] = speechString
+        dictionary["language"] = language
+        dictionary["rate"] = String(format: "%.2f", rate)
+        dictionary["pitch"] = String(format: "%.2f", pitch)
+        dictionary["volume"] = String(format: "%.2f", volume)
+
         return dictionary
         
     }
