@@ -90,7 +90,7 @@ class DataManager {
         
         for speechObjectDictionary in speechObjectDictionariesArray() {
             
-            speechObjectsArray.append(SpeechObject.speechObjectFromDictionary(dictionary: speechObjectDictionary))
+            speechObjectsArray.append(SpeechObject(dictionary: speechObjectDictionary))
             
         }
         
@@ -103,7 +103,7 @@ class DataManager {
 
         for speechObjectDictionary in array {
 
-            speechObjectsArray.append(SpeechObject.speechObjectFromDictionary(dictionary: speechObjectDictionary))
+            speechObjectsArray.append(SpeechObject(dictionary: speechObjectDictionary))
 
         }
 

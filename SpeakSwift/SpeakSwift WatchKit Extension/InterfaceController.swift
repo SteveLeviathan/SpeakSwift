@@ -96,7 +96,7 @@ extension InterfaceController: WCSessionDelegateListening {
 
         for speechObjectDictionary in array {
 
-            speechObjectsArray.append(SpeechObject.speechObjectFromDictionary(dictionary: speechObjectDictionary))
+            speechObjectsArray.append(SpeechObject(dictionary: speechObjectDictionary))
 
         }
 
